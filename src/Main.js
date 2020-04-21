@@ -5,7 +5,8 @@ import { Apply } from './pages/Apply/Apply';
 import { Footer } from './pages/Footer/Footer';
 import Twom from './pages/Twom/Twom';
 
-export class App extends Component {
+export class Main extends Component {
+
     render() {
         return (
             <div>
@@ -19,4 +20,4 @@ export class App extends Component {
     }
 }
 
-export default App;
+export default Main;

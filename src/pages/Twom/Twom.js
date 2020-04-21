@@ -13,11 +13,11 @@ class Twom extends Component {
         btnClicked: false,
     }
 
-    handleOnclick = (e) => {
+    changingDotsHandler = (e) => {
 
-        //현재 className이 맞으면
+        e.target.disabled = false;
+
         if (e.target.className === "noclickDot") {
-            e.target.disabled = false;
             this.setState({
                 btnClicked: !this.state.btnClicked,
                 twomWrapperClassName: "movedLeftWrapper"
@@ -25,7 +25,6 @@ class Twom extends Component {
         }
 
         if (e.target.className === "clickDot") {
-            e.target.disabled = false;
             this.setState({
                 btnClicked: !this.state.btnClicked,
                 twomWrapperClassName: "TwomWrapper"
@@ -80,7 +79,7 @@ class Twom extends Component {
                         aria-selected="true"
                         aria-selected="true"
                         style={{ background: this.state.btnClicked === true ? "none" : "#0c2340" }}
-                        onClick={this.handleOnclick}
+                        onClick={this.changingDotsHandler}
                     ></div>
                     <div
                         className="noclickDot"
@@ -88,7 +87,7 @@ class Twom extends Component {
                         aria-selected="true"
                         aria-selected="true"
                         style={{ background: this.state.btnClicked === true ? "#0c2340" : "none" }}
-                        onClick={this.handleOnclick}
+                        onClick={this.changingDotsHandler}
                     ></div>
                 </div>
             </div>
