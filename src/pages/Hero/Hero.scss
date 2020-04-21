@@ -1,11 +1,8 @@
-@font-face {
-    font-family: Univers45;
-    src: url('../../fonts/font\(Model\).woff2') format('woff2');
-}
+@import '../../styles/common.scss';
 
 .Hero {
 
-    font-family: Univers45, sans-serif;
+    font-family: $g-font-style;
     letter-spacing: -.02em;
     width: 100%;
     min-height: 845px;
@@ -14,7 +11,6 @@
     transform: none;
 
     img {   
-   
         position: static;
         top: 0;
         left: 0;
@@ -39,8 +35,16 @@
         display: flex;
         align-items: flex-end;
         font-size: 56px;
-        transform: translateY(0px);
-        transition: transform 2.5s ease-in-out;
+        animation: slide-TextCt 2.5s ease-in-out;
+
+        @keyframes slide-TextCt {
+            0% {
+                bottom: 20px;
+            }
+            100% {
+                bottom: 40px;
+            }
+        }
 
         .CarName {
             font-size: 56px;
@@ -65,7 +69,6 @@
             line-height: 2;
             color: #333;
             box-shadow: inset 0 0 0 1px #333;
-
         }
 
         .WhiteCt {
@@ -75,12 +78,21 @@
 }
 
 .Hero::after {
-
     content: "";
     position: absolute;
     border-left: 1px solid #ffffff;
     bottom: 0;
     height: 98px;
-    left: 410px;
-    transition: height 2.5s ease;
+    left: 430px;
+    animation: slide-up 2.5s ease; 
+}
+
+
+@keyframes slide-up {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 98px;
+    }
 }

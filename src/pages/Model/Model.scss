@@ -1,17 +1,10 @@
 @import '../../styles/common.scss';
 
-
-@font-face {
-    font-family: Univers45;
-    src: url('../../fonts/font\(Model\).woff2') format('woff2');
-}
-
-
 .Model {
 
     display: flex;
     flex-direction: column;
-    font-family: Univers45,sans-serif;
+    font-family: $g-font-style;
 
     .TitleBg {
 
