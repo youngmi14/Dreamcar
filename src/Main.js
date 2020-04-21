@@ -3,7 +3,7 @@ import { Model } from './pages/Model/Model';
 import { Hero } from './pages/Hero/Hero';
 import { Apply } from './pages/Apply/Apply';
 import { Footer } from './pages/Footer/Footer';
-import Twom from './pages/Twom/Twom';
+import TheWorldOfMaserati from './pages/TheWorldOfMaserati/TheWorldOfMaserati';
 
 export class Main extends Component {
 
@@ -12,7 +12,7 @@ export class Main extends Component {
             <div>
                 <Hero />
                 <Model />
-                <Twom />
+                <TheWorldOfMaserati />
                 <Apply />
                 <Footer />
             </div>

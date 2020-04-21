@@ -1,14 +1,12 @@
-@font-face {
-  font-family: Univers45;
-  src: url("../../fonts/4201a9f6-3b6a-4b16-8b4d-39f514509601.woff2")
-    format("woff2");
-}
+@import '../../styles/common.scss';
 
 .Twom {
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
+  font-family: $g-font-style;
+
   .TwomTitle {
     width: auto;
     margin-left: 60px;

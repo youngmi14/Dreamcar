@@ -3,9 +3,9 @@ import cari1 from "../../images/1.jpeg";
 import cari2 from "../../images/2.jpeg";
 import cari3 from "../../images/3.jpeg";
 import cari4 from "../../images/4.jpeg";
-import "./Twom.scss";
+import "./TheWorldOfMaserati.scss";
 
-class Twom extends Component {
+class TheWorldOfMaserati extends Component {
 
     state = {
         dotDisabled: true,
@@ -78,7 +78,7 @@ class Twom extends Component {
                         role="tab"
                         aria-selected="true"
                         aria-selected="true"
-                        style={{ background: this.state.btnClicked === true ? "none" : "#0c2340" }}
+                        style={{ background: this.state.btnClicked ? "none" : "#0c2340" }}
                         onClick={this.changingDotsHandler}
                     ></div>
                     <div
@@ -86,7 +86,7 @@ class Twom extends Component {
                         role="tab"
                         aria-selected="true"
                         aria-selected="true"
-                        style={{ background: this.state.btnClicked === true ? "#0c2340" : "none" }}
+                        style={{ background: this.state.btnClicked ? "#0c2340" : "none" }}
                         onClick={this.changingDotsHandler}
                     ></div>
                 </div>
@@ -95,4 +95,4 @@ class Twom extends Component {
     }
 }
 
-export default Twom;
+export default TheWorldOfMaserati;
