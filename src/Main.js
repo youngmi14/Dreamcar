@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Nav } from './components/Nav/Nav';
 import { Model } from './pages/Model/Model';
 import { Hero } from './pages/Hero/Hero';
 import { Apply } from './pages/Apply/Apply';
@@ -10,6 +11,7 @@ export class Main extends Component {
     render() {
         return (
             <div>
+                <Nav />
                 <Hero />
                 <Model />
                 <TheWorldOfMaserati />
