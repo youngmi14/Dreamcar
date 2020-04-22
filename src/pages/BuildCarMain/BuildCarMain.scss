@@ -15,24 +15,29 @@
         position: sticky;
         top: 0;
         .tabList {
-            display: flex;
             li {
                 white-space: nowrap;
                 font-size: 14px;
                 font-family: Univers LT W02_47 Light Cond,sans-serif;
+                display: flex;
+
                 a {
                     display: flex;
                     align-content: center;
                     padding: 12px 18px 16px;
-                    span {
-                        margin: 0px 6px;
-                        text-transform: uppercase;
-                        line-height: 48px;
-                        cursor: pointer;
-                        color: #727272;
-                        letter-spacing: .05em;
-                    }
+                    margin: 0px 6px;
+                    text-transform: uppercase;
+                    line-height: 48px;
+                    cursor: pointer;
+                    color: #727272;
+                    letter-spacing: .05em;
                 }
+
+                .clicked {
+                    border-bottom: 3px solid #0b2749;
+                    transition: all .2s ease;
+                }
+
             }
         }
     }
