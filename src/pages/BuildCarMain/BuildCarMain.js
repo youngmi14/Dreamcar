@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
+import Nav from '../../components/Nav/Nav';
 import "./BuildCarMain.scss";
 import CarSection from './CarSection';
 import CarSummary from './CarSummary';
-<<<<<<< HEAD
 import Package from './Package';
 import CarAcc from './CarAcc';
 
 class BuildCarMain extends Component {
-=======
-import Nav from '../../components/Nav/Nav';
 
-class TabItems extends Component {
+// class TabItems extends Component {
 
     constructor(props){
         super(props);
@@ -59,7 +57,6 @@ class BuildCarMain extends Component {
         });
     }
 
->>>>>>> a25d16280781898ea4d39c0b60ab31421773995f
     render() {
 
         const {tabNameList} = this.state;
