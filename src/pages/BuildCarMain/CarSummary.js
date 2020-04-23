@@ -23,6 +23,7 @@ class CarSummary extends Component {
                         <button>견적 신청</button>
                     </li>
                 </ul>
+<<<<<<< HEAD
                 
                 <ul className="iconGroup">
                     <li><a href="#"><img src = {require("../../images/tapNavSave.PNG")} alt="save" />저장하기</a></li>
@@ -30,6 +31,20 @@ class CarSummary extends Component {
                     <li><a href="#"><img src = {require("../../images/tapNavMycar.PNG")} alt="mycar" />내 차량 만들기 다시 시작 하기</a></li>
                     <li><a href="#"><img src = {require("../../images/tapNavChange.PNG")} alt="change" />모델 변경</a></li>
                 </ul>
+=======
+
+                <div className="iconsGroup">
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                </div>
+
+>>>>>>> a25d16280781898ea4d39c0b60ab31421773995f
             </div>
         )
     }
