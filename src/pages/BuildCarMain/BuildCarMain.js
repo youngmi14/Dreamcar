@@ -6,9 +6,8 @@ import Package from './Package';
 import CarAcc from './CarAcc';
 
 class BuildCarMain extends Component {
-import Nav from '../../components/Nav/Nav';
 
-class TabItems extends Component {
+// class TabItems extends Component {
 
     constructor(props){
         super(props);
