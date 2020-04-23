@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Apply.scss";
 
-export class Apply extends Component {
+class Apply extends Component {
     render() {
         return (
             <div className="Apply">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class SubSelection extends Component {
+class SubSelection extends Component {
     render() {
         return (
             <div className="scrollSection">
