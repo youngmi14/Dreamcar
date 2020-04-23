@@ -1,238 +1,243 @@
 @import "../../styles/common.scss";
 
-.Modletitle { //모델 내 타이틀
-    margin-bottom: 6px;
-    font-size: 24px;
-    color: #5e5e5e;
+.Modletitle {
+  //모델 내 타이틀
+  margin-bottom: 6px;
+  font-size: 24px;
+  color: #5e5e5e;
 }
 
-.NavTitle { //모델 제외한 나머지 탭 내에 타이틀
-    margin-bottom: 6px;
-    font-size: 24px;
-    color: #0c2340;
+.NavTitle {
+  //모델 제외한 나머지 탭 내에 타이틀
+  margin-bottom: 6px;
+  font-size: 24px;
+  color: #0c2340;
 }
 
-.Navfont { //Nav 모든 탭 내에 텍스트
-    font-size: 1pc;
-    color: #333;
-    padding: 3px 3px 6px 0;
-    margin-top: 10px;
+.Navfont {
+  //Nav 모든 탭 내에 텍스트
+  font-size: 1pc;
+  color: #333;
+  padding: 3px 3px 6px 0;
+  margin-top: 10px;
 }
 
-.Navfont { //Nav 탭 내에 텍스트 hover시 밑줄표시
-    a:hover {
-        border-bottom: 2px #0c2340 solid;
-        box-sizing: border-box;
-        padding: 3px 0;
-    }
+.Navfont {
+  //Nav 탭 내에 텍스트 hover시 밑줄표시
+  a:hover {
+    border-bottom: 2px #0c2340 solid;
+    box-sizing: border-box;
+    padding: 3px 0;
+  }
 }
 
-.arrowClose::after { //Nav탭 기본 아이콘모양
-    display: inline-block;
-    content: "";
-    background-image: url("../../images/NavArrowDown.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width:10px;
-    height: 10px;
-    margin-left: 3px;
-    vertical-align: bottom;
+.arrowClose::after {
+  //Nav탭 기본 아이콘모양
+  display: inline-block;
+  content: "";
+  background-image: url("../../images/NavArrowDown.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  margin-left: 3px;
+  vertical-align: bottom;
 }
 
-.arrow90Deg::after { //Nav 서비스애프터 & 브랜드 탭 화살표
-    display: inline-block;
-    content: "";
-    background-image: url("../../images/NavArrowDown.jpg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    width:10px;
-    height: 10px;
-    margin-left: 6px;
-    transform: rotate(-90deg);
+.arrow90Deg::after {
+  //Nav 서비스애프터 & 브랜드 탭 화살표
+  display: inline-block;
+  content: "";
+  background-image: url("../../images/NavArrowDown.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  margin-left: 6px;
+  transform: rotate(-90deg);
 }
 // Desgin Area
 
 .NavCont {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  background-color: #ffffff;
+  font-family: $g-font-style;
+  width: 100%;
+
+  .logo {
+    padding: 0 60px;
+    flex-grow: 1;
+    img {
+      width: 105px;
+    }
+  }
+
+  .NavLeft {
     display: flex;
-    align-items: center;
-    position: fixed;
-    z-index: 999;
-    background-color: #ffffff;
-    font-family: $g-font-style;
-    width: 100%;
+    flex-grow: 60;
+    max-width: 855px;
+    height: 75px;
 
-    .logo {
-        padding: 0 60px;
-        flex-grow: 1;
-        img {
-            width: 105px;
-        }
+    li {
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.02em;
+
+      a {
+        font-family: $g-font-style;
+        font-size: 14px;
+      }
     }
 
-    .NavLeft {
-        display: flex;
-        flex-grow: 60;
-        max-width: 855px;
-        height: 75px;
-
-        li {
-            padding: 0 15px;
-            display: flex;
-            align-items: center;
-            letter-spacing: .02em;     
-            
-            a {
-                font-family: $g-font-style;
-                font-size: 14px;
-            }
-        }
-
-        li:hover {
-            border-bottom: 2px #0c2340 solid;
-            box-sizing: border-box;
-        }
-
-
-        .model {
-            .subModelWrapper {
-                display: none;
-                position: absolute;
-                left: 0;
-                width: 100%;
-                height: auto;
-                min-height: 250px;
-                background: #fff;
-                top: 75px;
-                padding-bottom: 15px;
-            }
-        }
-
-        .model:hover {
-            .arrowClose::after {
-                transition: transform .2s ease;
-                transform: rotate(180deg);
-                vertical-align: top;
-            }
-
-            .subModelWrapper {
-                display: inline-block;
-                padding: 10px 0;
-                
-                .subModelCont {
-                    margin: 0 30px;
-
-                    display: flex;
-                    justify-content: space-around;
-
-                    .model1 {
-                        margin: 12px 6px;
-                        text-align: center;
-                        width:100%;
-
-                        .car {
-                            img{
-                                width: 180px;
-                                height: 90px;
-                            }
-                        }
-                        
-                        .moreBox {
-                            display: inline-block;
-                            font-size: 14px;
-                            .moreView {
-                                background-color: #fff;
-                                border: 1px solid #666;
-                                border-radius: 4px;
-                                color: #333;
-                                margin-top: 10px;
-                                padding: 5px 5px;
-                                // width: 250px;
-                            }
-
-                            .myCarMake {
-                                background-color: #0c2340;
-                                border: 1px solid #0c2340;
-                                border-radius: 4px;
-                                color: #fff;
-                                margin-top: 10px;
-                                padding: 5px 5px;
-                                width: 250px;
-                            }
-                        }
-                    }
-
-                    .model1::before {
-                        content: "";
-                        display: block;
-                        position: absolute;
-                        top: 60px;
-                        height: calc(100% - 90px);
-                        border-right: 1px solid #d8d8d8;
-                    }
-
-                    .model1:first-child::before {
-                        border-right: none;
-                    }
-                }
-
-                .shoppingCont {
-                    margin : 12px 6px;
-                }
-
-                .introduceCont {
-                    display: flex;
-                    justify-content: space-around;
-
-                    .content {
-                        padding-top: 15px;
-                    }
-                }
-            }
-        }
+    li:hover {
+      border-bottom: 2px #0c2340 solid;
+      box-sizing: border-box;
     }
 
-    .NavRight {
-        display: flex;
-        justify-content: flex-end;
-        flex-grow: 1;
-        height: 75px;
-        
-        li {
-            width: 90px;
-            display: flex;
-            align-items: center;
-            font-size: .85em;
-            font-family: $g-font-style;
-
-            a {
-                margin: 0 auto;
-                line-height: 1.14;
-                font-size: .85em;
-                font-family: $g-font-style;
-            }
-        }
-
-        li:first-child {
-            background-color: #f2f1f0;
-        }
-
-        li:nth-child(2) {
-            background-color: #0c2340;
-
-            a {
-                color: #ffffff;
-                line-height: 1.14;
-            }
-        }
-
-        .moreBtn {
-            position: relative;
-
-            a {
-                position: absolute;
-                top: 25px;
-                left: 20px;
-            }
-        }
+    .model {
+      .subModelWrapper {
+        display: none;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        background: #fff;
+        top: 75px;
+        padding-bottom: 15px;
+      }
     }
+
+    .model:hover {
+      .arrowClose::after {
+        transition: transform 0.2s ease;
+        transform: rotate(180deg);
+        vertical-align: top;
+      }
+
+      .subModelWrapper {
+        display: inline-block;
+        padding: 10px 0;
+
+        .subModelCont {
+          margin: 0 30px;
+
+          display: flex;
+          justify-content: space-around;
+
+          .model1 {
+            margin: 12px 6px;
+            text-align: center;
+            width: 100%;
+
+            .car {
+              img {
+                width: 180px;
+                height: 90px;
+              }
+            }
+
+            .moreBox {
+              display: inline-block;
+              font-size: 14px;
+              .moreView {
+                background-color: #fff;
+                border: 1px solid #666;
+                border-radius: 4px;
+                color: #333;
+                margin-top: 10px;
+                padding: 5px 5px;
+                // width: 250px;
+              }
+
+              .myCarMake {
+                background-color: #0c2340;
+                border: 1px solid #0c2340;
+                border-radius: 4px;
+                color: #fff;
+                margin-top: 10px;
+                padding: 5px 5px;
+                width: 250px;
+              }
+            }
+          }
+
+          .model1::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 60px;
+            height: calc(100% - 90px);
+            border-right: 1px solid #d8d8d8;
+          }
+
+          .model1:first-child::before {
+            border-right: none;
+          }
+        }
+
+        .shoppingCont {
+          margin: 12px 6px;
+        }
+
+        .introduceCont {
+          display: flex;
+          justify-content: space-around;
+
+          .content {
+            padding-top: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  .NavRight {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    height: 75px;
+
+    li {
+      width: 90px;
+      display: flex;
+      align-items: center;
+      font-size: 0.85em;
+      font-family: $g-font-style;
+
+      a {
+        margin: 0 auto;
+        line-height: 1.14;
+        font-size: 0.85em;
+        font-family: $g-font-style;
+      }
+    }
+
+    li:first-child {
+      background-color: #f2f1f0;
+    }
+
+    li:nth-child(2) {
+      background-color: #0c2340;
+
+      a {
+        color: #ffffff;
+        line-height: 1.14;
+      }
+    }
+
+    .moreBtn {
+      position: relative;
+
+      a {
+        position: absolute;
+        top: 25px;
+        left: 20px;
+      }
+    }
+  }
 }

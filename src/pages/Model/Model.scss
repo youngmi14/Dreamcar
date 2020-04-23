@@ -1,137 +1,126 @@
-@import '../../styles/common.scss';
+@import "../../styles/common.scss";
 
 .Model {
+  display: flex;
+  flex-direction: column;
+  font-family: $g-font-style;
 
+  .TitleBg {
+    background: $primary-grey-bg;
+    width: 100%;
+    height: 136px;
+    margin: 0;
+    font-size: 42px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: $primary-dk-font;
+    padding-left: 60px;
+    white-space: nowrap;
     display: flex;
-    flex-direction: column;
-    font-family: $g-font-style;
 
-    .TitleBg {
+    div {
+      display: flex;
+      align-items: center;
+    }
 
-        background: $primary-grey-bg;
-        width: 100%;
-        height: 136px;
-        margin: 0;
-        font-size: 42px;
-        letter-spacing: -.02em;
-        line-height: 1.1;
+    span {
+      font-size: 18px;
+      padding: 0px 60px;
+    }
+  }
+
+  .ModelWrapper {
+    padding: 0px 60px;
+    display: flex;
+
+    .ModelCont {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 45px 15px;
+      position: relative;
+
+      h2 {
+        margin-bottom: 6px;
+        font-size: 24px;
+        line-height: 1.2em;
+        height: 2.5em;
+      }
+
+      .Medium {
+        margin-bottom: 6px;
+        font-size: 13px;
+        text-transform: uppercase;
+        line-height: 1.2em;
+        height: 2.4em;
+      }
+
+      .Bottom {
+        overflow: hidden;
+        padding: 0 15px;
+        font-size: 9pt;
+        line-height: 1.3em;
+        height: 3.7em;
+      }
+
+      .ImgCt {
+        background-color: transparent;
+        display: block;
+        max-width: calc((100vw - 90pt) / 5);
+
+        img {
+          width: 100%;
+          margin: 30px 0px;
+        }
+      }
+
+      .CtWhite {
+        background: #fff;
+        text-align: center;
+        margin-top: 10px;
+        text-decoration: none;
+        padding: 6px 30px;
+        border-radius: 4px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 2;
         color: $primary-dk-font;
-        padding-left: 60px;
-        white-space: nowrap;
-        display: flex;
+        box-shadow: inset 0 0 0 1px $primary-dk-font;
+      }
 
-        div{
-            display: flex;
-            align-items: center;
-        }
-
-        span {
-            font-size: 18px;
-            padding: 0px 60px;
-        }
+      .CtBlue {
+        background: #0c2340;
+        text-align: center;
+        margin-top: 10px;
+        margin-top: 10px;
+        text-decoration: none;
+        padding: 6px 30px;
+        border-radius: 4px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 2;
+        color: #fff;
+      }
     }
 
-    .ModelWrapper {
-
-        padding: 0px 60px;
-        display: flex;
-
-
-        .ModelCont{
-
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 45px 15px;
-            position: relative;
-
-
-            h2 {
-                margin-bottom: 6px;
-                font-size: 24px;
-                line-height: 1.2em;
-                height: 2.5em;
-            }
-
-            .Medium {
-                margin-bottom: 6px;
-                font-size: 13px;
-                text-transform: uppercase;
-                line-height: 1.2em;
-                height: 2.4em;
-            }
-
-            .Bottom {
-                overflow: hidden;
-                padding: 0 15px;
-                font-size: 9pt;
-                line-height: 1.3em;
-                height: 3.7em;
-            }
-
-            .ImgCt {
-
-                background-color: transparent;
-                display: block;
-                max-width: calc((100vw - 90pt)/5);
-
-                img{
-                    width: 100%;
-                    margin: 30px 0px;
-                }
-            }
-
-            .CtWhite{
-               background: #fff;
-               text-align: center;
-               margin-top: 10px;
-               text-decoration: none;
-               padding: 6px 30px;
-               border-radius: 4px;
-               font-size: 14px;
-               letter-spacing: .04em;
-               text-transform: uppercase;
-               line-height: 2;
-               color: $primary-dk-font;
-               box-shadow: inset 0 0 0 1px $primary-dk-font
-            }
-
-            .CtBlue{
-
-                background: #0c2340;
-                text-align: center;
-                margin-top: 10px;
-                margin-top: 10px;
-                text-decoration: none;
-                padding: 6px 30px;
-                border-radius: 4px;
-                font-size: 14px;
-                letter-spacing: .04em;
-                text-transform: uppercase;
-                line-height: 2;
-                color: #fff;
-            }
-
-        }
-
-        .ModelCont::after {
-            
-            position: absolute;
-            content: "";
-            width: 100%;
-            height: 80%;
-            right: .5px;
-            top: 50%;
-            display: block;
-            width: 1.5px;
-            transform: translateY(-50%);
-            background: linear-gradient(transparent,#ebebeb,transparent);
-        }
-
-        .ModelCont:last-child::after {
-            display: none;
-        }
-
+    .ModelCont::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 80%;
+      right: 0.5px;
+      top: 50%;
+      display: block;
+      width: 1.5px;
+      transform: translateY(-50%);
+      background: linear-gradient(transparent, #ebebeb, transparent);
     }
+
+    .ModelCont:last-child::after {
+      display: none;
+    }
+  }
 }
