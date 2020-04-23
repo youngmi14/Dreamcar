@@ -6,16 +6,13 @@ import "./BuildCarMain.scss";
 
 class BuildCarMain extends Component {
   state = {
-    isNavClickedClassName: "",
     hrefLink: "#carDisplay2",
-    tabNameList: ["외관", "실내", "패키지", "옵션", "액세서리", "요약"],
-    tabName: "",
+    tabId: "",
   };
 
-  navMoveHandler = (item) => {
+  navMoveHandler = (id) => {
     this.setState({
-      tabName: item,
-      isNavClickedClassName: "clicked",
+      tabId: id,
     });
   };
 
@@ -24,12 +21,12 @@ class BuildCarMain extends Component {
 
     this.setState({
       isNavClickedClassName: "",
-      tabName: this.state.tabName,
+      tabId: this.state.tabId,
     });
   };
 
   render() {
-    const { tabNameList } = this.state;
+    const tabNameList = ["외관", "실내", "패키지", "옵션", "액세서리", "요약"];
 
     return (
       <div className="BuildCarMain">
@@ -39,16 +36,12 @@ class BuildCarMain extends Component {
           <nav className="topNav">
             <ul className="tabList">
               <li name="tabId" onMouseOut={this.mouseLeaveHandler}>
-                {tabNameList.map((item) => {
+                {tabNameList.map((item, idx) => {
                   return (
                     <a
                       href={this.state.hrefLink}
-                      className={
-                        this.state.tabName === item
-                          ? this.state.isNavClickedClassName
-                          : ""
-                      }
-                      onClick={() => this.navMoveHandler(item)}
+                      className={this.state.tabId === idx ? "clicked" : ""}
+                      onClick={() => this.navMoveHandler(idx)}
                       onMouseOut={this.mouseLeaveHandler}
                     >
                       {item}
