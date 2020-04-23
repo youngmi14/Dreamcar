@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import {SubSelection} from './SubSelection';
-import {Package} from './Package';
-import {CarAcc} from './CarAcc';
+import SubSelection from './SubSelection';
+import Package from './Package';
+import CarAcc from './CarAcc';
 
-export class CarSection extends Component {
+class CarSection extends Component {
     render() {
         return (
 

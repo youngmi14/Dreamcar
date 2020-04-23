@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class CarSummary extends Component {
+class CarSummary extends Component {
     render() {
         return (
             <div className="carSummaryWrapper">

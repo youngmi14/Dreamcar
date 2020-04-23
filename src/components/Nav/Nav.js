@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Nav.scss";
 
-export class Nav extends Component {
+class Nav extends Component {
     render() {
         return (
             <div className="NavCont">

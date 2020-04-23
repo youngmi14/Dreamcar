@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import "./BuildCarMain.scss";
-import {CarSection} from './CarSection';
-import {CarSummary} from './CarSummary';
-import { Package } from './Package';
-import { CarAcc } from './CarAcc';
+import CarSection from './CarSection';
+import CarSummary from './CarSummary';
+import Package from './Package';
+import CarAcc from './CarAcc';
 
-export class BuildCarMain extends Component {
+class BuildCarMain extends Component {
     render() {
         return (
             <div className="BuildCarMain">
