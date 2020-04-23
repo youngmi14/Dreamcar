@@ -57,7 +57,7 @@ export class Nav extends Component {
                         </div>        
                     </li>
                     <li className="promotion"><a href="#">프로모션</a></li>
-                    <li className="service model"><a href="#"><span className="arrowClose">서비스&애프터세일즈</span></a>
+                    <li className="service model"><a href="#"><span className="arrowClose">서비스 & 애프터세일즈</span></a>
                         <div class="subModelWrapper">
                             <div class ="introduceCont">
                                 <div className="content">
