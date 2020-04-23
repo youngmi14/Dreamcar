@@ -5,20 +5,17 @@ import Package from "./Package";
 class CarSection extends Component {
   state = {
     btnColor: "#fff",
-    btnClicked: "",
-    isClickedName: "",
-    btnName: ["외관", "휠", "브레이크 클리퍼"],
+    activeBtnId: 0,
   };
 
-  btnTabcolorChange = (itemName) => {
+  btnTabcolorChange = (id) => {
     this.setState({
-      btnClicked: "btnClicked",
-      isClickedName: itemName,
+      activeBtnId: id,
     });
   };
 
   render() {
-    const { btnClicked, btnName } = this.state;
+    const btnName = ["외관", "휠", "브레이크 클리퍼"];
 
     return (
       <div className="CarSection">
@@ -30,17 +27,15 @@ class CarSection extends Component {
 
           <div className="carOutlookTapCont">
             <ul className="toolBar">
-              {btnName.map((itemName) => {
+              {btnName.map((itemName, idx) => {
                 return (
                   <li
                     role="button"
                     className={
-                      this.state.isClickedName === itemName
-                        ? this.state.btnClicked
-                        : ""
+                      this.state.activeBtnId === idx ? "btnClicked" : ""
                     }
                     name={itemName}
-                    onClick={() => this.btnTabcolorChange(itemName)}
+                    onClick={() => this.btnTabcolorChange(idx)}
                   >
                     {itemName}
                   </li>
