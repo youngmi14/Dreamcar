@@ -52,10 +52,10 @@ export class Footer extends Component {
                         <a href="#"><img src={require("../../images/instargram.png")} alt="instargram" /></a>
                     </div>
                     <div className="form">
-                        {/* <span><img src={ require("/Wecode/React/mase-team/src/images/footerMore.png")} alt="more" /></span> */}
+                        <span></span>
                     </div>
                     <div className="logo">
-                        {/* <img src={ require("/Wecode/React/mase-team/src/images/footerLogo.PNG")} alt="logo" /> */}
+                        <img src={ require("../../images/footerLogo.png")} alt="logo" />
                     </div>
                     <div className="credits">
                         <span><a href="#">Cookie Policy</a></span>

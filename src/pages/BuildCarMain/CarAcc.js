@@ -9,11 +9,12 @@ export class CarAcc extends Component {
     }
 
     Plus = (e) => {
+        console.log(e.target)
         if(this.state.number > 9) {
             return 0;
         }
         this.setState({
-        number: this.state.number + 1
+        [e.target.name]: this.state.number + 1
         });
     }
 
@@ -52,7 +53,7 @@ export class CarAcc extends Component {
                             <div className="countBtn">
                                 <button className="minusBtn" type="button" onClick={this.Minus}>-</button>
                                 <span className="count">{this.state.number}</span>
-                                <button className="plusBtn" type="button" onClick={this.Plus} >+</button>
+                                <button className="plusBtn" name="plus1" type="button" onClick={this.Plus} >+</button>
                             </div>
                         </li>
                         
