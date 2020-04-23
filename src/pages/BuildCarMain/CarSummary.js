@@ -30,6 +30,18 @@ class CarSummary extends Component {
                     <li><a href="#"><img src = {require("../../images/tapNavMycar.PNG")} alt="mycar" />내 차량 만들기 다시 시작 하기</a></li>
                     <li><a href="#"><img src = {require("../../images/tapNavChange.PNG")} alt="change" />모델 변경</a></li>
                 </ul>
+
+                <div className="iconsGroup">
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                </div>
+
             </div>
         )
     }

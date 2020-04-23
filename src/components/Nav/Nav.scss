@@ -30,7 +30,7 @@
 .arrowClose::after { //Nav탭 기본 아이콘모양
     display: inline-block;
     content: "";
-    background-image: url("Z:/Wecode/React/DreamCar-frontend/src/images/NavArrowDown.jpg");
+    background-image: url("../../images/NavArrowDown.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     width:10px;
@@ -42,7 +42,7 @@
 .arrow90Deg::after { //Nav 서비스애프터 & 브랜드 탭 화살표
     display: inline-block;
     content: "";
-    background-image: url("Z:/Wecode/React/DreamCar-frontend/src/images/NavArrowDown.jpg");
+    background-image: url("../../images/NavArrowDown.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     width:10px;
@@ -50,9 +50,6 @@
     margin-left: 6px;
     transform: rotate(-90deg);
 }
-
-
-
 // Desgin Area
 
 .NavCont {
