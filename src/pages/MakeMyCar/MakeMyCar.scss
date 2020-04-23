@@ -70,12 +70,12 @@
       }
 
       &:hover {
-        padding: 20px 0 30px;
-        margin-right: 6px;
+        background: linear-gradient(#fff, #fff);
         cursor: pointer;
         background-color: #fff;
         width: 20%;
-        transition: opacity 0.5s;
+        opacity: 1;
+        transition: opacity 0.7s;
         .name {
           font-size: 20px;
           letter-spacing: -0.02em;
