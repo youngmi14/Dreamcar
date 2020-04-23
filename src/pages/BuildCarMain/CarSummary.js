@@ -23,6 +23,13 @@ export class CarSummary extends Component {
                         <button>견적 신청</button>
                     </li>
                 </ul>
+                
+                <ul className="iconGroup">
+                    <li><a href="#"><img src = {require("../../images/tapNavSave.PNG")} alt="save" />저장하기</a></li>
+                    <li><a href="#"><img src = {require("../../images/tapNavImport.PNG")} alt="import" />불러오기</a></li>
+                    <li><a href="#"><img src = {require("../../images/tapNavMycar.PNG")} alt="mycar" />내 차량 만들기 다시 시작 하기</a></li>
+                    <li><a href="#"><img src = {require("../../images/tapNavChange.PNG")} alt="change" />모델 변경</a></li>
+                </ul>
             </div>
         )
     }

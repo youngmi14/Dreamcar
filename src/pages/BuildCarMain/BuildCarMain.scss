@@ -41,6 +41,7 @@
         flex-direction: flex-start;
         .CarSection {
             flex: 1 1 75%;
+            width:75%;
             .carDisplayWrapper{
                 .carImgCont {
                     width: inherit;
@@ -209,7 +210,6 @@
                 }
 
                 .content {
-
                     .spanTitle {
                         margin-bottom: 12px;
                     }
@@ -288,6 +288,29 @@
                             color: #404040;
                         }      
                     }                  
+                }
+            }
+            .iconGroup {
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                margin: 24px 12px;
+
+                li {
+                    line-height: 1.5em;
+                    font-size: 14px;
+                    display: inline-block;
+                    text-align: left;
+                    box-sizing: border-box;
+                    width: 40%;
+                    margin-right: 10%;
+                    margin-bottom: 36px;
+
+                    img {
+                        vertical-align: middle;
+                        margin-right: 3px;
+                        float:left;
+                    }
                 }
             }
         }

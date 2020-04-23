@@ -3,6 +3,7 @@ import "./BuildCarMain.scss";
 import {CarSection} from './CarSection';
 import {CarSummary} from './CarSummary';
 import { Package } from './Package';
+import { CarAcc } from './CarAcc';
 
 export class BuildCarMain extends Component {
     render() {

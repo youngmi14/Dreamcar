@@ -58,15 +58,15 @@
 .NavCont {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     position: fixed;
     z-index: 999;
     background-color: #ffffff;
     font-family: $g-font-style;
+    width: 100%;
 
     .logo {
         padding: 0 60px;
-
+        flex-grow: 1;
         img {
             width: 105px;
         }
@@ -74,7 +74,8 @@
 
     .NavLeft {
         display: flex;
-        width: 855px;
+        flex-grow: 60;
+        max-width: 855px;
         height: 75px;
 
         li {
@@ -195,6 +196,8 @@
 
     .NavRight {
         display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
         height: 75px;
         
         li {
