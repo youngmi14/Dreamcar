@@ -23,6 +23,18 @@ export class CarSummary extends Component {
                         <button>견적 신청</button>
                     </li>
                 </ul>
+
+                <div className="iconsGroup">
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                    <button><span><span>저장하기</span></span></button>
+                </div>
+
             </div>
         )
     }
