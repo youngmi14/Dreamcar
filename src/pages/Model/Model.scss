@@ -14,13 +14,14 @@
     letter-spacing: -0.02em;
     line-height: 1.1;
     color: $primary-dk-font;
-    padding-left: 60px;
+
     white-space: nowrap;
     display: flex;
 
     div {
       display: flex;
       align-items: center;
+      margin-left: 60pxc;
     }
 
     span {
