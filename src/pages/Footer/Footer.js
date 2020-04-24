@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "./Footer.scss";
 
+<<<<<<< HEAD
 export class Footer extends Component {
+=======
+class Footer extends Component {
+>>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
   render() {
     return (
       <div className="Footer">
@@ -82,10 +86,17 @@ export class Footer extends Component {
             </a>
           </div>
           <div className="form">
+<<<<<<< HEAD
             {/* <span><img src={ require("/Wecode/React/mase-team/src/images/footerMore.png")} alt="more" /></span> */}
           </div>
           <div className="logo">
             {/* <img src={ require("/Wecode/React/mase-team/src/images/footerLogo.PNG")} alt="logo" /> */}
+=======
+            <span></span>
+          </div>
+          <div className="logo">
+            <img src={require("../../images/footerLogo.png")} alt="logo" />
+>>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
           </div>
           <div className="credits">
             <span>

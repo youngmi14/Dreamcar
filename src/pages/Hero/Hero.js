@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import MainHero from "../../images/cq5dam.web.1400.10000.jpeg";
 import "./Hero.scss";
 
+<<<<<<< HEAD
 export class Hero extends Component {
+=======
+class Hero extends Component {
+>>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
   render() {
     return (
       <div className="Hero">
