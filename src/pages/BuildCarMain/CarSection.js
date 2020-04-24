@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SubSelection from "./SubSelection";
 import Package from "./Package";
+import CarAcc from "./CarAcc";
 
 class CarSection extends Component {
   state = {
@@ -16,7 +17,6 @@ class CarSection extends Component {
 
   render() {
     const btnName = ["외관", "휠", "브레이크 클리퍼"];
-
     return (
       <div className="CarSection">
         <a name="carDisplay1"></a>
@@ -50,14 +50,14 @@ class CarSection extends Component {
             </div>
           </div>
         </div>
-        <a name="carDisplay2"></a>
-
         <Package />
         <p>
           *참고: 국가에 따라 패키지 구성의 필수 패키지 또는 옵션 등이 상이할 수
           있습니다. 각 패키지의 가격은 다른 패키지나 옵션의 추가 및 삭제에 의해
           변동될 수 있습니다.
         </p>
+
+        <CarAcc />
       </div>
     );
   }
