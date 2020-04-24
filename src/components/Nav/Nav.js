@@ -92,7 +92,7 @@ class Nav extends Component {
           </li>
           <li className="service model">
             <a href="#">
-              <span className="arrowClose">서비스&애프터세일즈</span>
+              <span className="arrowClose">서비스 & 애프터세일즈</span>
             </a>
             <div class="subModelWrapper">
               <div class="introduceCont">
@@ -222,6 +222,7 @@ class Nav extends Component {
               </div>
             </div>
           </li>
+
           <li>
             <a href="#">인증중고차</a>
           </li>

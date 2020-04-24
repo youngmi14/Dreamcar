@@ -6,7 +6,7 @@ import Apply from "./pages/Apply/Apply";
 import Footer from "./pages/Footer/Footer";
 import TheWorldOfMaserati from "./pages/TheWorldOfMaserati/TheWorldOfMaserati";
 
-export class Main extends Component {
+class Main extends Component {
   render() {
     return (
       <div>
