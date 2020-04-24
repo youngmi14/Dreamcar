@@ -1,51 +1,56 @@
-@import '../../styles/common.scss';
+@import "../../styles/common.scss";
 
 .Apply {
-    padding: 90px 30px;
-    background-color: #f2f1f0;
+  padding: 90px 30px;
+  background-color: #f2f1f0;
 
-    .ApplyWrapper {
-        text-align: center;
-        .ApplyIcon {
-            background-size: contain!important;
-            height: 45px;
-            width: 45px;
-            margin-bottom: 10px;
-        }
-        h4 {
-            font-size: 42px;
-            letter-spacing: -.02em;
-            line-height: 1.1;
-            color: #333;
-            margin: 0 0 15px;
-            line-height: 1;
-            font-weight: normal !important;
-        }
-        P {
-            margin: 0 0 15px 0;
-            font-size: 18px;
-            letter-spacing: -.02em;
-            line-height: 1.5;
-            color: #333;
-        }
+  .ApplyWrapper {
+    text-align: center;
+    .ApplyIcon {
+      background-size: contain !important;
+      height: 45px;
+      width: 45px;
+      margin-bottom: 10px;
 
-        .ApplyBtn {
-            margin: 30px 0 0 0;
-            display:inline-block;
-            height: 40px;
-            background-color: #0c2340;
-            border: 1px solid #0c2340;
-            a {
-                font-size: 14px;
-                letter-spacing: .04em;
-                text-transform: uppercase;
-                line-height: 2.5;
-                text-decoration: none;
-                margin: 0;
-                padding: 0 30px;
-                color:#ffff;
-                vertical-align: bottom;
-            }
-        }   
+      img {
+        width: 44px;
+        height: 44px;
+      }
     }
+    h4 {
+      font-size: 42px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #333;
+      margin: 0 0 15px;
+      line-height: 1;
+      font-weight: normal !important;
+    }
+    P {
+      margin: 0 0 15px 0;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .ApplyBtn {
+      margin: 30px 0 0 0;
+      display: inline-block;
+      height: 40px;
+      background-color: #0c2340;
+      border: 1px solid #0c2340;
+      a {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        line-height: 2.5;
+        text-decoration: none;
+        margin: 0;
+        padding: 0 30px;
+        color: #ffff;
+        vertical-align: bottom;
+      }
+    }
+  }
 }

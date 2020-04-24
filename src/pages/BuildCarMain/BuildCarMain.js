@@ -1,88 +1,102 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import Nav from "../../components/Nav/Nav";
 import "./BuildCarMain.scss";
-import CarSection from './CarSection';
-import CarSummary from './CarSummary';
-import Nav from '../../components/Nav/Nav';
+import CarSection from "./CarSection";
+import CarSummary from "./CarSummary";
+import Package from "./Package";
+import CarAcc from "./CarAcc";
+
+// class BuildCarMain extends Component {
 
 class TabItems extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor(props){
-        super(props);
-    }
+  render() {
+    const { hrefLink, className, onClick, onMouseOut, tabName } = this.props;
 
-    render() {
-
-        const { hrefLink,className,onClick,onMouseOut,tabName } = this.props;
-
-        return(
-            <a href={hrefLink} className={this.props.tabName === this.props.isClickedName ? className : ""} onClick={onClick} onMouseOut={onMouseOut} name={tabName}>{tabName}</a>
-        );
-    }
+    return (
+      <a
+        href={hrefLink}
+        className={
+          this.props.tabName === this.props.isClickedName ? className : ""
+        }
+        onClick={onClick}
+        onMouseOut={onMouseOut}
+        name={tabName}
+      >
+        {tabName}
+      </a>
+    );
+  }
 }
 
 class BuildCarMain extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    constructor(props){
-        super(props);
-    }
+  state = {
+    isNavClicked: "",
+    hrefLink: "#carDisplay1",
+    tabNameList: ["외관", "실내", "패키지", "옵션", "액세서리", "요약"],
+    tabName: "",
+  };
 
-    state = {
-        isNavClicked: "",
-        hrefLink: "#carDisplay1",
-        tabNameList: ["외관", "실내", "패키지", "옵션", "액세서리", "요약"],
-        tabName: ""
-    }
+  navMoveHandler = (e) => {
+    console.log(e.target.name);
 
-    navMoveHandler = (e) => {
+    this.setState({
+      tabName: e.target.name,
+      isNavClicked: "clicked",
+    });
+  };
 
-            console.log(e.target.name);
+  mouseLeaveHandler = (e) => {
+    e.preventDefault();
 
-            this.setState({
-                tabName: e.target.name,
-                isNavClicked: "clicked"
-            });
-    }
+    this.setState({
+      isNavClicked: "",
+      tabName: this.state.tabName,
+    });
+  };
 
-    mouseLeaveHandler = (e) => {
+  render() {
+    const { tabNameList } = this.state;
 
-        e.preventDefault();
+    return (
+      <div className="BuildCarMain">
+        <Nav />
 
-        this.setState({
-            isNavClicked: "",
-            tabName: this.state.tabName
-        });
-    }
+        <section className="BuildCarContent">
+          <nav className="topNav">
+            <ul className="tabList">
+              <li name="tabId" onMouseOut={this.mouseLeaveHandler}>
+                {tabNameList.map((item) => {
+                  return (
+                    <TabItems
+                      hrefLink={this.state.hrefLink}
+                      isClickedName={this.state.tabName}
+                      name={item}
+                      className={this.state.isNavClicked}
+                      tabName={item}
+                      onClick={this.navMoveHandler}
+                    />
+                  );
+                })}
+              </li>
+            </ul>
+          </nav>
 
-    render() {
-
-        const {tabNameList} = this.state;
-
-        return (
-            <div className="BuildCarMain">
-                <Nav />
-
-                <section className="BuildCarContent">
-                <nav className="topNav">
-                    <ul className="tabList">
-                        <li name="tabId" onMouseOut={this.mouseLeaveHandler}>
-                            {tabNameList.map(item => {
-                                return(
-                                    <TabItems hrefLink={this.state.hrefLink} isClickedName={this.state.tabName} name={item} className={this.state.isNavClicked} tabName={item} onClick={this.navMoveHandler}/>
-                                )
-                            })}
-                        </li>
-                    </ul>
-                </nav>
-
-                <section className="mainView">
-                     <CarSection />
-                     <CarSummary />
-                </section>
-                </section>
-
-            </div>
-        )
-    }
+          <section className="mainView">
+            <CarSection />
+            <CarSummary />
+          </section>
+        </section>
+      </div>
+    );
+  }
 }
 
 export default BuildCarMain;
