@@ -6,11 +6,7 @@ import Apply from "./pages/Apply/Apply";
 import Footer from "./pages/Footer/Footer";
 import TheWorldOfMaserati from "./pages/TheWorldOfMaserati/TheWorldOfMaserati";
 
-<<<<<<< HEAD
-export class Main extends Component {
-=======
 class Main extends Component {
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
   render() {
     return (
       <div>

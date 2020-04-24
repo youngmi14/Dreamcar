@@ -6,13 +6,9 @@ class Apply extends Component {
     return (
       <div className="Apply">
         <div className="ApplyWrapper">
-<<<<<<< HEAD
-          <span className="ApplyIcon">Icon</span>
-=======
           <span className="ApplyIcon">
             <img src={require("../../images/applyLogo.png")} alt="applyLogo" />
           </span>
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
           <h4>시승신청</h4>
           <p>
             마세라티만의 차별화된 럭셔리 감성을 지금 경험해 보시기 바랍니다.

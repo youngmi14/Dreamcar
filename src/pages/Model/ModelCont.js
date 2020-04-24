@@ -3,11 +3,7 @@ import Ghibli from "../../images/Ghibli.jpeg";
 import Levante from "../../images/Levante.jpeg";
 import Quattroporte from "../../images/Quattroporte.jpeg";
 
-<<<<<<< HEAD
-export class ModelCont extends Component {
-=======
 class ModelCont extends Component {
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
   render() {
     return (
       <>

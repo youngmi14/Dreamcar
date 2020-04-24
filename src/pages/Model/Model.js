@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import ModelCont from "./ModelCont";
 import "./Model.scss";
 
-<<<<<<< HEAD
-export class Model extends Component {
-=======
 class Model extends Component {
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
   render() {
     return (
       <div className="Model">

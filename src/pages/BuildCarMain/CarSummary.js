@@ -24,50 +24,6 @@ class CarSummary extends Component {
           </li>
         </ul>
 
-<<<<<<< HEAD
-        <div className="iconsGroup">
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-          <button>
-            <span>
-              <span>저장하기</span>
-            </span>
-          </button>
-        </div>
-=======
         <ul className="iconGroup">
           <li>
             <a href="#">
@@ -100,7 +56,6 @@ class CarSummary extends Component {
             </a>
           </li>
         </ul>
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
       </div>
     );
   }
