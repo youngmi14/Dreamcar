@@ -72,13 +72,10 @@ class Footer extends Component {
         <div className="FooterUnderCont">
           <div className="snsIcons">
             <a href="#">
-              <img src={require("../../images/facebook.png")} alt="facebook" />
+              <img src={require("../../images/facebook.svg")} alt="facebook" />
             </a>
             <a href="#">
-              <img
-                src={require("../../images/instargram.png")}
-                alt="instargram"
-              />
+              <img src={require("../../images/insta.svg")} alt="instargram" />
             </a>
           </div>
           <div className="form">
