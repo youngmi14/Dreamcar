@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SubSelection from "./SubSelection";
 import Package from "./Package";
 import CarAcc from "./CarAcc";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
 class CarSection extends Component {
   state = {
@@ -17,13 +18,16 @@ class CarSection extends Component {
 
   render() {
     const btnName = ["외관", "휠", "브레이크 클리퍼"];
+
     return (
       <div className="CarSection">
         <a name="carDisplay1"></a>
         <div className="carDisplayWrapper">
+          <MaterialIcon icon="dashboard" />
           <div className="carImgCont">
             <img src="https://ph.cloud.maserati.com/8578400/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084333;BOE/Q4YG;INT/INT/94084365;BOE/Q4CS;BOE/Q136/INT/94084365;DUMMYOPTS/DOARM/94084328;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084329;DSH/DSHG/94084330;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q52J;BOE/Q407;BOE/Q275;FUS/Q410;MEC/Q110;MEC/Q5EM;CAL/Q4SU;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400" />
           </div>
+          <MaterialIcon icon="dashboard" />
 
           <div className="carOutlookTapCont">
             <ul className="toolBar">

@@ -11,28 +11,25 @@
 
     .topNav {
       width: 100%;
-      min-height: 48px;
       list-style: none;
       margin: 0;
       background: #fff;
       border-top: 1px solid #ebebeb;
       border-bottom: 1px solid #ebebeb;
-      padding: 3px 0px;
+      margin: 3px 0px;
       z-index: 99;
       position: sticky;
       top: 75px;
-      height: 48px;
 
       .tabList {
         li {
           white-space: nowrap;
           font-size: 14px;
           font-family: Univers LT W02_47 Light Cond, sans-serif;
-          display: flex;
           align-items: center;
-
           a {
-            display: flex;
+            height: 45px;
+            display: inline-block;
             align-content: center;
             outline-offset: -5px;
             padding: 0px 18px;
@@ -43,7 +40,6 @@
             color: #727272;
             letter-spacing: 0.05em;
           }
-
           .clicked {
             border-bottom: 3px solid #0b2749;
             transition: all 0.2s ease;
