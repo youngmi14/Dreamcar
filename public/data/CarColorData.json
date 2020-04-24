@@ -1,0 +1,65 @@
+{
+  "CarColorData": [
+    {
+      "id": 1,
+      "name": "Nero",
+      "url": ""
+    },
+
+    {
+      "id": 2,
+      "name": "Bianco",
+      "url": ""
+    }
+  ],
+
+  "metalColor": [
+    {
+      "id": 1,
+      "name": "Nero Ribelle",
+      "url": ""
+    },
+
+    {
+      "id": 2,
+      "name": "Grigio Maratea",
+      "url": ""
+    },
+
+    {
+      "id": 3,
+      "name": "Grigio",
+      "url": ""
+    },
+
+    {
+      "id": 4,
+      "name": "Blu Passione",
+      "url": ""
+    },
+
+    {
+      "id": 5,
+      "name": "Blu Emozione",
+      "url": ""
+    },
+
+    {
+      "id": 6,
+      "name": "Rosso Folgore",
+      "url": ""
+    },
+
+    {
+      "id": 7,
+      "name": "Bianco Alpi",
+      "url": ""
+    },
+
+    {
+      "id": 8,
+      "name": "Blu Nobile",
+      "url": ""
+    }
+  ]
+}
