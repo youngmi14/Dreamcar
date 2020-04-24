@@ -1,42 +1,22 @@
 import React, { Component } from "react";
 import SubSelection from "./SubSelection";
 import Package from "./Package";
-<<<<<<< HEAD
-=======
 import CarAcc from "./CarAcc";
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
 
 class CarSection extends Component {
   state = {
     btnColor: "#fff",
-<<<<<<< HEAD
     activeBtnId: 0,
   };
 
   btnTabcolorChange = (id) => {
     this.setState({
       activeBtnId: id,
-=======
-    btnClicked: "",
-    isClickedName: "",
-    btnName: ["외관", "휠", "브레이크 클리퍼"],
-  };
-
-  btnTabcolorChange = (e) => {
-    this.setState({
-      btnClicked: "btnClicked",
-      isClickedName: e.target.id,
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
     });
   };
 
   render() {
-<<<<<<< HEAD
     const btnName = ["외관", "휠", "브레이크 클리퍼"];
-=======
-    const { btnClicked, btnName } = this.state;
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
-
     return (
       <div className="CarSection">
         <a name="carDisplay1"></a>
@@ -47,7 +27,6 @@ class CarSection extends Component {
 
           <div className="carOutlookTapCont">
             <ul className="toolBar">
-<<<<<<< HEAD
               {btnName.map((itemName, idx) => {
                 return (
                   <li
@@ -60,17 +39,6 @@ class CarSection extends Component {
                   >
                     {itemName}
                   </li>
-=======
-              {btnName.map((itemName) => {
-                return (
-                  <BtnSection
-                    role="button"
-                    className={btnClicked}
-                    onClick={this.btnTabcolorChange}
-                    id={itemName}
-                    isClickedName={this.state.isClickedName}
-                  />
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
                 );
               })}
             </ul>
@@ -83,9 +51,7 @@ class CarSection extends Component {
           </div>
         </div>
         <a name="carDisplay2"></a>
-<<<<<<< HEAD
 
-=======
         <div className="carDisplayWrapper">
           <div className="carImgCont">
             <img src="https://ph.cloud.maserati.com/8578400/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084333;BOE/Q4YG;INT/INT/94084365;BOE/Q4CS;BOE/Q136/INT/94084365;DUMMYOPTS/DOARM/94084328;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084329;DSH/DSHG/94084330;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q52J;BOE/Q407;BOE/Q275;FUS/Q410;MEC/Q110;MEC/Q5EM;CAL/Q4SU;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400" />
@@ -107,44 +73,16 @@ class CarSection extends Component {
             <SubSelection />
           </div>
         </div>
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
         <Package />
         <p>
           *참고: 국가에 따라 패키지 구성의 필수 패키지 또는 옵션 등이 상이할 수
           있습니다. 각 패키지의 가격은 다른 패키지나 옵션의 추가 및 삭제에 의해
           변동될 수 있습니다.
         </p>
-<<<<<<< HEAD
-      </div>
-    );
-  }
-=======
         <CarAcc />
       </div>
     );
   }
-}
-
-class BtnSection extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <li
-        role="button"
-        className={
-          this.props.isClickedName === this.props.id ? this.props.className : ""
-        }
-        id={this.props.id}
-        onClick={this.props.onClick}
-      >
-        {this.props.id}
-      </li>
-    );
-  }
->>>>>>> 4d9f5d66aa2c4514b05890578f3060e405eca324
 }
 
 export default CarSection;
