@@ -1,31 +1,33 @@
 {
   "Break Caliper": [
     {
-      "grigio": {
-        "id": 1,
-        "name": "grigio",
-        "url": ""
-      },
-      "Nero": {
-        "id": 1,
-        "name": "Nero",
-        "url": ""
-      },
-      "Rosso": {
-        "id": 1,
-        "name": "Rosso",
-        "url": ""
-      },
-      "Blu": {
-        "id": 1,
-        "name": "Blu",
-        "url": ""
-      },
-      "Argrento": {
-        "id": 1,
-        "name": "Argrento",
-        "url": ""
-      }
+      "id": 1,
+      "name": "grigio",
+      "url": ""
+    },
+
+    {
+      "id": 1,
+      "name": "Nero",
+      "url": ""
+    },
+
+    {
+      "id": 1,
+      "name": "Rosso",
+      "url": ""
+    },
+
+    {
+      "id": 1,
+      "name": "Blu",
+      "url": ""
+    },
+
+    {
+      "id": 1,
+      "name": "Argrento",
+      "url": ""
     }
   ]
 }

@@ -31,6 +31,7 @@ class CarSection extends Component {
 
           <div className="carOutlookTapCont">
             <ul className="toolBar">
+              {}
               {btnName.map((itemName, idx) => {
                 return (
                   <li
