@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import "./Title.scss";
 
-class Loded extends Component {
+class Title extends Component {
   render() {
     return (
-      <div className="title">
+      <div className="Title">
         <div className="noname">
           <span data-key="LinesHeading">본인의 Ghibli를 선택하십시오.</span>
         </div>
@@ -18,3 +19,5 @@ class Loded extends Component {
     );
   }
 }
+
+export default Title;
