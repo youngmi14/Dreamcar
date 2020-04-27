@@ -222,7 +222,6 @@ class Nav extends Component {
               </div>
             </div>
           </li>
-
           <li>
             <a href="#">인증중고차</a>
           </li>
