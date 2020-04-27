@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import CarSection from "./CarSection";
 import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
@@ -105,4 +106,4 @@ class BuildCarMain extends Component {
   }
 }
 
-export default BuildCarMain;
+export default withRouter(BuildCarMain);

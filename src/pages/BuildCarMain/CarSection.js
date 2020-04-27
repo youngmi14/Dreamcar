@@ -18,10 +18,12 @@ class CarSection extends Component {
     };
   }
 
-  btnTabcolorChange = (id) => {
+  btnTabcolorChange = (idx) => {
+    console.log("함수진입:", idx); //1
     this.setState({
-      activeBtnId: id,
+      activeBtnId: idx,
     });
+    console.log("state btn:", this.state.activeBtnId); //0
   };
 
   render() {
@@ -82,7 +84,7 @@ class CarSection extends Component {
                     className={
                       this.state.activeBtnId === idx ? "btnClicked" : ""
                     }
-                    name={itemName}
+                    // name={itemName}
                     onClick={() => this.btnTabcolorChange(idx)}
                   >
                     {itemName}
