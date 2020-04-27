@@ -7,7 +7,7 @@ class LinesWrapper extends Component {
     return (
       <div className="LinesWrapper">
         <LineCard />
-        <div className="lineCard" role="group">
+        <div className="LineCard" role="group">
           <div className="preview">
             <div className="lineCarousel">
               <div className="arrowsCon"></div>
@@ -64,7 +64,7 @@ class LinesWrapper extends Component {
             </div>
           </div>
         </div>
-        <div className="lineCard" role="group">
+        <div className="LineCard" role="group">
           <div className="preview">
             <div className="lineCarousel">
               <div className="arrowsCon"></div>
