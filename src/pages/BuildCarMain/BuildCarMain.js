@@ -6,7 +6,7 @@ import "./BuildCarMain.scss";
 
 class BuildCarMain extends Component {
   state = {
-    hrefLink: "#carDisplay2",
+    hrefLink: "",
     tabId: "",
   };
 
@@ -16,12 +16,11 @@ class BuildCarMain extends Component {
     });
   };
 
-  mouseLeaveHandler = (e) => {
+  mouseLeaveHandler = (e, msg) => {
     e.preventDefault();
 
     this.setState({
-      isNavClickedClassName: "",
-      tabId: this.state.tabId,
+      tabId: msg,
     });
   };
 
@@ -39,10 +38,12 @@ class BuildCarMain extends Component {
                 {tabNameList.map((item, idx) => {
                   return (
                     <a
-                      href={this.state.hrefLink}
+                      href="#"
                       className={this.state.tabId === idx ? "clicked" : ""}
                       onClick={() => this.navMoveHandler(idx)}
-                      onMouseOut={this.mouseLeaveHandler}
+                      onMouseOut={(e) =>
+                        this.mouseLeaveHandler(e, "notClicked")
+                      }
                     >
                       {item}
                     </a>
