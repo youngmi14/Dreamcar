@@ -1,0 +1,60 @@
+@import "../../styles/common.scss";
+.DealerLocator {
+  .DealerLocatorCont {
+    .title {
+      padding: 30px 60px;
+      margin: 0 0 15px;
+      font-family: Univers47, sans-serif;
+      font-size: 42px;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #333;
+      width: auto;
+      display: block;
+      height: auto;
+    }
+  }
+}
+
+//     .locator {
+//       .inputWrapper {
+//         border: 1px red solid;
+//         display: flex;
+//         align-items: center;
+//         padding: 0 10px;
+//         height: 63px;
+//         .arrow {
+//           border: 1px red solid;
+//           width: 40px;
+//           height: 40px;
+
+//           .arrowImg {
+//             width: 10px;
+//             height: 10px;
+//           }
+//         }
+//       }
+//       .inputTextCell {
+//         display: flex;
+//         img {
+//           width: 20px;
+//           height: 20px;
+//         }
+//         form {
+//           display: flex;
+//           width: 256px;
+//           height: 18px;
+//         }
+//       }
+
+//       .rigthMenu {
+//         .label {
+//           width: 20px;
+//           height: 20px;
+//           border: 1px red solid;
+//           display: block;
+//         }
+//       }
+//     }
+//   }
+// }

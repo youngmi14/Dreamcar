@@ -1,0 +1,63 @@
+{
+  "CarColorData": [
+    {
+      "solidColor": {
+        "nero": {
+          "id": 1,
+          "name": "Nero",
+          "url": ""
+        },
+        "Bianco": {
+          "id": 2,
+          "name": "Bianco",
+          "url": ""
+        }
+      }
+    },
+    {
+      "metalColor": {
+        "neroRibelle": {
+          "id": 1,
+          "name": "Nero Ribelle",
+          "url": ""
+        },
+        "grigioMaratea": {
+          "id": 2,
+          "name": "Grigio Maratea",
+          "url": ""
+        },
+        "grigio": {
+          "id": 3,
+          "name": "Grigio",
+          "url": ""
+        },
+        "bluPassione": {
+          "id": 4,
+          "name": "Blu Passione",
+          "url": ""
+        },
+        "bluEmozione": {
+          "id": 5,
+          "name": "Blu Emozione",
+          "url": ""
+        },
+        "rossoFolgore": {
+          "id": 6,
+          "name": "Rosso Folgore",
+
+          "url": ""
+        },
+        "biancoAlpi": {
+          "id": 7,
+          "name": "Bianco Alpi",
+          "url": ""
+        },
+        "bluNobile": {
+          "id": 8,
+          "name": "Blu Nobile",
+          "url": ""
+        }
+      }
+    }
+  ]
+}

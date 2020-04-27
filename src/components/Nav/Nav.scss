@@ -81,10 +81,8 @@
 
   .NavLeft {
     display: flex;
-
     flex-grow: 60;
-    max-width: 855px;
-
+    width: auto;
     height: 75px;
 
     li {
