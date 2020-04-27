@@ -4,6 +4,7 @@ import Main from "./Main";
 import BuildCarMain from "./pages/BuildCarMain/BuildCarMain";
 import MakeMyCar from "./pages/MakeMyCar/MakeMyCar";
 import Choosecar from "./pages/ChooseCar/Choosecar";
+import ScrollBox from "./practice";
 
 class Routes extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Routes extends React.Component {
           <Route exact path="/buildcar" component={BuildCarMain} />
           <Route exact path="/makemycar" component={MakeMyCar} />
           <Route exact path="/choosecar" component={Choosecar} />
+          <Route exact path="/practice" component={ScrollBox} />
         </Switch>
       </Router>
     );
