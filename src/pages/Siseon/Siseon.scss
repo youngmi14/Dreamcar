@@ -57,7 +57,13 @@
           background-color: #fff;
           box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.05);
           height: 42px;
+
+          &:focus {
+            outline: 3px solid #000;
+            outline-color: #6495ed;
+          }
         }
+
         .ani {
           position: absolute;
           font-size: 14px;
@@ -67,6 +73,33 @@
           top: 9pt;
           transition: all 0.2s ease;
           pointer-events: none;
+        }
+      }
+    }
+  }
+
+  .full {
+    margin-top: 30px;
+    width: 100%;
+    .question {
+      font-size: 1pc;
+      letter-spacing: 0;
+      line-height: 1.5;
+      color: #333;
+      margin-bottom: 30px;
+      margin-left: 2pc;
+    }
+    .privacy {
+      color: #333;
+      margin-left: 2pc;
+      font-family: Univers45;
+      .priCommon {
+        margin-bottom: 15px;
+        font-size: 9pt;
+        text-align: justify;
+        .tos {
+          text-decoration: underline;
+          cursor: pointer;
         }
       }
     }
