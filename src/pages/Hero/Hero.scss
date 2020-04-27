@@ -9,6 +9,70 @@
   overflow: hidden;
   transform: none;
 
+  .slick-prev:before {
+    content: "";
+    display: none;
+  }
+
+  .slick-next:before {
+    content: "";
+    display: none;
+  }
+
+  .slick-prev {
+    z-index: 500;
+    left: 3%;
+  }
+
+  .material-icons.md-dark {
+    z-index: 500;
+    color: #fff;
+  }
+
+  .slick-next {
+    z-index: 500;
+    right: 3%;
+  }
+
+  .slick-dots {
+    display: flex !important;
+    position: absolute;
+    top: 94%;
+    left: 87%;
+    z-index: 600;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+
+    li {
+      position: relative;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    button::before {
+      color: #fff;
+      color: transparent;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+
+    .slick-active {
+      button::before {
+        color: transparent;
+        background-color: #fff;
+        opacity: 1;
+        border-radius: 50%;
+      }
+    }
+  }
+
   img {
     position: static;
     top: 0;
@@ -28,19 +92,19 @@
     padding-left: 60px;
     padding-right: 60px;
     box-sizing: border-box;
-    width: 100%;
-    bottom: 40px;
+    width: 1500px;
+    bottom: 30px;
     display: flex;
     align-items: flex-end;
     font-size: 56px;
-    animation: slide-TextCt 2.5s ease-in-out;
+    animation: slide-TextCt 3.1s infinite;
 
     @keyframes slide-TextCt {
       0% {
-        bottom: 20px;
+        bottom: 30px;
       }
       100% {
-        bottom: 40px;
+        bottom: 50px;
       }
     }
 
@@ -52,44 +116,50 @@
     .Desc {
       font-size: 18px;
       margin-left: 40px;
+      position: relative;
     }
 
-    div {
+    .Desc::before {
+      content: "";
+      position: absolute;
+      border-left: 1px solid #ffffff;
+      bottom: 0;
+      height: 116px;
+      left: -20px;
+      bottom: -56px;
+      animation: slide-up 3.1s infinite;
+    }
+
+    @keyframes slide-up {
+      0% {
+        height: 0px;
+      }
+      100% {
+        height: 116px;
+      }
+    }
+  }
+
+  div {
+    position: relative;
+    .WhiteCt {
+      margin: 0 auto;
       background: #fff;
       text-align: center;
       margin-top: 10px;
       text-decoration: none;
-      padding: 6px 50px;
+      padding: 6px 30px;
       border-radius: 4px;
-      font-size: 18px;
+      font-size: 14px;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 2;
       color: #333;
       box-shadow: inset 0 0 0 1px #333;
+      height: 40px;
+      position: absolute;
+      left: 86.3%;
+      top: 87.4%;
     }
-
-    .WhiteCt {
-      margin-left: auto;
-    }
-  }
-}
-
-.Hero::after {
-  content: "";
-  position: absolute;
-  border-left: 1px solid #ffffff;
-  bottom: 0;
-  height: 98px;
-  left: 430px;
-  animation: slide-up 2.5s ease;
-}
-
-@keyframes slide-up {
-  0% {
-    height: 0px;
-  }
-  100% {
-    height: 98px;
   }
 }

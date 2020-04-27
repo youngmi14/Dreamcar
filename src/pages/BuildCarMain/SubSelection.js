@@ -7,6 +7,8 @@ class SubSelection extends Component {
 
   state = {
     SolidColorData: [],
+    MetalColorData: [],
+    InteriorSkinData: [],
   };
 
   componentDidMount = () => {
@@ -14,22 +16,41 @@ class SubSelection extends Component {
   };
 
   getData = () => {
-    fetch("http://localhost:3000/data/SolidColorData.json")
+    fetch("http://localhost:3000/data/CarColorData.json")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           SolidColorData: res.SolidColorData,
+          MetalColorData: res.MetalColorData,
+          InteriorSkin: res.InteriorSkinData,
         });
+        console.log(res.MetalColorData);
       });
   };
 
   render() {
-    const { SolidColorData } = this.state;
+    const { SolidColorData, MetalColorData, InteriorSkinData } = this.state;
 
     const solidBtnColor = SolidColorData.map((carColor) => {
       return (
         <button>
-          <img src={carColor.url} />
+          <img src={carColor.url} alt="Solid Color" />
+        </button>
+      );
+    });
+
+    const metalBtnColor = MetalColorData.map((carColor) => {
+      return (
+        <button>
+          <img src={carColor.url} alt="Metal Color" />
+        </button>
+      );
+    });
+
+    const interiorBtnColor = InteriorSkinData.map((carColor) => {
+      return (
+        <button>
+          <img src={carColor.url} alt="Interior Skin Color" />
         </button>
       );
     });
@@ -39,27 +60,14 @@ class SubSelection extends Component {
         <div className="subSelection">
           <h5 className="sectionTitle">단색(SOLID) 색상</h5>
           <div className="innerSection">
-            <div className="colorPalette">
-              {/* <button>
-                <img src="" />
-              </button> */}
-              {solidBtnColor}
-              <button>
-                <img src="" />
-              </button>
-            </div>
+            <div className="colorPalette">{solidBtnColor}</div>
           </div>
         </div>
 
         <div className="subSelection">
           <h5 className="sectionTitle">메탈릭(METALLIC) 색상</h5>
           <div className="innerSection">
-            <div className="colorPalette">
-              {/* 넣어줄곳 */}
-              {/* <button>
-                <img src="" />
-              </button> */}
-            </div>
+            <div className="colorPalette">{metalBtnColor}</div>
           </div>
         </div>
       </div>
