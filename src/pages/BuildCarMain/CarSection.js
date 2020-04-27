@@ -16,7 +16,30 @@ class CarSection extends Component {
       activeBtnId: 0,
       btnNameTab: "",
     };
+    //this.carCont = React.createRef();
   }
+
+  // componentDidMount() {
+  //   window.addEventListener("scroll", this.scrollToSection, true);
+  // }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("scroll", this.scrollToSection);
+  // }
+
+  scrollToSection = () => {
+    const lastScrollY = window.scrollY;
+    console.log(this.carCont.offsetTop);
+
+    // if (!ticking) {
+    //   window.requestAnimationFrame(() => {
+    //     this.carCont.current.style.top = `${lastScrollY}px`;
+    //     ticking = false;
+    //   });
+
+    //   ticking = true;
+    // }
+  };
 
   btnTabcolorChange = (idx) => {
     console.log("함수진입:", idx); //1
@@ -57,7 +80,12 @@ class CarSection extends Component {
     };
 
     return (
-      <div className="CarSection">
+      <div
+        className="CarSection"
+        ref={(ref) => {
+          this.carCont = ref;
+        }}
+      >
         <a name="carDisplay1"></a>
 
         <div className="carDisplayWrapper">

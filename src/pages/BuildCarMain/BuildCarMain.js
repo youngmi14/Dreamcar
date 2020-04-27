@@ -5,9 +5,6 @@ import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
 import "./BuildCarMain.scss";
 
-let lastScrollY = 0;
-let ticking = false;
-
 class BuildCarMain extends Component {
   constructor(props) {
     super(props);
@@ -15,17 +12,22 @@ class BuildCarMain extends Component {
       hrefLink: "",
       tabId: "",
     };
+    this.carCont = React.createRef();
   }
 
-  carCont = React.createRef();
+  scrollToSection = () => {
+    const lastScrollY = window.scrollY;
+    console.log(this.carCont.offsetTop); //CarCont Top이 안읽혀지는듯
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.scrollToSection, true);
-  }
+    // if (!ticking) {
+    //   window.requestAnimationFrame(() => {
+    //     //this.carCont.current.style.top = `${lastScrollY}px`;
+    //     ticking = false;
+    //   });
 
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollToSection);
-  }
+    //   ticking = true;
+    // }
+  };
 
   navMoveHandler = (id) => {
     this.setState({
@@ -39,20 +41,6 @@ class BuildCarMain extends Component {
     this.setState({
       tabId: msg,
     });
-  };
-
-  scrollToSection = () => {
-    lastScrollY = window.scrollY;
-    // console.log(this.carCont.current.style.top); //CarCont Top이 안읽혀지는듯
-
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        //this.carCont.current.style.top = `${lastScrollY}px`;
-        ticking = false;
-      });
-
-      ticking = true;
-    }
   };
 
   render() {
@@ -97,7 +85,10 @@ class BuildCarMain extends Component {
           </nav>
 
           <section className="mainView">
-            <CarSection ref={this.carCont} />
+            <CarSection
+              scrollToSection={this.scrollToSection}
+              cont={this.carCont}
+            />
             <CarSummary />
           </section>
         </section>
