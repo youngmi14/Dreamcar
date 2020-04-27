@@ -1,0 +1,29 @@
+@import "../../styles/common.scss";
+
+.CcFooter {
+  border-top: 1px solid #ebebeb;
+  background-color: #fff;
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin-top: 24px;
+  font-family: $g-font-style;
+  .footerRow {
+    margin: 24px auto 0;
+    padding: 0 60px 30px;
+    display: block;
+    height: 45px;
+    .left {
+      float: left;
+      padding-right: 40px;
+      padding-bottom: 24px;
+      list-style-type: none;
+      a {
+        cursor: pointer;
+        color: #404040;
+        margin-right: 24px;
+      }
+    }
+  }
+}
