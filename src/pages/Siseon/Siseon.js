@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
@@ -146,4 +147,4 @@ class Siseon extends Component {
   }
 }
 
-export default Siseon;
+export default withRouter(Siseon);

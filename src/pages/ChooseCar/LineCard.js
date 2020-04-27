@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./LineCard.scss";
 
 class LinesCard extends Component {
+  goToBuildCar = () => {
+    this.props.history.push("/buildcar");
+  };
+
   render() {
     return (
       <div className="LineCard" role="group">
@@ -26,7 +31,11 @@ class LinesCard extends Component {
         </div>
 
         <div className="content">
-          <button className="primaryCta" type="button">
+          <button
+            className="primaryCta"
+            type="button"
+            onClick={this.goToBuildCar}
+          >
             <span className="dataBu">선택</span>
           </button>
           <div className="cardTitle">
@@ -51,4 +60,4 @@ class LinesCard extends Component {
   }
 }
 
-export default LinesCard;
+export default withRouter(LinesCard);

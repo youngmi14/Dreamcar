@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import "./MakeMyCar.scss";
 import carpic1 from "../../images/makecar1.jpeg";
 import plusimg from "../../images/plus.svg";
+import { withRouter } from "react-router-dom";
 
 class ModelVisible extends Component {
+  goToChooseCar = () => {
+    this.props.history.push("/choosecar");
+  };
   render() {
     return (
       <div className="ModelVisible">
@@ -24,7 +28,7 @@ class ModelVisible extends Component {
           </div>
           <div className="pricecar">
             <div className="cta">
-              <a>내 차량 만들기</a>
+              <a onClick={this.goToChooseCar}>내 차량 만들기</a>
             </div>
           </div>
           <div className="miniSpec">
@@ -71,4 +75,4 @@ class ModelVisible extends Component {
   }
 }
 
-export default ModelVisible;
+export default withRouter(ModelVisible);

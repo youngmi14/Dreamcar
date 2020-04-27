@@ -1,14 +1,31 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import CarSection from "./CarSection";
 import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
 import "./BuildCarMain.scss";
 
+let lastScrollY = 0;
+let ticking = false;
+
 class BuildCarMain extends Component {
-  state = {
-    hrefLink: "",
-    tabId: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      hrefLink: "",
+      tabId: "",
+    };
+  }
+
+  carCont = React.createRef();
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.scrollToSection, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollToSection);
+  }
 
   navMoveHandler = (id) => {
     this.setState({
@@ -24,8 +41,30 @@ class BuildCarMain extends Component {
     });
   };
 
+  scrollToSection = () => {
+    lastScrollY = window.scrollY;
+    // console.log(this.carCont.current.style.top); //CarCont Top이 안읽혀지는듯
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        //this.carCont.current.style.top = `${lastScrollY}px`;
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  };
+
   render() {
-    const tabNameList = ["외관", "실내", "패키지", "옵션", "액세서리", "요약"];
+    const tabNameList = [
+      "Lines",
+      "외관",
+      "실내",
+      "패키지",
+      "옵션",
+      "액세서리",
+      "요약",
+    ];
 
     return (
       <div className="BuildCarMain">
@@ -34,9 +73,13 @@ class BuildCarMain extends Component {
         <section className="BuildCarContent">
           <nav className="topNav">
             <ul className="tabList">
-              <li name="tabId" onMouseOut={this.mouseLeaveHandler}>
-                {tabNameList.map((item, idx) => {
-                  return (
+              {tabNameList.map((item, idx) => {
+                return (
+                  <li
+                    name="tabId"
+                    onMouseOut={this.mouseLeaveHandler}
+                    onClick={this.scrollToSection}
+                  >
                     <a
                       href="#"
                       className={this.state.tabId === idx ? "clicked" : ""}
@@ -47,14 +90,14 @@ class BuildCarMain extends Component {
                     >
                       {item}
                     </a>
-                  );
-                })}
-              </li>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
           <section className="mainView">
-            <CarSection />
+            <CarSection ref={this.carCont} />
             <CarSummary />
           </section>
         </section>
@@ -63,4 +106,4 @@ class BuildCarMain extends Component {
   }
 }
 
-export default BuildCarMain;
+export default withRouter(BuildCarMain);
