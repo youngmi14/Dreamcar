@@ -1,7 +1,16 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Nav.scss";
 
 class Nav extends Component {
+  goToMakeMyCar = () => {
+    this.props.history.push("/makemycar");
+  };
+
+  gotoTestDrive = (e) => {
+    this.props.history.push("/siseon");
+  };
+
   render() {
     return (
       <div className="NavCont">
@@ -27,7 +36,9 @@ class Nav extends Component {
                   </div>
                   <div class="moreBox">
                     <div class="moreView">자세히 보기</div>
-                    <div class="myCarMake">내 차량 만들기</div>
+                    <div class="myCarMake" onClick={this.goToMakeMyCar}>
+                      내 차량 만들기
+                    </div>
                   </div>
                 </div>
 
@@ -79,7 +90,7 @@ class Nav extends Component {
                     </a>
                   </p>
                   <p className="Navfont">
-                    <a href="#">
+                    <a href="#" onClick={this.gotoTestDrive}>
                       <span className="arrow90Deg">시승 신청</span>
                     </a>
                   </p>
@@ -222,7 +233,6 @@ class Nav extends Component {
               </div>
             </div>
           </li>
-
           <li>
             <a href="#">인증중고차</a>
           </li>
@@ -231,7 +241,7 @@ class Nav extends Component {
           <li class="search">
             <a href="#">딜러찾기</a>
           </li>
-          <li class="apply">
+          <li class="apply" onClick={this.gotoTestDrive}>
             <a href="#">시승신청</a>
           </li>
           <li class="moreBtn">
@@ -245,4 +255,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./Apply.scss";
 
 class Apply extends Component {
+  gotoTestDrive = (e) => {
+    this.props.history.push("/siseon");
+  };
   render() {
     return (
       <div className="Apply">
@@ -14,7 +18,9 @@ class Apply extends Component {
             마세라티만의 차별화된 럭셔리 감성을 지금 경험해 보시기 바랍니다.
           </p>
           <div className="ApplyBtn">
-            <a href="#">시승신청</a>
+            <a href="#" onClick={this.gotoTestDrive}>
+              시승신청
+            </a>
           </div>
         </div>
       </div>
@@ -22,4 +28,4 @@ class Apply extends Component {
   }
 }
 
-export default Apply;
+export default withRouter(Apply);

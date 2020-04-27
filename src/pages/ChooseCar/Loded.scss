@@ -1,0 +1,14 @@
+@import "../../styles/common.scss";
+
+.Loded {
+  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+
+  .lines {
+    top: 49px;
+    margin: 0 auto;
+    margin-bottom: 49px;
+    background: #fff;
+  }
+}

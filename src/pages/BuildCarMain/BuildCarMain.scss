@@ -6,33 +6,32 @@
   position: relative;
 
   .BuildCarContent {
+    background: #f5f5f5;
     position: absolute;
     top: 75px;
+    width: 100%;
 
     .topNav {
       width: 100%;
-      min-height: 48px;
       list-style: none;
       margin: 0;
       background: #fff;
       border-top: 1px solid #ebebeb;
       border-bottom: 1px solid #ebebeb;
-      padding: 3px 0px;
       z-index: 99;
       position: sticky;
       top: 75px;
-      height: 48px;
 
       .tabList {
+        display: flex;
         li {
           white-space: nowrap;
           font-size: 14px;
           font-family: Univers LT W02_47 Light Cond, sans-serif;
-          display: flex;
           align-items: center;
-
           a {
-            display: flex;
+            height: 45px;
+            display: inline-block;
             align-content: center;
             outline-offset: -5px;
             padding: 0px 18px;
@@ -43,7 +42,6 @@
             color: #727272;
             letter-spacing: 0.05em;
           }
-
           .clicked {
             border-bottom: 3px solid #0b2749;
             transition: all 0.2s ease;
@@ -57,11 +55,76 @@
       .CarSection {
         flex: 1 1 75%;
         width: 75%;
+        //background-color: #f5f5f5;
         .carDisplayWrapper {
-          .carImgCont {
-            width: inherit;
-            img {
-              width: 100%;
+          // .carImgCont {
+          width: auto;
+          position: relative;
+          display: flex;
+          overflow: hidden;
+          flex-direction: column;
+
+          .slick-slider {
+            height: auto;
+            .slick-prev:before {
+              content: "";
+              display: none;
+            }
+
+            .slick-next:before {
+              content: "";
+              display: none;
+            }
+
+            .slick-prev {
+              z-index: 500;
+              left: 3%;
+            }
+
+            .material-icons.md-dark {
+              z-index: 500;
+              color: #fff;
+            }
+
+            .slick-next {
+              z-index: 500;
+              right: 3%;
+            }
+
+            .slick-slider {
+              width: inherit;
+              height: auto;
+            }
+
+            .material-icons.md-dark:first-child {
+              color: #fff;
+              position: absolute;
+              top: 50%;
+              left: 2%;
+              z-index: 2;
+            }
+
+            .material-icons.md-dark:last-child {
+              color: #fff;
+              position: absolute;
+              top: 50%;
+              right: 2%;
+              z-index: 2;
+            }
+
+            .slick-list {
+              height: auto;
+              .slick-slide img {
+                max-width: 100%;
+                min-height: 100%;
+                width: 100%;
+                .slick-slide.slick-active.slick-current {
+                  img {
+                    width: 100%;
+                    height: max-content;
+                  }
+                }
+              }
             }
           }
           .carOutlookTapCont {
@@ -173,6 +236,8 @@
       }
 
       .Package {
+        background: #f5f5f5;
+        padding-left: 12px;
         .title {
           font-family: Univers LT W02_57 Condensed, sans-serif;
           padding: 24px 0px 0px 20px;
@@ -273,7 +338,6 @@
         height: 843px;
         position: sticky;
         background: #f5f5f5;
-
         .title {
           width: inherit;
           margin-bottom: 12px;
@@ -320,12 +384,12 @@
             }
           }
         }
+
         .iconGroup {
           display: flex;
           justify-content: flex-start;
           flex-wrap: wrap;
           margin: 24px 12px;
-
           li {
             line-height: 1.5em;
             font-size: 14px;
@@ -335,16 +399,13 @@
             width: 40%;
             margin-right: 10%;
             margin-bottom: 36px;
-
             img {
               vertical-align: middle;
               margin-right: 3px;
               float: left;
-
               .iconsGroup {
                 margin: 24px 12px;
                 flex-direction: column;
-
                 button {
                   flex: 0 0 40%;
                   border: 0;
@@ -355,7 +416,6 @@
                   width: 40%;
                   height: 27px;
                   background: transparent;
-
                   span {
                     font-size: 14px;
                     white-space: nowrap;

@@ -44,8 +44,6 @@ class CarAcc extends Component {
       "타이어 및 휠",
     ];
 
-    // className={ this.state.clicked ? (this.state.validated ? “success” : “failure”) : “” }
-
     const tabMenu = ["protect", "safety", "function", "soultion", "wheel"];
     return (
       <div className="CarAcc">
