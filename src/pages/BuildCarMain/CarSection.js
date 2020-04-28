@@ -15,15 +15,28 @@ class CarSection extends Component {
       btnColor: "#fff",
       activeBtnId: 0,
       btnNameTab: "",
+      tabId: 0,
     };
+    this.carCont = React.createRef();
   }
+
+  componentDidMount() {
+    window.addEventListener("scroll", this.scrollToSection, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollToSection);
+  }
+
+  scrollToSection = (tabId) => {
+    let currentTop = this.carCont.getBoundingClientRect().y;
+  };
 
   btnTabcolorChange = (idx) => {
     console.log("함수진입:", idx); //1
     this.setState({
       activeBtnId: idx,
     });
-    console.log("state btn:", this.state.activeBtnId); //0
   };
 
   render() {
@@ -57,8 +70,13 @@ class CarSection extends Component {
     };
 
     return (
-      <div className="CarSection">
-        <a name="carDisplay1"></a>
+      <div
+        className="CarSection"
+        ref={(ref) => {
+          this.carCont = ref;
+        }}
+      >
+        <a name="carExterior"></a>
 
         <div className="carDisplayWrapper">
           <Slider {...settings}>
@@ -101,6 +119,7 @@ class CarSection extends Component {
           </div>
         </div>
 
+        <a name="carInterior"></a>
         <div className="carDisplayWrapper">
           <Slider {...settings}>
             <div>
@@ -142,6 +161,7 @@ class CarSection extends Component {
           </div>
         </div>
 
+        <a name="package"></a>
         <Package />
         <p>
           *참고: 국가에 따라 패키지 구성의 필수 패키지 또는 옵션 등이 상이할 수
@@ -149,6 +169,7 @@ class CarSection extends Component {
           변동될 수 있습니다.
         </p>
 
+        <a name="carAcc"></a>
         <CarAcc />
       </div>
     );

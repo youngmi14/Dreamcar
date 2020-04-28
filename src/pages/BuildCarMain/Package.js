@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+let lastScrollY = 0;
+let ticking = false;
+
 class Package extends Component {
   render() {
     return (

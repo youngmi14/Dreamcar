@@ -5,32 +5,133 @@ import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
 import "./BuildCarMain.scss";
 
-let lastScrollY = 0;
-let ticking = false;
-
 class BuildCarMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hrefLink: "",
-      tabId: "",
+      hrefLink: "#",
+      tabId: 0,
+      navStylerStyle: "",
     };
+    this.carCont = React.createRef();
+    this.href = React.createRef();
   }
 
-  carCont = React.createRef();
-
   componentDidMount() {
-    window.addEventListener("scroll", this.scrollToSection, true);
+    window.addEventListener(
+      "scroll",
+      () => {
+        this.navStyler();
+      },
+      true
+    );
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollToSection);
+    window.removeEventListener(
+      "scroll",
+      this.carCont.current.carCont.scrollToSection
+    );
   }
 
-  navMoveHandler = (id) => {
+  navStyler = () => {
+    const lastScrollY = window.scrollY;
+    console.log("current ScrollY: ", lastScrollY);
+    if (lastScrollY >= 0 && lastScrollY < 840) {
+      this.setState({
+        tabId: 1,
+      });
+    } else if (lastScrollY >= 840 && lastScrollY < 1660) {
+      this.setState({
+        tabId: 2,
+      });
+    } else if (lastScrollY >= 1660 && lastScrollY < 2240) {
+      this.setState({
+        tabId: 3,
+      });
+    } else if (lastScrollY >= 2240 && lastScrollY < 2360) {
+      this.setState({
+        tabId: 4,
+      });
+    } else if (lastScrollY >= 2360 && lastScrollY < 2600) {
+      this.setState({
+        tabId: 5,
+      });
+    } else if (lastScrollY >= 2600) {
+      this.setState({
+        tabId: 6,
+      });
+    } else {
+      return;
+    }
+  };
+
+  navMoveHandler = (e, id) => {
     this.setState({
       tabId: id,
     });
+
+    e.preventDefault();
+
+    switch (id) {
+      case 1:
+        this.setState({
+          hrefLink: "#carExterior",
+        });
+
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 2:
+        this.setState({
+          hrefLink: "#carInterior",
+        });
+
+        window.scroll({
+          top: 840,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 3:
+        this.setState({
+          hrefLink: "#package",
+        });
+
+        window.scroll({
+          top: 1660,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 4:
+        this.setState({
+          hrefLink: "#carAcc",
+        });
+        window.scroll({
+          top: 2240,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 5:
+        this.setState({
+          hrefLink: "#carAcc",
+        });
+
+        window.scroll({
+          top: 2240,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+
+      default:
+        break;
+    }
   };
 
   mouseLeaveHandler = (e, msg) => {
@@ -39,20 +140,6 @@ class BuildCarMain extends Component {
     this.setState({
       tabId: msg,
     });
-  };
-
-  scrollToSection = () => {
-    lastScrollY = window.scrollY;
-    // console.log(this.carCont.current.style.top); //CarCont Top이 안읽혀지는듯
-
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        //this.carCont.current.style.top = `${lastScrollY}px`;
-        ticking = false;
-      });
-
-      ticking = true;
-    }
   };
 
   render() {
@@ -76,20 +163,26 @@ class BuildCarMain extends Component {
               {tabNameList.map((item, idx) => {
                 return (
                   <li
-                    name="tabId"
+                    name={item}
                     onMouseOut={this.mouseLeaveHandler}
                     onClick={this.scrollToSection}
                   >
                     <a
-                      href="#"
+                      href={this.state.hrefLink}
                       className={this.state.tabId === idx ? "clicked" : ""}
-                      onClick={() => this.navMoveHandler(idx)}
+                      onScroll={this.navStyler}
+                      onClick={(e) => this.navMoveHandler(e, idx)}
                       onMouseOut={(e) =>
                         this.mouseLeaveHandler(e, "notClicked")
                       }
                     >
                       {item}
                     </a>
+                    <div
+                      className={
+                        this.state.tabId === idx ? "divActivatedLeft" : ""
+                      }
+                    ></div>
                   </li>
                 );
               })}
@@ -97,7 +190,11 @@ class BuildCarMain extends Component {
           </nav>
 
           <section className="mainView">
-            <CarSection ref={this.carCont} />
+            <CarSection
+              scrollToSection={this.scrollToSection}
+              ref={this.carCont}
+              tabId={this.state.tabId}
+            />
             <CarSummary />
           </section>
         </section>
