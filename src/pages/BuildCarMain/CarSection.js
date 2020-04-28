@@ -15,30 +15,21 @@ class CarSection extends Component {
       btnColor: "#fff",
       activeBtnId: 0,
       btnNameTab: "",
+      tabId: 0,
     };
-    //this.carCont = React.createRef();
+    this.carCont = React.createRef();
   }
 
-  // componentDidMount() {
-  //   window.addEventListener("scroll", this.scrollToSection, true);
-  // }
+  componentDidMount() {
+    window.addEventListener("scroll", this.scrollToSection, true);
+  }
 
-  // componentWillUnmount() {
-  //   window.removeEventListener("scroll", this.scrollToSection);
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollToSection);
+  }
 
-  scrollToSection = () => {
-    const lastScrollY = window.scrollY;
-    console.log(this.carCont.offsetTop);
-
-    // if (!ticking) {
-    //   window.requestAnimationFrame(() => {
-    //     this.carCont.current.style.top = `${lastScrollY}px`;
-    //     ticking = false;
-    //   });
-
-    //   ticking = true;
-    // }
+  scrollToSection = (tabId) => {
+    let currentTop = this.carCont.getBoundingClientRect().y;
   };
 
   btnTabcolorChange = (idx) => {
@@ -46,7 +37,6 @@ class CarSection extends Component {
     this.setState({
       activeBtnId: idx,
     });
-    console.log("state btn:", this.state.activeBtnId); //0
   };
 
   render() {
@@ -86,7 +76,7 @@ class CarSection extends Component {
           this.carCont = ref;
         }}
       >
-        <a name="carDisplay1"></a>
+        <a name="carExterior"></a>
 
         <div className="carDisplayWrapper">
           <Slider {...settings}>
@@ -129,6 +119,7 @@ class CarSection extends Component {
           </div>
         </div>
 
+        <a name="carInterior"></a>
         <div className="carDisplayWrapper">
           <Slider {...settings}>
             <div>
@@ -170,6 +161,7 @@ class CarSection extends Component {
           </div>
         </div>
 
+        <a name="package"></a>
         <Package />
         <p>
           *참고: 국가에 따라 패키지 구성의 필수 패키지 또는 옵션 등이 상이할 수
@@ -177,6 +169,7 @@ class CarSection extends Component {
           변동될 수 있습니다.
         </p>
 
+        <a name="carAcc"></a>
         <CarAcc />
       </div>
     );
