@@ -13,7 +13,7 @@ class BuildCarMain extends Component {
       tabId: 0,
       navStylerStyle: "",
     };
-    this.carCont = React.createRef();
+    this.buildcarMainCont = React.createRef();
     this.href = React.createRef();
   }
 
@@ -30,13 +30,13 @@ class BuildCarMain extends Component {
   componentWillUnmount() {
     window.removeEventListener(
       "scroll",
-      this.carCont.current.carCont.scrollToSection
+      this.buildcarMainCont.current.carCont.scrollToSection
     );
   }
 
   navStyler = () => {
     const lastScrollY = window.scrollY;
-    console.log("current ScrollY: ", lastScrollY);
+    //console.log("current ScrollY: ", lastScrollY);
     if (lastScrollY >= 0 && lastScrollY < 840) {
       this.setState({
         tabId: 1,
@@ -192,7 +192,7 @@ class BuildCarMain extends Component {
           <section className="mainView">
             <CarSection
               scrollToSection={this.scrollToSection}
-              ref={this.carCont}
+              ref={this.buildcarMainCont}
               tabId={this.state.tabId}
             />
             <CarSummary />
