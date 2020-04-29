@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import SubSelection from "./SubSelection";
+import CarDisplayWrapper from "./CarDisplayWrapper";
 import Package from "./Package";
 import CarAcc from "./CarAcc";
-import MaterialIcon, { colorPalette } from "material-icons-react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
 class CarSection extends Component {
   constructor(props) {
@@ -15,19 +12,48 @@ class CarSection extends Component {
       btnColor: "#fff",
       activeBtnId: 0,
       btnNameTab: "",
+      tabId: 0,
+      btnThumbDescExt: {
+        solid: "단색(SOLID) 색상",
+        metalic: "메탈릭(METALLIC) 색상",
+      },
+      btnThumbDescInt: "가죽",
+      solidBtnColor: [],
+      metalBtnColor: [],
+      interiorBtnColor: [],
     };
+    this.carCont = React.createRef();
   }
 
-  btnTabcolorChange = (idx) => {
-    console.log("함수진입:", idx); //1
-    this.setState({
-      activeBtnId: idx,
-    });
-    console.log("state btn:", this.state.activeBtnId); //0
+  componentDidMount = () => {
+    this.getData();
+  };
+
+  getData = () => {
+    fetch("http://localhost:3000/data/CarColorData.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          solidBtnColor: res.ExteriorSkinData.SolidColorData,
+          metalBtnColor: res.ExteriorSkinData.MetalColorData,
+          interiorBtnColor: res.InteriorSkinData,
+        });
+      });
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.scrollToSection);
+  }
+
+  scrollToSection = (tabId) => {
+    let currentTop = this.carCont.getBoundingClientRect().y;
+    console.log("current currentTop: ", currentTop);
   };
 
   render() {
-    const btnName = ["외관", "휠", "브레이크 클리퍼"];
+    const { solidBtnColor, metalBtnColor, interiorBtnColor } = this.state;
+
+    const btnExteriorName = ["외관", "휠", "브레이크 클리퍼"];
     const btnInteriorName = [
       "시트",
       "대시보드",
@@ -36,119 +62,77 @@ class CarSection extends Component {
       "헤드라이닝",
       "트림",
     ];
+    const imgUrlExterior = [
+      "https://ph.cloud.maserati.com/8578400/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084333;BOE/Q4YG;INT/INT/94084365;BOE/Q4CS;BOE/Q136/INT/94084365;DUMMYOPTS/DOARM/94084328;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084329;DSH/DSHG/94084330;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q52J;BOE/Q407;BOE/Q275;FUS/Q410;MEC/Q110;MEC/Q5EM;CAL/Q4SU;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx7?config=background;shadow;CRPT/CRPT/94084217;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084297;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400;plates",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx3?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx5?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400",
+    ];
+    const imgUrlInterior = [
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx9?config=background;shadow;glasses_front;MEC/Q400;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q136/INT/94084213;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx10?config=background;shadow;glasses_front;MEC/Q400;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx11?config=background;shadow;glasses_front;MEC/Q400;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q136/INT/94084213;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201",
+      "https://ph.cloud.maserati.com/8578300/1280/c720/gfx12?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400",
+    ];
 
-    const settings = {
-      dots: false,
-      infinite: true,
-      arrows: true,
-      prevArrow: (
-        <button type="button" class="slick-prev">
-          <MaterialIcon icon="keyboard_arrow_left" size={45} />
+    const solidColor = solidBtnColor.map((carColor) => {
+      return (
+        <button>
+          <img src={carColor.url} alt="Solid Color" />
         </button>
-      ),
-      nextArrow: (
-        <button type="button" class="slick-prev">
-          <MaterialIcon icon="keyboard_arrow_right" size={45} />
+      );
+    });
+
+    const metalColor = metalBtnColor.map((carColor) => {
+      return (
+        <button>
+          <img src={carColor.url} alt="Metal Color" />
         </button>
-      ),
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    };
+      );
+    });
+
+    const interiorColor = interiorBtnColor.map((carColor) => {
+      return (
+        <button>
+          <img src={carColor.url} alt="Interior Skin Color" />
+        </button>
+      );
+    });
+
+    const { btnThumbDescExt, btnThumbDescInt } = this.state;
 
     return (
-      <div className="CarSection">
-        <a name="carDisplay1"></a>
+      <div
+        className="CarSection"
+        ref={(ref) => {
+          this.carCont = ref;
+        }}
+      >
+        <a name="carExterior"></a>
+        <CarDisplayWrapper
+          btnTabName={btnExteriorName}
+          imgUrl={imgUrlExterior}
+          btnThumbDescSolid={btnThumbDescExt.solid}
+          btnThumbDescMetal={btnThumbDescExt.metalic}
+          btnThumbColorSolid={solidColor}
+          btnThumbColorMetal={metalColor}
+        />
 
-        <div className="carDisplayWrapper">
-          <Slider {...settings}>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578400/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084333;BOE/Q4YG;INT/INT/94084365;BOE/Q4CS;BOE/Q136/INT/94084365;DUMMYOPTS/DOARM/94084328;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084329;DSH/DSHG/94084330;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q52J;BOE/Q407;BOE/Q275;FUS/Q410;MEC/Q110;MEC/Q5EM;CAL/Q4SU;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx7?config=background;shadow;CRPT/CRPT/94084217;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084297;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400;plates" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx3?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx5?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400" />
-            </div>
-          </Slider>
-          <div className="carOutlookTapCont">
-            <ul className="toolBar">
-              {btnName.map((itemName, idx) => {
-                return (
-                  <li
-                    role="button"
-                    className={
-                      this.state.activeBtnId === idx ? "btnClicked" : ""
-                    }
-                    // name={itemName}
-                    onClick={() => this.btnTabcolorChange(idx)}
-                  >
-                    {itemName}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="selectionsCont">
-            <div className="scrollSection">
-              <SubSelection />
-            </div>
-          </div>
-        </div>
-
-        <div className="carDisplayWrapper">
-          <Slider {...settings}>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578400/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084333;BOE/Q4YG;INT/INT/94084365;BOE/Q4CS;BOE/Q136/INT/94084365;DUMMYOPTS/DOARM/94084328;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084329;DSH/DSHG/94084330;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q52J;BOE/Q407;BOE/Q275;FUS/Q410;MEC/Q110;MEC/Q5EM;CAL/Q4SU;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx7?config=background;shadow;CRPT/CRPT/94084217;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084297;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400;plates" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx3?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400" />
-            </div>
-            <div>
-              <img src="https://ph.cloud.maserati.com/8578300/1280/c720/gfx5?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400" />
-            </div>
-          </Slider>
-          <div className="carOutlookTapCont">
-            <ul className="toolBar">
-              {btnInteriorName.map((itemName, idx) => {
-                return (
-                  <li
-                    role="button"
-                    className={
-                      this.state.activeBtnId === idx ? "btnClicked" : ""
-                    }
-                    name={itemName}
-                    onClick={() => this.btnTabcolorChange(idx)}
-                  >
-                    {itemName}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="selectionsCont">
-            <div className="scrollSection">
-              <SubSelection thisColor={this.state.btnNameTab} />
-            </div>
-          </div>
-        </div>
-
+        <a name="carInterior"></a>
+        <CarDisplayWrapper
+          btnTabName={btnInteriorName}
+          imgUrl={imgUrlInterior}
+          btnThumbDescInt={btnThumbDescInt}
+          btnThumbColorInt={interiorColor}
+        />
+        <a name="package"></a>
         <Package />
         <p>
           *참고: 국가에 따라 패키지 구성의 필수 패키지 또는 옵션 등이 상이할 수
           있습니다. 각 패키지의 가격은 다른 패키지나 옵션의 추가 및 삭제에 의해
           변동될 수 있습니다.
         </p>
-
+        <a name="carAcc"></a>
         <CarAcc />
       </div>
     );
