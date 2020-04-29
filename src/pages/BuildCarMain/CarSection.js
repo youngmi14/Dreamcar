@@ -47,7 +47,6 @@ class CarSection extends Component {
 
   scrollToSection = (tabId) => {
     let currentTop = this.carCont.getBoundingClientRect().y;
-    console.log("current currentTop: ", currentTop);
   };
 
   render() {
@@ -116,6 +115,7 @@ class CarSection extends Component {
           btnThumbDescMetal={btnThumbDescExt.metalic}
           btnThumbColorSolid={solidColor}
           btnThumbColorMetal={metalColor}
+          interiorColorData={[]}
         />
 
         <a name="carInterior"></a>
@@ -124,6 +124,7 @@ class CarSection extends Component {
           imgUrl={imgUrlInterior}
           btnThumbDescInt={btnThumbDescInt}
           btnThumbColorInt={interiorColor}
+          interiorColorData={interiorBtnColor}
         />
         <a name="package"></a>
         <Package />

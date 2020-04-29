@@ -47,7 +47,6 @@ class CarDisplayWrapper extends Component {
         this.setState({ activeSlide: newIndex });
       },
     };
-
     return (
       <div className="carDisplayWrapper">
         <Slider {...settings}>
@@ -98,7 +97,7 @@ class CarDisplayWrapper extends Component {
               btnThumbColorMetal={this.props.btnThumbColorMetal}
               btnThumbColorInt={this.props.btnThumbColorInt}
               btnThumbDescInt={this.props.btnThumbDescInt}
-              btnThumbColorInt={this.props.btnThumbColorInt}
+              interiorColorData={this.props.interiorColorData}
             />
           </div>
         </div>

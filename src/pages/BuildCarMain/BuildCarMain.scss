@@ -43,8 +43,6 @@
             cursor: pointer;
             color: #727272;
             letter-spacing: 0.05em;
-            //transform: scaleX(0);
-            //transform-origin: left;
           }
           .clicked {
             font-weight: bold;
@@ -54,7 +52,7 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: calc(100%);
+            width: 100%;
             height: 3px;
             background: #0b2749;
             transform: scaleX(0);
@@ -246,6 +244,18 @@
                         width: 100%;
                         border: 1px solid #ddd;
                       }
+                    }
+                  }
+
+                  .twoTone {
+                    font-size: 14px;
+                    height: 38px;
+                    width: auto;
+                    display: block;
+                    margin-right: 12px;
+                    div {
+                      font-family: Univers LT W02_47 Light Cond, sans-serif;
+                      margin-bottom: 7px;
                     }
                   }
                 }
