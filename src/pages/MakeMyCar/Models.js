@@ -1,25 +1,41 @@
 import React, { Component } from "react";
-import "./MakeMyCar.scss";
+import "./Models.scss";
 
 class Models extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tabColor: 0,
+    };
+  }
+
+  tabcolorChange = (idx) => {
+    this.setState({
+      tabColor: idx,
+    });
+  };
+
   render() {
+    const tabName = ["Ghibli", "Levante", "Quattroporte", "", ""];
+
     return (
       <div className="Models">
-        <div className="modelsubActive">
-          <div className="name">Ghibli</div>
-        </div>
-        <div className="modelUnhighlighted">
-          <div className="name">Levante</div>
-        </div>
-        <div className="modelUnhighlighted">
-          <div className="name">Quattroporte</div>
-        </div>
-        <div className="modelUnhighlighted">
-          <div className="name"></div>
-        </div>
-        <div className="modelUnhighlighted">
-          <div className="name"></div>
-        </div>
+        <ul className="modelsWrapper">
+          {tabName.map((name, idx) => {
+            return (
+              <li
+                onClick={() => this.tabcolorChange(idx)}
+                className={
+                  this.state.tabColor === idx
+                    ? "modelsubActive"
+                    : "modelUnhighlighted"
+                }
+              >
+                {name}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
