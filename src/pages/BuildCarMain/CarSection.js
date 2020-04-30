@@ -18,9 +18,12 @@ class CarSection extends Component {
         metalic: "메탈릭(METALLIC) 색상",
       },
       btnThumbDescInt: "가죽",
-      solidBtnColor: [],
-      metalBtnColor: [],
+      // solidBtnColor: [],
+      // metalBtnColor: [],
+      exteriorBtnColor: [],
       interiorBtnColor: [],
+      btnActiveInner: 0,
+      // metalActiveInner: 0,
     };
     this.carCont = React.createRef();
   }
@@ -33,11 +36,17 @@ class CarSection extends Component {
     fetch("http://localhost:3000/data/CarColorData.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          solidBtnColor: res.ExteriorSkinData.SolidColorData,
-          metalBtnColor: res.ExteriorSkinData.MetalColorData,
-          interiorBtnColor: res.InteriorSkinData,
-        });
+        console.log("ffffffffffffffffffff", res);
+        // this.setState(
+        //   {
+        //     exteriorBtnColor: res.ExteriorSkinData,
+        //     // metalBtnColor: res.ExteriorSkinData.MetalColorData,
+        //     interiorBtnColor: res.InteriorSkinData,
+        //   },
+        //   () => {
+        //     console.log("extBtnnnnn  :", this.state.exteriorBtnColor);
+        //   }
+        // );
       });
   };
 
@@ -46,12 +55,24 @@ class CarSection extends Component {
   }
 
   scrollToSection = (tabId) => {
-    let currentTop = this.carCont.getBoundingClientRect().y;
+    let currentTop = this.carCont.getBoundingClientRect();
     console.log("current currentTop: ", currentTop);
   };
 
+  btnActiveInner = (idx) => {
+    this.setState({
+      btnActiveInner: idx,
+    });
+  };
+
+  // metalActiveInner = (idx) => {
+  //   this.setState({
+  //     metalActiveInner: idx,
+  //   });
+  // };
+
   render() {
-    const { solidBtnColor, metalBtnColor, interiorBtnColor } = this.state;
+    const { exteriorBtnColor, interiorBtnColor } = this.state;
 
     const btnExteriorName = ["외관", "휠", "브레이크 클리퍼"];
     const btnInteriorName = [
@@ -75,21 +96,29 @@ class CarSection extends Component {
       "https://ph.cloud.maserati.com/8578300/1280/c720/gfx12?config=background;shadow;CRPT/CRPT/94084217;RUF/ROO1/94084297;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400",
     ];
 
-    const solidColor = solidBtnColor.map((carColor) => {
+    const exteriorColor = exteriorBtnColor.map((carColor, idx) => {
       return (
-        <button>
-          <img src={carColor.url} alt="Solid Color" />
+        <button
+          onClick={() => this.btnActiveInner(idx)}
+          className={this.state.btnActiveInner === idx ? "active" : ""}
+        >
+          <img src={carColor.url} alt="solid Color" />
+          <span className="iconName"></span>
         </button>
       );
     });
 
-    const metalColor = metalBtnColor.map((carColor) => {
-      return (
-        <button>
-          <img src={carColor.url} alt="Metal Color" />
-        </button>
-      );
-    });
+    // const metalColor = metalBtnColor.map((carColor, idx) => {
+    //   return (
+    //     <button
+    //       onClick={() => this.metalActiveInner(idx)}
+    //       className={this.state.metalActiveInner === idx ? "active" : ""}
+    //     >
+    //       <img src={carColor.url} alt="Metal Color" />
+    //       <span className="iconName"></span>
+    //     </button>
+    //   );
+    // });
 
     const interiorColor = interiorBtnColor.map((carColor) => {
       return (
@@ -114,8 +143,8 @@ class CarSection extends Component {
           imgUrl={imgUrlExterior}
           btnThumbDescSolid={btnThumbDescExt.solid}
           btnThumbDescMetal={btnThumbDescExt.metalic}
-          btnThumbColorSolid={solidColor}
-          btnThumbColorMetal={metalColor}
+          btnThumbColorExterior={exteriorColor}
+          // btnThumbColorMetal={metalColor}
         />
 
         <a name="carInterior"></a>

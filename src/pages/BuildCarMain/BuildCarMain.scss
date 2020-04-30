@@ -154,6 +154,7 @@
             height: 40px;
             display: flex;
             align-items: center;
+            border: 1px red solid;
             .toolBar {
               display: flex;
               align-items: center;
@@ -243,9 +244,35 @@
                       width: 48px;
                       height: 48px;
                       margin-right: 12px;
+                      position: relative;
+                      cursor: pointer;
+
                       img {
                         width: 100%;
                         border: 1px solid #ddd;
+                      }
+                    }
+
+                    .active {
+                      content: "";
+                      border: 4px solid #0b2749;
+                      width: 52px;
+                      height: 52px;
+                      opacity: 1;
+                      transform: translateX(0);
+
+                      .iconName:after {
+                        content: "";
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 0 34px 34px 0;
+                        border-color: transparent #0b2749 transparent
+                          transparent;
+                        position: absolute;
+                        filter: drop-shadow(-2px 2px 0 #fff);
+                        top: 0;
+                        right: 0;
                       }
                     }
                   }

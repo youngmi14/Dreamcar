@@ -94,8 +94,8 @@ class CarDisplayWrapper extends Component {
               btnThumbDescSolid={this.props.btnThumbDescSolid}
               btnThumbDescMetal={this.props.btnThumbDescMetal}
               btnThumbDescInt={this.props.btnThumbDescInt}
-              btnThumbColorSolid={this.props.btnThumbColorSolid}
-              btnThumbColorMetal={this.props.btnThumbColorMetal}
+              btnThumbColorExterior={this.props.btnThumbColorExterior}
+              // btnThumbColorMetal={this.props.btnThumbColorMetal}
               btnThumbColorInt={this.props.btnThumbColorInt}
               btnThumbDescInt={this.props.btnThumbDescInt}
               btnThumbColorInt={this.props.btnThumbColorInt}
