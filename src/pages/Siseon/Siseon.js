@@ -1,11 +1,26 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
+import Inputcom from "./Inputcom";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
 import "./Siseon.scss";
 
 class Siseon extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isFocus: false,
+      inputVal: "",
+    };
+  }
+
+  focus = (n) => {
+    this.setState({
+      isFocus: !this.state.isFocus,
+    });
+  };
+
   render() {
     return (
       <div className="Siseon">
@@ -16,37 +31,12 @@ class Siseon extends Component {
             <form className="formm">
               <div className="half">
                 <div className="question">개인 상세 정보</div>
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    이름
-                  </label>
-                </div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    성
-                  </label>
-                </div>
+                <Inputcom star="*" valueV="이름" />
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    생년월일
-                  </label>
-                </div>
+                <Inputcom star="*" valueV="생년월일" />
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    휴대폰
-                  </label>
-                </div>
+                <Inputcom star="*" valueV="휴대폰" />
 
                 <div className="row">
                   <div className="require">*</div>
@@ -70,44 +60,32 @@ class Siseon extends Component {
                     <option value="충청남도">충청남도</option>
                     <option value="충청북도">충청북도</option>
                   </select>
-                  <label for="firstname" className="ani">
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     주소(시)
-                  </label>
+                  </div>
                 </div>
+
+                <Inputcom star="*" valueV="주소(구, 동)" />
+
+                <Inputcom star="*" valueV="이메일" />
 
                 <div className="row">
                   <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    주소(구,동)
-                  </label>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    이메일
-                  </label>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="5">
+                  <select className="beautify" type="text" id="8">
                     <option value=""></option>
                     <option value="남자">남자</option>
                     <option value="여자">여자</option>
                   </select>
-                  <label for="firstname" className="ani">
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     성별
-                  </label>
+                  </div>
                 </div>
 
                 <div className="question">시승신청</div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select className="beautify" type="text">
+                  <select className="beautify" type="text" id="9">
                     <option value=""></option>
                     <option value="Seoul (FMK CPO)">Seoul (FMK CPO)</option>
                     <option value="서울 (강남 전시장)">
@@ -138,14 +116,14 @@ class Siseon extends Component {
                       서울 (한남 전시장/서비스센터)
                     </option>
                   </select>
-                  <label for="firstname" className="ani">
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     가까운 전시장
-                  </label>
+                  </div>
                 </div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select className="beautify" type="text">
+                  <select className="beautify" type="text" id="10">
                     <option value=""></option>
                     <option value="0-3개월">0-3개월</option>
                     <option value="4-6개월">4-6개월</option>
@@ -153,14 +131,14 @@ class Siseon extends Component {
                     <option value="12개월 이후">12개월 이후</option>
                     <option value="계획없음">계획없음</option>
                   </select>
-                  <label for="firstname" className="ani">
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     신차구입 예정시기
-                  </label>
+                  </div>
                 </div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select className="beautify" type="text">
+                  <select className="beautify" type="text" id="11">
                     <option value=""></option>
                     <option value="그란카브리오 스포츠">
                       그란카브리오 스포츠
@@ -180,53 +158,51 @@ class Siseon extends Component {
                     <option value="콰트로포르테 S Q4">콰트로포르테 S Q4</option>
                     <option value="콰트로포르테 디젤">콰트로포르테 디젤</option>
                   </select>
-                  <label for="firstname" className="ani">
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     기블리
-                  </label>
+                  </div>
                 </div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
-                    문의사항 및 기타 의견
-                  </label>
-                </div>
+                <Inputcom star="" valueV="문의 및 기타 의견" />
 
                 <div className="question">현재 보유 차종</div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <input className="beautify" type="text" id="5"></input>
-                  <label for="firstname" className="ani">
+                  <input className="beautify" type="text" id="13"></input>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     브랜드-모델
-                  </label>
+                  </div>
                 </div>
-              </div>
 
-              <div className="full">
-                <div className="asy">
-                  <div className="question">개인정보보호 양식</div>
-                  <div className="privacy">
-                    <p className="priCommon">
-                      본인은 마세라티의{" "}
-                      <span className="tos">개인정보 양식</span> 읽고
-                      이해하였으며,
-                    </p>
-                  </div>
-                  <div className="rowPri">
-                    <div className="requireNot"></div>
-                    <div className="priChk">
-                      <input type="checkbox" className="checkbox"></input>
-                      <label for="" className="checkbowRight">
-                        개인정보 취급방침의 제3항에서 정한 마케팅 목적으로
-                        본인의 개인정보를 처리하는 데 동의합니다. 연락 채널{" "}
-                        <span className="channelT">여기를 클릭하십시오</span> 에
-                        대한 승인을 부분적으로 선택하려는 경우,
-                      </label>
+                <div className="full">
+                  <div className="asy">
+                    <div className="question">개인정보보호 양식</div>
+                    <div className="privacy">
+                      <p className="priCommon">
+                        본인은 마세라티의{" "}
+                        <span className="tos">개인정보 양식</span> 읽고
+                        이해하였으며,
+                      </p>
                     </div>
+                    <div className="rowPri">
+                      <div className="requireNot"></div>
+                      <div className="priChk">
+                        <input
+                          type="checkbox"
+                          className="checkbox"
+                          id="checkBox"
+                        ></input>
+                        <label for="checkBox" className="checkbowRight">
+                          개인정보 취급방침의 제3항에서 정한 마케팅 목적으로
+                          본인의 개인정보를 처리하는 데 동의합니다. 연락 채널{" "}
+                          <span className="channelT">여기를 클릭하십시오</span>{" "}
+                          에 대한 승인을 부분적으로 선택하려는 경우,
+                        </label>
+                      </div>
+                    </div>
+                    <div className="rowPripro"></div>
                   </div>
-                  <div className="rowPripro"></div>
                 </div>
               </div>
             </form>

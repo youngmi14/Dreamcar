@@ -1,0 +1,48 @@
+@import "../../styles/common.scss";
+
+.modelsWrapper {
+  display: flex;
+  background-color: #f2f1f0;
+  text-align: center;
+  .modelsubActive {
+    padding: 20px 0 30px;
+    margin-right: 6px;
+    cursor: pointer;
+    background-color: #fff;
+    width: 20%;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: #333;
+    font-family: $g-font-style;
+  }
+  .modelUnhighlighted {
+    background: linear-gradient(#fff, #f2f1f0);
+    padding: 20px 0 30px;
+    margin-right: 6px;
+    cursor: pointer;
+    background-color: #fff;
+    width: 20%;
+    opacity: 0.5;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    color: #333;
+    font-family: $g-font-style;
+
+    &:hover {
+      background: linear-gradient(#fff, #fff);
+      cursor: pointer;
+      background-color: #fff;
+      width: 20%;
+      opacity: 1;
+      transition: opacity 0.7s;
+
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      color: #333;
+      font-family: $g-font-style;
+    }
+  }
+}
