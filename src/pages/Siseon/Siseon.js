@@ -169,13 +169,7 @@ class Siseon extends Component {
 
                 <div className="question">현재 보유 차종</div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input className="beautify" type="text" id="13"></input>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    브랜드-모델
-                  </div>
-                </div>
+                <Inputcom star="*" valueV="브랜드-모델" />
 
                 <div className="full">
                   <div className="asy">

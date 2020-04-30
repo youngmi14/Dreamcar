@@ -85,6 +85,21 @@
           transition: all 0.06s ease;
           pointer-events: none;
         }
+
+        .beautifyRed {
+          width: calc(100% - 2pc);
+          color: #333;
+          font-size: 1pc;
+          display: inline-block;
+          line-height: 1.5;
+          border: 1px solid #c10202;
+          box-sizing: border-box;
+          border-radius: 2px;
+          padding: 10px 20px;
+          background-color: #fff;
+          box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.05);
+          height: 42px;
+        }
       }
     }
   }
@@ -189,5 +204,14 @@
         cursor: pointer;
       }
     }
+  }
+}
+
+.rowPripro {
+  margin-top: 100px;
+  p {
+    font-family: $g-font-style;
+    font-size: 16px;
+    color: #444444;
   }
 }
