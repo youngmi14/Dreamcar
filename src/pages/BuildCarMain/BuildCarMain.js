@@ -4,6 +4,7 @@ import CarSection from "./CarSection";
 import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
 import "./BuildCarMain.scss";
+import MaterialIcon, { colorPalette } from "material-icons-react";
 
 class BuildCarMain extends Component {
   constructor(props) {
@@ -12,16 +13,17 @@ class BuildCarMain extends Component {
       hrefLink: "#",
       tabId: 0,
       navStylerStyle: "",
+      isNotOpen: true,
     };
-    this.buildcarMainCont = React.createRef();
+    this.carCont = React.createRef();
     this.href = React.createRef();
   }
 
   componentDidMount() {
     window.addEventListener(
       "scroll",
-      () => {
-        this.navStyler();
+      (e) => {
+        this.navStyler(e);
       },
       true
     );
@@ -30,13 +32,26 @@ class BuildCarMain extends Component {
   componentWillUnmount() {
     window.removeEventListener(
       "scroll",
-      this.buildcarMainCont.current.carCont.scrollToSection
+      this.carCont.current.carCont.scrollToSection
     );
   }
 
-  navStyler = () => {
+  modalContShowing = () => {
+    console.log("모달호출ㄹㄹㄹ");
+    this.setState({
+      isNotOpen: false,
+    });
+  };
+
+  modalClose = () => {
+    this.setState({
+      isNotOpen: true,
+    });
+  };
+
+  navStyler = (e) => {
+    e.preventDefault();
     const lastScrollY = window.scrollY;
-    //console.log("current ScrollY: ", lastScrollY);
     if (lastScrollY >= 0 && lastScrollY < 840) {
       this.setState({
         tabId: 1,
@@ -75,10 +90,6 @@ class BuildCarMain extends Component {
 
     switch (id) {
       case 1:
-        this.setState({
-          hrefLink: "#carExterior",
-        });
-
         window.scroll({
           top: 0,
           left: 0,
@@ -86,10 +97,6 @@ class BuildCarMain extends Component {
         });
         break;
       case 2:
-        this.setState({
-          hrefLink: "#carInterior",
-        });
-
         window.scroll({
           top: 840,
           left: 0,
@@ -97,10 +104,6 @@ class BuildCarMain extends Component {
         });
         break;
       case 3:
-        this.setState({
-          hrefLink: "#package",
-        });
-
         window.scroll({
           top: 1660,
           left: 0,
@@ -108,9 +111,6 @@ class BuildCarMain extends Component {
         });
         break;
       case 4:
-        this.setState({
-          hrefLink: "#carAcc",
-        });
         window.scroll({
           top: 2240,
           left: 0,
@@ -118,10 +118,6 @@ class BuildCarMain extends Component {
         });
         break;
       case 5:
-        this.setState({
-          hrefLink: "#carAcc",
-        });
-
         window.scroll({
           top: 2240,
           left: 0,
@@ -136,13 +132,13 @@ class BuildCarMain extends Component {
     this.props.history.push("/sum");
   };
 
-  mouseLeaveHandler = (e, msg) => {
-    e.preventDefault();
+  // mouseLeaveHandler = (e, msg) => {
+  //   e.preventDefault();
 
-    this.setState({
-      tabId: msg,
-    });
-  };
+  //   this.setState({
+  //     tabId: msg,
+  //   });
+  // };
 
   render() {
     const tabNameList = [
@@ -164,19 +160,15 @@ class BuildCarMain extends Component {
             <ul className="tabList">
               {tabNameList.map((item, idx) => {
                 return (
-                  <li
-                    name={item}
-                    onMouseOut={this.mouseLeaveHandler}
-                    onClick={this.scrollToSection}
-                  >
+                  <li name={item} onMouseOut={this.mouseLeaveHandler}>
                     <a
                       href={this.state.hrefLink}
                       className={this.state.tabId === idx ? "clicked" : ""}
-                      onScroll={this.navStyler}
+                      onScroll={(e) => this.navStyler(e)}
                       onClick={(e) => this.navMoveHandler(e, idx)}
-                      onMouseOut={(e) =>
-                        this.mouseLeaveHandler(e, "notClicked")
-                      }
+                      // onMouseOut={(e) =>
+                      //   this.mouseLeaveHandler(e, "notClicked")
+                      // }
                     >
                       {item}
                     </a>
@@ -192,12 +184,40 @@ class BuildCarMain extends Component {
           </nav>
 
           <section className="mainView">
+            <div
+              className="modalCont"
+              style={
+                this.state.isNotOpen
+                  ? { visibility: "hidden" }
+                  : { visibility: "visible" }
+              }
+            >
+              <MaterialIcon icon="close" size={55} onClick={this.modalClose} />
+              <div className="modalOuter">
+                <div className="modalInner">
+                  <div className="modalHeader">
+                    <h2>내 차고- 저장/ 로딩</h2>
+                  </div>
+                </div>
+                <div className="dialogueBody">
+                  <div className="headerBody">
+                    <ul>
+                      <li>구성 저장하기</li>
+                      <li>기존 구성 열기</li>
+                    </ul>
+                  </div>
+                  <div className="detailsBody">
+                    <form></form>
+                  </div>
+                </div>
+              </div>
+            </div>
             <CarSection
               scrollToSection={this.scrollToSection}
-              ref={this.buildcarMainCont}
+              ref={this.carCont}
               tabId={this.state.tabId}
             />
-            <CarSummary />
+            <CarSummary onClickHandler={this.modalContShowing} />
           </section>
         </section>
       </div>
