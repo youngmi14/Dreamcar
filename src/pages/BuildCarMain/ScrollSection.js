@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CarWheelTab from "./CarWheelTab";
 
 class ScrollSection extends Component {
   constructor(props) {
@@ -6,36 +7,47 @@ class ScrollSection extends Component {
   }
 
   render() {
-    // const { colorExterior } = this.props;
-    // console.log(colorExterior);
+    const { colorExterior } = this.props;
+    // console.log(colorExterior[0]);
 
-    // const solid = colorExterior.filter(item, idx, (arr) => arr.length <= 1);
-    // const metal = colorExterior.filter(item, idx, (arr) => arr.length >= 1);
+    const solid = colorExterior.filter((item, idx, arr) => {
+      return idx < 2;
+    });
 
-    return (
+    const metal = colorExterior.filter((item, idx, arr) => {
+      return idx > 2;
+    });
+    console.log(metal);
+
+    const { activeBtnId } = this.props;
+    console.log("fdsfdsfdsfdfdsfdsf", activeBtnId);
+
+    const wontRenderedCp = (
       <>
         <div className="scrollSection">
           <div className="subSelection">
             <h5 className="sectionTitle">{this.props.stringValSolid}</h5>
             <div className="innerSection">
-              {/* {solid.map((solidIt) => {
-                <div className="colorPalette">{solidIt}</div>;
-              })} */}
-              <div className="colorPalette">{this.props.colorExterior}</div>
+              {solid.map((solidItem) => {
+                return <div className="colorPalette">{solidItem}</div>;
+              })}
             </div>
           </div>
         </div>
-
-        {/* <div className="scrollSection">
+        <div className="scrollSection">
           <div className="subSelection">
             <h5 className="sectionTitle">{this.props.stringValMetal}</h5>
             <div className="innerSection">
-              <div className="colorPalette">{this.props.colorExterior}</div>
+              {metal.map((metalItem) => {
+                return <div className="colorPalette">{metalItem}</div>;
+              })}
             </div>
           </div>
-        </div> */}
+        </div>
       </>
     );
+
+    return !activeBtnId && wontRenderedCp;
   }
 }
 

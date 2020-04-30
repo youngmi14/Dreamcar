@@ -18,12 +18,9 @@ class CarSection extends Component {
         metalic: "메탈릭(METALLIC) 색상",
       },
       btnThumbDescInt: "가죽",
-      // solidBtnColor: [],
-      // metalBtnColor: [],
       exteriorBtnColor: [],
       interiorBtnColor: [],
       btnActiveInner: 0,
-      // metalActiveInner: 0,
     };
     this.carCont = React.createRef();
   }
@@ -36,17 +33,11 @@ class CarSection extends Component {
     fetch("http://localhost:3000/data/CarColorData.json")
       .then((res) => res.json())
       .then((res) => {
-        console.log("ffffffffffffffffffff", res);
-        // this.setState(
-        //   {
-        //     exteriorBtnColor: res.ExteriorSkinData,
-        //     // metalBtnColor: res.ExteriorSkinData.MetalColorData,
-        //     interiorBtnColor: res.InteriorSkinData,
-        //   },
-        //   () => {
-        //     console.log("extBtnnnnn  :", this.state.exteriorBtnColor);
-        //   }
-        // );
+        console.log("getData response : ", res);
+        this.setState({
+          exteriorBtnColor: res.ExteriorSkinData,
+          interiorBtnColor: res.InteriorSkinData,
+        });
       });
   };
 
@@ -64,12 +55,6 @@ class CarSection extends Component {
       btnActiveInner: idx,
     });
   };
-
-  // metalActiveInner = (idx) => {
-  //   this.setState({
-  //     metalActiveInner: idx,
-  //   });
-  // };
 
   render() {
     const { exteriorBtnColor, interiorBtnColor } = this.state;
@@ -108,18 +93,6 @@ class CarSection extends Component {
       );
     });
 
-    // const metalColor = metalBtnColor.map((carColor, idx) => {
-    //   return (
-    //     <button
-    //       onClick={() => this.metalActiveInner(idx)}
-    //       className={this.state.metalActiveInner === idx ? "active" : ""}
-    //     >
-    //       <img src={carColor.url} alt="Metal Color" />
-    //       <span className="iconName"></span>
-    //     </button>
-    //   );
-    // });
-
     const interiorColor = interiorBtnColor.map((carColor) => {
       return (
         <button>
@@ -144,9 +117,7 @@ class CarSection extends Component {
           btnThumbDescSolid={btnThumbDescExt.solid}
           btnThumbDescMetal={btnThumbDescExt.metalic}
           btnThumbColorExterior={exteriorColor}
-          // btnThumbColorMetal={metalColor}
         />
-
         <a name="carInterior"></a>
         <CarDisplayWrapper
           btnTabName={btnInteriorName}
@@ -161,7 +132,7 @@ class CarSection extends Component {
           있습니다. 각 패키지의 가격은 다른 패키지나 옵션의 추가 및 삭제에 의해
           변동될 수 있습니다.
         </p>
-        <a name="carAcc"></a>
+        <a name="carAcc"></a>6
         <CarAcc />
       </div>
     );

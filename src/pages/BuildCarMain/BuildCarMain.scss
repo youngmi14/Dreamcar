@@ -481,3 +481,17 @@
     }
   }
 }
+
+.CarWheelTab {
+  .CarWheelTabBox {
+    float: left;
+    margin-right: 12px;
+    line-height: 1;
+    .wheelList {
+      // display: inline-block;
+      .li {
+        display: inline-block;
+      }
+    }
+  }
+}

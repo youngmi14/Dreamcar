@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ColorPalette from "./ScrollSection";
 import ScrollSection from "./ScrollSection";
+import CarWheelTab from "./CarWheelTab";
+import CarBreak from "./CarBreak";
 
 class SubSelection extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class SubSelection extends Component {
 
   render() {
     const { activeBtnId } = this.props;
+    console.log("activeButtonId    :", activeBtnId);
 
     return (
       <>
@@ -21,9 +24,9 @@ class SubSelection extends Component {
             stringValSolid={this.props.btnThumbDescSolid}
             stringValMetal={this.props.btnThumbDescMetal}
             colorExterior={this.props.btnThumbColorExterior}
-            // colorMetal={this.props.btnThumbColorMetal}
             stringValInt={this.props.btnThumbDescInt}
             colorInt={this.props.btnThumbColorInt}
+            activeBtnId={this.props.activeBtnId}
           />
         )}
         {this.props.btnThumbDescInt && (
@@ -38,6 +41,8 @@ class SubSelection extends Component {
             </div>
           </div>
         )}
+        {this.props.activeBtnId === 1 && <CarWheelTab />}
+        {this.props.activeBtnId === 2 && <CarBreak />}
       </>
     );
   }

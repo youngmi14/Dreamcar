@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SubSelection from "./SubSelection";
 import Slider from "react-slick";
+import CarWheelTab from "./CarWheelTab";
 
 class CarDisplayWrapper extends Component {
   constructor(props) {
@@ -90,16 +91,26 @@ class CarDisplayWrapper extends Component {
         <div className="selectionsCont">
           <div className="scrollSection">
             <SubSelection
-              activeBtnId={this.props.activeBtnId}
+              activeBtnId={this.state.activeBtnId}
               btnThumbDescSolid={this.props.btnThumbDescSolid}
               btnThumbDescMetal={this.props.btnThumbDescMetal}
               btnThumbDescInt={this.props.btnThumbDescInt}
               btnThumbColorExterior={this.props.btnThumbColorExterior}
-              // btnThumbColorMetal={this.props.btnThumbColorMetal}
               btnThumbColorInt={this.props.btnThumbColorInt}
               btnThumbDescInt={this.props.btnThumbDescInt}
               btnThumbColorInt={this.props.btnThumbColorInt}
             />
+            {/* <SubSelection
+              activeBtnId={this.state.activeBtnId}
+              btnThumbDescSolid={this.props.btnThumbDescSolid}
+              btnThumbDescMetal={this.props.btnThumbDescMetal}
+              btnThumbDescInt={this.props.btnThumbDescInt}
+              btnThumbColorExterior={this.props.btnThumbColorExterior}
+              btnThumbColorInt={this.props.btnThumbColorInt}
+              btnThumbDescInt={this.props.btnThumbDescInt}
+              btnThumbColorInt={this.props.btnThumbColorInt}
+            /> */}
+            {/* {this.state.activeBtnId === 1 && <CarWheelTab />} */}
           </div>
         </div>
       </div>
