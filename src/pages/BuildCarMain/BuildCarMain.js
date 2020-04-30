@@ -132,6 +132,8 @@ class BuildCarMain extends Component {
       default:
         break;
     }
+
+    this.props.history.push("/sum");
   };
 
   mouseLeaveHandler = (e, msg) => {

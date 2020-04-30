@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
+import Inputcom from "./Inputcom";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
 import "./Siseon.scss";
@@ -9,30 +10,14 @@ class Siseon extends Component {
   constructor() {
     super();
     this.state = {
-      isFocus: [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-      ],
+      isFocus: false,
       inputVal: "",
     };
   }
 
   focus = (n) => {
-    const change = [...this.state.isFocus];
-    change[n] = !change[n];
     this.setState({
-      isFocus: [...change],
+      isFocus: !this.state.isFocus,
     });
   };
 
@@ -46,75 +31,16 @@ class Siseon extends Component {
             <form className="formm">
               <div className="half">
                 <div className="question">개인 상세 정보</div>
-                <div className="row">
-                  <div className="require">*</div>
-                  <input
-                    onFocus={() => {
-                      this.focus(0);
-                    }}
-                    onBlur={() => {
-                      this.focus(0);
-                    }}
-                    className="beautify"
-                    type="text"
-                    id="1"
-                  ></input>
-                  <div className={`text${this.state.isFocus[0] ? "up" : ""}`}>
-                    이름
-                  </div>
-                </div>
+
+                <Inputcom star="*" valueV="이름" />
+
+                <Inputcom star="*" valueV="생년월일" />
+
+                <Inputcom star="*" valueV="휴대폰" />
 
                 <div className="row">
                   <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(1)}
-                    onBlur={this.focus(1)}
-                    className="beautify"
-                    type="text"
-                    id="2"
-                  ></input>
-                  <div className={`text${this.state.isFocus[1] ? "up" : ""}`}>
-                    성
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(2)}
-                    onBlur={this.focus(2)}
-                    className="beautify"
-                    type="text"
-                    id="3"
-                  ></input>
-                  <div className={`text${this.state.isFocus[2] ? "up" : ""}`}>
-                    생년월일
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(3)}
-                    onBlur={this.focus(3)}
-                    className="beautify"
-                    type="text"
-                    id="4"
-                  ></input>
-                  <div className={`text${this.state.isFocus[3] ? "up" : ""}`}>
-                    휴대폰
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <select
-                    onFocus={this.focus(4)}
-                    onBlur={this.focus(4)}
-                    className="beautify"
-                    type="text"
-                    id="5"
-                  >
+                  <select className="beautify" type="text" id="5">
                     <option value=""></option>
                     <option value="강원도">강원도</option>
                     <option value="경기도">경기도</option>
@@ -134,53 +60,23 @@ class Siseon extends Component {
                     <option value="충청남도">충청남도</option>
                     <option value="충청북도">충청북도</option>
                   </select>
-                  <div className={`text${this.state.isFocus[4] ? "up" : ""}`}>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     주소(시)
                   </div>
                 </div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(5)}
-                    onBlur={this.focus(5)}
-                    className="beautify"
-                    type="text"
-                    id="6"
-                  ></input>
-                  <div className={`text${this.state.isFocus[5] ? "up" : ""}`}>
-                    주소(구,동)
-                  </div>
-                </div>
+                <Inputcom star="*" valueV="주소(구, 동)" />
+
+                <Inputcom star="*" valueV="이메일" />
 
                 <div className="row">
                   <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(6)}
-                    onBlur={this.focus(6)}
-                    className="beautify"
-                    type="text"
-                    id="7"
-                  ></input>
-                  <div className={`text${this.state.isFocus[6] ? "up" : ""}`}>
-                    이메일
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="require">*</div>
-                  <select
-                    onFocus={this.focus(7)}
-                    onBlur={this.focus(7)}
-                    className="beautify"
-                    type="text"
-                    id="8"
-                  >
+                  <select className="beautify" type="text" id="8">
                     <option value=""></option>
                     <option value="남자">남자</option>
                     <option value="여자">여자</option>
                   </select>
-                  <div className={`text${this.state.isFocus[7] ? "up" : ""}`}>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     성별
                   </div>
                 </div>
@@ -189,13 +85,7 @@ class Siseon extends Component {
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select
-                    onFocus={this.focus(8)}
-                    onBlur={this.focus(8)}
-                    className="beautify"
-                    type="text"
-                    id="9"
-                  >
+                  <select className="beautify" type="text" id="9">
                     <option value=""></option>
                     <option value="Seoul (FMK CPO)">Seoul (FMK CPO)</option>
                     <option value="서울 (강남 전시장)">
@@ -226,20 +116,14 @@ class Siseon extends Component {
                       서울 (한남 전시장/서비스센터)
                     </option>
                   </select>
-                  <div className={`text${this.state.isFocus[8] ? "up" : ""}`}>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     가까운 전시장
                   </div>
                 </div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select
-                    onFocus={this.focus(9)}
-                    onBlur={this.focus(9)}
-                    className="beautify"
-                    type="text"
-                    id="10"
-                  >
+                  <select className="beautify" type="text" id="10">
                     <option value=""></option>
                     <option value="0-3개월">0-3개월</option>
                     <option value="4-6개월">4-6개월</option>
@@ -247,20 +131,14 @@ class Siseon extends Component {
                     <option value="12개월 이후">12개월 이후</option>
                     <option value="계획없음">계획없음</option>
                   </select>
-                  <div className={`text${this.state.isFocus[9] ? "up" : ""}`}>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     신차구입 예정시기
                   </div>
                 </div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <select
-                    onFocus={this.focus(10)}
-                    onBlur={this.focus(10)}
-                    className="beautify"
-                    type="text"
-                    id="11"
-                  >
+                  <select className="beautify" type="text" id="11">
                     <option value=""></option>
                     <option value="그란카브리오 스포츠">
                       그란카브리오 스포츠
@@ -280,37 +158,19 @@ class Siseon extends Component {
                     <option value="콰트로포르테 S Q4">콰트로포르테 S Q4</option>
                     <option value="콰트로포르테 디젤">콰트로포르테 디젤</option>
                   </select>
-                  <div className={`text${this.state.isFocus[10] ? "up" : ""}`}>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     기블리
                   </div>
                 </div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(11)}
-                    onBlur={this.focus(11)}
-                    className="beautify"
-                    type="text"
-                    id="12"
-                  ></input>
-                  <div className={`text${this.state.isFocus[11] ? "up" : ""}`}>
-                    문의사항 및 기타 의견
-                  </div>
-                </div>
+                <Inputcom star="" valueV="문의 및 기타 의견" />
 
                 <div className="question">현재 보유 차종</div>
 
                 <div className="row">
                   <div className="require">*</div>
-                  <input
-                    onFocus={this.focus(12)}
-                    onBlur={this.focus(12)}
-                    className="beautify"
-                    type="text"
-                    id="13"
-                  ></input>
-                  <div className={`text${this.state.isFocus[12] ? "up" : ""}`}>
+                  <input className="beautify" type="text" id="13"></input>
+                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
                     브랜드-모델
                   </div>
                 </div>

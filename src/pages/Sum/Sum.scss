@@ -3,6 +3,7 @@
 .Sum {
   display: flex;
   flex-direction: column;
+  font-family: $g-font-style;
 
   .summayHero {
     display: flex;
@@ -62,14 +63,73 @@
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 48px;
+  }
 
-    .trclass {
-      display: table-row;
-      .titleth {
-        font-size: 20px;
-        padding-bottom: 12px;
-        font-weight: 600;
+  .tablewidth {
+    width: 100%;
+    margin-bottom: 60px;
+    .titleth {
+      display: flex;
+      justify-content: space-between;
+      .bbtom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        span {
+          font-size: 16px;
+          color: #0b2749;
+          margin-right: 6px;
+          font-family: $g-font-style;
+          font-weight: 100;
+        }
+        .img {
+          width: 18px;
+          height: 10px;
+        }
       }
+    }
+  }
+
+  .trclass {
+    display: table-row;
+    .titleth {
+      font-size: 20px;
+      padding-bottom: 12px;
+      font-weight: 600;
+      text-align: left;
+      color: #404040;
+    }
+  }
+  .balconi {
+    border-bottom: 1px solid #ccc;
+    height: 48px;
+    display: table-row;
+    text-align: left;
+    color: #636363;
+    .item {
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      width: 33.333%;
+      padding: 12px 0;
+      display: table-cell;
+      line-height: 24px;
+    }
+    .des {
+      display: table-cell;
+      line-height: 24px;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      width: 33.333%;
+      padding: 12px 0;
+    }
+    .price {
+      display: table-cell;
+      line-height: 24px;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      width: 33.333%;
+      padding: 12px 0;
     }
   }
 }

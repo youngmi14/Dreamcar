@@ -4,6 +4,7 @@ import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
 import "./Sum.scss";
 import "../BuildCarMain/BuildCarMain.scss";
+import see from "../../images/NavArrowDown.jpg";
 
 class Sum extends Component {
   constructor(props) {
@@ -12,10 +13,46 @@ class Sum extends Component {
       hrefLink: "#",
       tabId: 6,
       navStylerStyle: "",
+      //pluscheckbox: false,
+      //look: { look: "Bianco", break: "Grigio", wheel: '19" Proteo' },
+
+      exterior: [],
+      interior: [],
+      // {
+      //   sheet: "Nero",
+      //   capet: "Nero",
+      //   dashboad: "Nero",
+      //   head: "Grigio",
+      //   trim: "Radica",
+      // },
     };
     this.buildcarMainCont = React.createRef();
     this.href = React.createRef();
   }
+
+  //   clickmodel = () => {
+  //     this.setState({ pluscheckbox: !this.state.pluscheckbox });
+  //   };
+  //버튼클릭하면 안보이던 모달 보임 스테잇에서 false로 해두고 클릭하면 !this.state.00으로 해두자
+
+  componentDidMount() {
+    // fetch("http://10.58.1.38:8000/car/summary", {
+    //   method: "GET",
+    //   body: JSON.stringify({
+    //     mvl: 1,
+    //     exterior: 1,
+    //     wheel: 1,
+    //     caliper: 1,
+    //     seat: 1,
+    //     dashboard: 1,
+    //     carpet: 1,
+    //     steering: 1,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => console.log("hello: ", res));
+  }
+
   render() {
     const tabNameList = [
       "Lines",
@@ -78,17 +115,104 @@ class Sum extends Component {
             <div className="summayBottom">
               <div className="bottomLeft">
                 <h1 className="title">Ghibli</h1>
-                <table>
+                <table className="tablewidth">
                   <thead>
                     <tr className="trclass">
                       <th className="titleth">외관</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr></tr>
+                  <tbody className="tbody">
+                    <tr className="balconi">
+                      <td className="item">외관</td>
+                      <td className="des">Balconi</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">브레이크 캘리퍼</td>
+                      <td className="des"> Grigio</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">휠</td>
+                      <td className="des"> 19'' Proteo</td>
+                      <td className="price"></td>
+                    </tr>
                   </tbody>
+                </table>
+
+                <table className="tablewidth">
+                  <thead>
+                    <tr className="trclass">
+                      <th className="titleth">실내</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tbody">
+                    <tr className="balconi">
+                      <td className="item">시트</td>
+                      <td className="des">Nero</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">카펫</td>
+                      <td className="des">Nero</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">대시보드</td>
+                      <td className="des">Nero</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">헤드라이닝</td>
+                      <td className="des">Grigio</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">스티어링 휠</td>
+                      <td className="des">Nero</td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">트림</td>
+                      <td className="des"> Radica</td>
+                      <td className="price"></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table className="tablewidth">
+                  <thead>
+                    <tr className="trclass">
+                      <th className="titleth">옵션</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tbody">
+                    <tr className="balconi">
+                      <td className="item">투톤 가죽 인테리어</td>
+                      <td className="des"></td>
+                      <td className="price"></td>
+                    </tr>
+                    <tr className="balconi">
+                      <td className="item">
+                        우드 인서트와 함께 가죽으로 덮인 스티어링 휠
+                      </td>
+                      <td className="des"></td>
+                      <td className="price"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="tablewidth">
+                  <thead>
+                    <tr className="trclass">
+                      <th className="titleth">
+                        <td>기술 제원</td>
+                        <td className="bbtom" onClick={this.clickmodel}>
+                          <span>보기</span>
+                          <img src={see} className="img" />
+                        </td>
+                      </th>
+                    </tr>
+                  </thead>
                 </table>
               </div>
               <div className="bottomRight">
