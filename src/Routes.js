@@ -5,6 +5,7 @@ import BuildCarMain from "./pages/BuildCarMain/BuildCarMain";
 import MakeMyCar from "./pages/MakeMyCar/MakeMyCar";
 import Choosecar from "./pages/ChooseCar/Choosecar";
 import Siseon from "./pages/Siseon/Siseon";
+import Sum from "./pages/Sum/Sum";
 
 class Routes extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class Routes extends React.Component {
           <Route exact path="/makemycar" component={MakeMyCar} />
           <Route exact path="/choosecar" component={Choosecar} />
           <Route exact path="/siseon" component={Siseon} />
+          <Route exact path="/sum" component={Sum} />
         </Switch>
       </Router>
     );

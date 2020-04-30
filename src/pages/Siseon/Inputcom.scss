@@ -1,0 +1,60 @@
+@import "../../styles/common.scss";
+
+.row {
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+  clear: both;
+  margin-bottom: 30px;
+  position: relative;
+  .require {
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: #c10202;
+    width: 20px;
+    margin: 6px;
+    display: inline-block;
+    text-align: center;
+  }
+  .beautify {
+    width: calc(100% - 2pc);
+    color: #333;
+    font-size: 1pc;
+    display: inline-block;
+    line-height: 1.5;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.05);
+    height: 42px;
+
+    &:focus {
+      outline: 3px solid #000;
+      outline-color: #6495ed;
+    }
+  }
+
+  .textup {
+    //focus 내부글
+    top: -20px;
+    position: absolute;
+    font-size: small;
+    left: 2pc;
+    transition: all 0.06s ease;
+  }
+
+  .text {
+    //notfocus 내부글
+    position: absolute;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1.5;
+    left: 43.33333px;
+    top: 9pt;
+    transition: all 0.06s ease;
+    pointer-events: none;
+  }
+}

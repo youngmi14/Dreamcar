@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import CarSection from "./CarSection";
 import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
+import Inputcom from "../Siseon/Inputcom";
 import "./BuildCarMain.scss";
 import MaterialIcon, { colorPalette } from "material-icons-react";
 
@@ -37,7 +38,6 @@ class BuildCarMain extends Component {
   }
 
   modalContShowing = () => {
-    console.log("모달호출ㄹㄹㄹ");
     this.setState({
       isNotOpen: false,
     });
@@ -128,6 +128,8 @@ class BuildCarMain extends Component {
       default:
         break;
     }
+
+    this.props.history.push("/sum");
   };
 
   // mouseLeaveHandler = (e, msg) => {
@@ -149,6 +151,8 @@ class BuildCarMain extends Component {
       "요약",
     ];
 
+    console.log("this.props.location.pathname", this.props.location.pathname);
+
     return (
       <div className="BuildCarMain">
         <Nav />
@@ -164,9 +168,6 @@ class BuildCarMain extends Component {
                       className={this.state.tabId === idx ? "clicked" : ""}
                       onScroll={(e) => this.navStyler(e)}
                       onClick={(e) => this.navMoveHandler(e, idx)}
-                      // onMouseOut={(e) =>
-                      //   this.mouseLeaveHandler(e, "notClicked")
-                      // }
                     >
                       {item}
                     </a>
@@ -205,7 +206,22 @@ class BuildCarMain extends Component {
                     </ul>
                   </div>
                   <div className="detailsBody">
-                    <form></form>
+                    <form>
+                      <div>
+                        <Inputcom
+                          star="*"
+                          valueV="이름"
+                          locationPath={this.props.location.pathname}
+                        />
+                      </div>
+                      <div>
+                        <Inputcom
+                          star="*"
+                          valueV="이메일"
+                          locationPath={this.props.location.pathname}
+                        />
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
