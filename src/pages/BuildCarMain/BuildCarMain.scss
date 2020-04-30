@@ -11,6 +11,87 @@
     top: 75px;
     width: 100%;
 
+    .modalCont {
+      //visibility: hidden;
+      //visibility: visible;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.85);
+      i {
+        font-size: 65px;
+        position: absolute;
+        right: 20%;
+        color: #fff;
+      }
+      z-index: 999;
+      .modalOuter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 683px;
+        background: transparent;
+        overflow: auto;
+        margin: 0 auto;
+        left: 20px;
+        overflow: overlay;
+        .modalInner {
+          background: #fff;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 20px;
+          left: 0;
+          .modalHeader {
+            font-family: Univers LT W02_57 Condensed, sans-serif;
+            letter-spacing: 0;
+            font-size: 20px;
+            line-height: 72px;
+            text-align: center;
+            text-transform: uppercase;
+            background: #f5f5f5;
+          }
+        }
+        .dialogueBody {
+          height: calc(100% - 72px);
+          overflow-y: auto;
+          position: absolute;
+          top: 72px;
+          .headerBody {
+            position: relative;
+            width: 663px;
+            margin: 0;
+            padding: 0;
+            ul {
+              margin: 0;
+              padding: 0;
+              list-style-type: none;
+              li {
+                background: #fff;
+                font-family: Univers LT W02_57 Condensed, sans-serif;
+                letter-spacing: 0;
+                font-size: 13px;
+                text-transform: uppercase;
+                position: relative;
+                display: inline-block;
+                width: 50%;
+                line-height: 36px;
+                padding: 0;
+                text-align: center;
+                outline-offset: -5px;
+                overflow: hidden;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .topNav {
       width: 100%;
       list-style: none;
@@ -137,6 +218,15 @@
                 min-height: 100%;
                 width: 100%;
                 .slick-slide.slick-active.slick-current {
+                  transition: none;
+                  .imgUrlChange {
+                    img {
+                      width: 100%;
+                      height: max-content;
+                      opacity: 0;
+                      animation: imgTransition 0.4s ease-out;
+                    }
+                  }
                   img {
                     width: 100%;
                     height: max-content;

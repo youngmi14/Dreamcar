@@ -7,10 +7,6 @@ import Choosecar from "./pages/ChooseCar/Choosecar";
 import Siseon from "./pages/Siseon/Siseon";
 
 class Routes extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Router>
