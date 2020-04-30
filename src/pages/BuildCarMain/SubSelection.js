@@ -9,8 +9,6 @@ class SubSelection extends Component {
     this.state = {};
   }
 
-  sectionClickingHandler = () => {};
-
   render() {
     const { activeBtnId } = this.props;
 
@@ -18,7 +16,6 @@ class SubSelection extends Component {
       <>
         {!this.props.btnThumbDescInt && (
           <ScrollSection
-            onClick={this.sectionClickingHandler}
             stringValSolid={this.props.btnThumbDescSolid}
             colorSolid={this.props.btnThumbColorSolid}
             stringValMetal={this.props.btnThumbDescMetal}

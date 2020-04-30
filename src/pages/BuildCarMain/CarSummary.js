@@ -25,7 +25,11 @@ class CarSummary extends Component {
         </ul>
 
         <ul className="iconGroup">
-          <li>
+          <li
+            onClick={() => {
+              this.props.onClickHandler();
+            }}
+          >
             <a href="#">
               <img src={require("../../images/tapNavSave.PNG")} alt="save" />
               저장하기

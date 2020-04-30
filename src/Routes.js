@@ -8,10 +8,6 @@ import Siseon from "./pages/Siseon/Siseon";
 import Sum from "./pages/Sum/Sum";
 
 class Routes extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Router>
