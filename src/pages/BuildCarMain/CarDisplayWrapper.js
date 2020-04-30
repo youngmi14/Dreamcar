@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import SubSelection from "./SubSelection";
 import Slider from "react-slick";
 import CarWheelTab from "./CarWheelTab";
+import injectStyle from "../../injectStyle";
 
 class CarDisplayWrapper extends Component {
   constructor(props) {
@@ -15,8 +16,20 @@ class CarDisplayWrapper extends Component {
       activeBtnId: 0,
       btnNameTab: "",
       tabId: 0,
-      activeSlide: 0,
     };
+
+    this.state.style = {
+      container: {
+        width: "100%",
+        WebkitAnimation: "imgTransition 1.3s ease-in-out",
+        height: "max-content",
+        position: "relative",
+        backgroundImg: "url(../../images/gfx6.jpeg)",
+        backgroundSize: "cover",
+        overflow: "hidden",
+      },
+    };
+
     this.carCont = React.createRef();
   }
 
@@ -44,30 +57,44 @@ class CarDisplayWrapper extends Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      beforeChange: (oldIndex, newIndex) => {
-        this.setState({ activeSlide: newIndex });
-      },
+      lazyLoad: true,
     };
+
+    const keyframesStyle = `
+      @-webkit-keyframes imgTransition {
+        0% {
+            opacity:0.9;
+          }
+          100% {
+            opacity:1;
+          }
+      }
+    `;
+    injectStyle(keyframesStyle);
+
+    const { imgUrl, imgUrlExterior } = this.props;
 
     return (
       <div className="carDisplayWrapper">
+        <div
+          style={{
+            top: "-999999px",
+            position: "fixed",
+            overflow: "hidden",
+            left: "-9999px",
+            height: "1px",
+            width: "1px",
+            opacity: 0.01,
+          }}
+        >
+          {imgUrlExterior}
+        </div>
         <Slider {...settings}>
-          {this.props.imgUrl.map((url, idx, arr) => {
-            if (!this.props.btnThumbDescInt) {
-              if (
-                this.state.activeBtnId === 1 ||
-                this.state.activeBtnId === 2
-              ) {
-                return (
-                  <div>
-                    <img key={url} src={arr[3]} />
-                  </div>
-                );
-              }
-            }
+          {/* imgUrl바꿔서 여기선 map만 해주는걸로 */}
+          {imgUrl.map((url, idx, arr) => {
             return (
               <div>
-                <img key={url} src={url} />
+                <img key={url} src={url} style={this.state.style.container} />
               </div>
             );
           })}
@@ -98,7 +125,7 @@ class CarDisplayWrapper extends Component {
               btnThumbColorExterior={this.props.btnThumbColorExterior}
               btnThumbColorInt={this.props.btnThumbColorInt}
               btnThumbDescInt={this.props.btnThumbDescInt}
-              btnThumbColorInt={this.props.btnThumbColorInt}
+              interiorColorData={this.props.interiorColorData}
             />
             {/* <SubSelection
               activeBtnId={this.state.activeBtnId}

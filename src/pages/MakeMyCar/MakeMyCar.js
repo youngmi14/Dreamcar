@@ -1,14 +1,32 @@
 import React, { Component } from "react";
 import Nav from "../../components/Nav/Nav";
-import Models from "./Models";
-import Submodels from "./Submodels";
+//import Models from "./Models";
+import Submodel1 from "./Submodel1";
+import Submodel2 from "./Submodel2";
+import Submodel3 from "./Submodel3";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
 import help from "../../images/help.svg";
 import "./MakeMyCar.scss";
+import "./Models.scss";
 
 class MakeMyCar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tabColor: 0,
+    };
+  }
+
+  tabcolorChange = (idx) => {
+    this.setState({
+      tabColor: idx,
+    });
+  };
+
   render() {
+    const tabName = ["Ghibli", "Levante", "Quattroporte", "", ""];
+
     return (
       <div className="MakeMyCar">
         <Nav />
@@ -24,8 +42,28 @@ class MakeMyCar extends Component {
         </div>
 
         <div className="data">
-          <Models />
-          <Submodels />
+          <div className="Models">
+            <ul className="modelsWrapper">
+              {tabName.map((name, idx) => {
+                return (
+                  <li
+                    onClick={() => this.tabcolorChange(idx)}
+                    className={
+                      this.state.tabColor === idx
+                        ? "modelsubActive"
+                        : "modelUnhighlighted"
+                    }
+                  >
+                    {name}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {this.state.tabColor === 0 && <Submodel1 />}
+          {this.state.tabColor === 1 && <Submodel2 />}
+          {this.state.tabColor === 2 && <Submodel3 />}
         </div>
 
         <div className="conficodewrapper">
