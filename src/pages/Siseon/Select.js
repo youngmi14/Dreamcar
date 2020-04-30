@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Input extends Component {
+class Select extends Component {
   constructor() {
     super();
     this.state = { isFocus: false, inputVal: "" };
@@ -41,3 +41,5 @@ class Input extends Component {
     );
   }
 }
+
+export default Select;

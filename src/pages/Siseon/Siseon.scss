@@ -85,6 +85,21 @@
           transition: all 0.06s ease;
           pointer-events: none;
         }
+
+        .beautifyRed {
+          width: calc(100% - 2pc);
+          color: #333;
+          font-size: 1pc;
+          display: inline-block;
+          line-height: 1.5;
+          border: 1px solid #c10202;
+          box-sizing: border-box;
+          border-radius: 2px;
+          padding: 10px 20px;
+          background-color: #fff;
+          box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.05);
+          height: 42px;
+        }
       }
     }
   }
@@ -127,32 +142,76 @@
         width: calc(100% - 2pc);
         vertical-align: top;
         margin-top: 6px;
-
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: row;
         font-family: $g-font-style;
         font-size: 1pc;
         letter-spacing: 0;
         line-height: 1.5;
         color: #333;
         font-size: 16px;
+        .require {
+          visibility: hidden;
+          font-size: 18px;
+          letter-spacing: -0.02em;
+          line-height: 1.5;
+          color: #c10202;
+          width: 20px;
+          margin: 6px;
+          display: inline-block;
+          text-align: center;
+        }
 
-        // input[id="checkBox"] + label {
-        //   display: inline-block;
-        //   width: 20px;
-        //   height: 20px;
-        //   background-color: #fff;
-        //   vertical-align: middle;
-        //   border: 1px solid #b6b6b6;
-        //   box-sizing: border-box;
-        // }
+        #checkBox {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          background-color: #fff;
+          vertical-align: middle;
+          border: 1px solid #b6b6b6;
+          box-sizing: border-box;
+        }
 
         // input[id="checkBox"] {
         //   display: none;
         // }
       }
+
+      .siBtn {
+        margin: 0 0 15px 32px;
+        padding: 0 30px;
+        background-color: #0c2340;
+        border: 1px solid #0c2340;
+        line-height: 2;
+        font-size: 14px;
+        border-radius: 2px;
+        color: #fff;
+        padding: 0 30px;
+        font-family: Univers LT W02_57 Condensed;
+        text-transform: uppercase;
+      }
+
+      .requiretext {
+        margin-left: 32px;
+        color: #333333;
+        font-family: $g-font-style;
+        font-size: 14px;
+      }
+
       .channelT {
         text-decoration: underline;
         cursor: pointer;
       }
     }
+  }
+}
+
+.rowPripro {
+  margin-top: 100px;
+  p {
+    font-family: $g-font-style;
+    font-size: 16px;
+    color: #444444;
   }
 }
