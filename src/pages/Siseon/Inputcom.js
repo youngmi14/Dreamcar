@@ -1,11 +1,24 @@
 import React, { Component } from "react";
-import "./Siseon.scss";
+import "./Inputcom.scss";
 
 class Inputcom extends Component {
   constructor() {
     super();
-    this.state = { isFocus: false, inputVal: "", isLeft: false };
+    this.state = { isFocus: false, inputVal: "", pathName: "", isLeft: false };
   }
+
+  componentDidMount = () => {
+    const { locationPath } = this.props;
+    if (locationPath === "/buildcar") {
+      this.handleInlineStyling(locationPath);
+    }
+  };
+
+  handleInlineStyling = (locationPath) => {
+    this.setState({
+      pathName: locationPath,
+    });
+  };
 
   focus = () => {
     this.setState({
@@ -34,10 +47,18 @@ class Inputcom extends Component {
   };
 
   render() {
-    const { isFocus, isLeft } = this.state;
+    //console.log("window.location.href", window.location.href);
+    //console.log("this.props", this.props);
+    const { pathName, isFocus, isLeft } = this.state;
     const { star, valueV } = this.props;
+
     return (
-      <div className="row">
+      <div
+        className="row"
+        style={{
+          width: this.props.locationPath === "/buildcar" ? "100%" : "50%",
+        }}
+      >
         <div className="require">{star}</div>
         <input
           className={isLeft ? "beautifyRed" : "beautify"}
