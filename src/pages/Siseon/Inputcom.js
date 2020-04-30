@@ -4,55 +4,49 @@ import "./Siseon.scss";
 class Inputcom extends Component {
   constructor() {
     super();
-    this.state = { isFocus: false, inputVal: "" };
+    this.state = { isFocus: false, inputVal: "", isLeft: false };
   }
 
-  focus = (e) => {
+  focus = () => {
     this.setState({
-      isFocus: !this.state.isFocus,
+      isFocus: true,
+      //isFocus: !this.state.isFocus,
     });
   };
 
-  focusRed = (e) => {
-    if (this.state.inputVal) {
-      //this.state.inputVal
+  focusOut = (e) => {
+    if (this.state.inputVal.length === 0) {
       this.setState({
-        isFocus: true,
+        isLeft: true,
+        isFocus: false,
       });
     } else {
       this.setState({
-        isFocus: false,
+        isLeft: false,
       });
     }
   };
 
-  inputvalue = (e) => {
-    const inputVal = e.target.value;
-
+  inputValue = (e) => {
     this.setState({
-      [e.target.name]: inputVal,
+      inputVal: e.target.value,
     });
   };
 
   render() {
+    const { isFocus, isLeft } = this.state;
+    const { star, valueV } = this.props;
     return (
       <div className="row">
-        <div className="require">{this.props.star}</div>
+        <div className="require">{star}</div>
         <input
-          onFocus={(e) => {
-            this.focus(e);
-          }}
-          onBlur={(e) => {
-            this.focusRed(e);
-          }}
-          onChange={this.inputvalue}
-          className="beautify"
-          name="inputVal"
+          className={isLeft ? "beautifyRed" : "beautify"}
+          onFocus={this.focus}
+          onBlur={this.focusOut}
+          onChange={this.inputValue}
           type="text"
         ></input>
-        <div className={`text${this.state.isFocus ? "up" : ""}`}>
-          {this.props.valueV}
-        </div>
+        <div className={isFocus ? "textup" : "text"}>{valueV}</div>
       </div>
     );
   }
