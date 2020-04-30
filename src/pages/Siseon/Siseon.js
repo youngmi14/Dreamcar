@@ -34,6 +34,8 @@ class Siseon extends Component {
 
                 <Inputcom star="*" valueV="이름" />
 
+                <Inputcom star="*" valueV="성" />
+
                 <Inputcom star="*" valueV="생년월일" />
 
                 <Inputcom star="*" valueV="휴대폰" />
@@ -188,6 +190,7 @@ class Siseon extends Component {
                     <div className="rowPri">
                       <div className="requireNot"></div>
                       <div className="priChk">
+                        <div className="require">*</div>
                         <input
                           type="checkbox"
                           className="checkbox"
@@ -200,8 +203,32 @@ class Siseon extends Component {
                           에 대한 승인을 부분적으로 선택하려는 경우,
                         </label>
                       </div>
+
+                      <div className="priChk">
+                        <div className="require">*</div>
+                        <input
+                          type="checkbox"
+                          className="checkbox"
+                          id="checkBox"
+                        ></input>
+                        <label for="checkBox" className="checkbowRight">
+                          개인정보 취급방침의 제3항에서 정한 프로파일링 목적으로
+                          본인의 개인정보를 처리하는 데 동의합니다.
+                        </label>
+                      </div>
+                      <input
+                        type="submit"
+                        value="시승신청"
+                        class="siBtn"
+                      ></input>
+                      <div class="requiretext">* 필수입력사항</div>
                     </div>
-                    <div className="rowPripro"></div>
+                    <div className="rowPripro">
+                      <p>
+                        신청완료까지 로딩시간이 길어질 수 있으니 잠시만 기다려
+                        주시기 바랍니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
