@@ -6,6 +6,7 @@ class Submodels2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      subModels2: [],
       levante: {
         name: "Levante",
         version: "V6",
@@ -68,6 +69,19 @@ class Submodels2 extends Component {
       },
     };
   }
+
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/submodel2.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState(
+          {
+            subModels2: res.LevanteData,
+          },
+          console.log("res:", res)
+        );
+      });
+  };
 
   render() {
     // const displayBlock = {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Inputcom from "./Inputcom";
+import Select from "./Select";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
 import "./Siseon.scss";
@@ -12,6 +13,8 @@ class Siseon extends Component {
     this.state = {
       isFocus: false,
       inputVal: "",
+      //cityArr: [],
+      //diArr: [],
     };
   }
 
@@ -22,6 +25,14 @@ class Siseon extends Component {
   };
 
   render() {
+    const genderArr = ["남자", "여자"];
+    const clockArr = [
+      "0-3개월",
+      "4-6개월",
+      "7-12개월",
+      "12개월 이후",
+      "계획없음",
+    ];
     return (
       <div className="Siseon">
         <Nav />
@@ -36,134 +47,29 @@ class Siseon extends Component {
 
                 <Inputcom star="*" valueV="성" />
 
-                <Inputcom star="*" valueV="생년월일" />
+                <Inputcom star="*" valueV="생년월일 (YYYY-MM-DD)" />
 
                 <Inputcom star="*" valueV="휴대폰" />
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="5">
-                    <option value=""></option>
-                    <option value="강원도">강원도</option>
-                    <option value="경기도">경기도</option>
-                    <option value="경상남도">경상남도</option>
-                    <option value="경상북도">경상북도</option>
-                    <option value="광주광역시">광주광역시</option>
-                    <option value="대구광역시">대구광역시</option>
-                    <option value="대전광역시">대전광역시</option>
-                    <option value="부산광역시">부산광역시</option>
-                    <option value="서울특별시">서울특별시</option>
-                    <option value="세종특별시">세종특별시</option>
-                    <option value="울산광역시">울산광역시</option>
-                    <option value="인천광역시">인천광역시</option>
-                    <option value="전라남도">전라남도</option>
-                    <option value="전라북도">전라북도</option>
-                    <option value="제주특별자치도">제주특별자치도</option>
-                    <option value="충청남도">충청남도</option>
-                    <option value="충청북도">충청북도</option>
-                  </select>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    주소(시)
-                  </div>
-                </div>
+                {/* <Select star="*" valueV="주소(시)" whatArr={cityArr} /> */}
 
                 <Inputcom star="*" valueV="주소(구, 동)" />
 
                 <Inputcom star="*" valueV="이메일" />
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="8">
-                    <option value=""></option>
-                    <option value="남자">남자</option>
-                    <option value="여자">여자</option>
-                  </select>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    성별
-                  </div>
-                </div>
+                <Select star="*" valueV="성별" whatArr={genderArr} />
 
                 <div className="question">시승신청</div>
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="9">
-                    <option value=""></option>
-                    <option value="Seoul (FMK CPO)">Seoul (FMK CPO)</option>
-                    <option value="서울 (강남 전시장)">
-                      서울 (강남 전시장)
-                    </option>
-                    <option value="광주 (광주 전시장/서비스센터)">
-                      광주 (광주 전시장/서비스센터)
-                    </option>
-                    <option value="Daegu (대구 전시장)">
-                      Daegu (대구 전시장)
-                    </option>
-                    <option value="대전 (대전 전시장)">
-                      대전 (대전 전시장)
-                    </option>
-                    <option value="부산 (부산 전시장)">
-                      부산 (부산 전시장)
-                    </option>
-                    <option value="분당 (분당 전시장)">
-                      분당 (분당 전시장)
-                    </option>
-                    <option value="서울 (송파 전시장)">
-                      서울 (송파 전시장)
-                    </option>
-                    <option value="일산 (일산 전시장/서비스센터)">
-                      일산 (일산 전시장/서비스센터)
-                    </option>
-                    <option value="서울 (한남 전시장/서비스센터)">
-                      서울 (한남 전시장/서비스센터)
-                    </option>
-                  </select>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    가까운 전시장
-                  </div>
-                </div>
+                {/* <Select star="*" valueV="가까운 전시장" whatArr={diArr} /> */}
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="10">
-                    <option value=""></option>
-                    <option value="0-3개월">0-3개월</option>
-                    <option value="4-6개월">4-6개월</option>
-                    <option value="7-12개월">7-12개월</option>
-                    <option value="12개월 이후">12개월 이후</option>
-                    <option value="계획없음">계획없음</option>
-                  </select>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    신차구입 예정시기
-                  </div>
-                </div>
+                <Select
+                  star="*"
+                  valueV="신차구입 예정시기"
+                  whatArr={clockArr}
+                />
 
-                <div className="row">
-                  <div className="require">*</div>
-                  <select className="beautify" type="text" id="11">
-                    <option value=""></option>
-                    <option value="그란카브리오 스포츠">
-                      그란카브리오 스포츠
-                    </option>
-                    <option value="그란투리스모 스포츠">
-                      그란투리스모 스포츠
-                    </option>
-                    <option value="기블리">기블리</option>
-                    <option value="기블리 S Q4">기블리 S Q4</option>
-                    <option value="기블리 디젤">기블리 디젤</option>
-                    <option value="르반떼">르반떼</option>
-                    <option value="르반떼 S">르반떼 S</option>
-                    <option value="르반떼 디젤">르반떼 디젤</option>
-                    <option value="르반떼 GTS">르반떼 GTS</option>
-                    <option value="콰트로포르테">콰트로포르테</option>
-                    <option value="콰트로포르테 GTS">콰트로포르테 GTS</option>
-                    <option value="콰트로포르테 S Q4">콰트로포르테 S Q4</option>
-                    <option value="콰트로포르테 디젤">콰트로포르테 디젤</option>
-                  </select>
-                  <div className={`text${this.state.isFocus ? "up" : ""}`}>
-                    기블리
-                  </div>
-                </div>
+                <Inputcom star="*" valueV="마세라티 관심 모델" />
 
                 <Inputcom star="" valueV="문의 및 기타 의견" />
 

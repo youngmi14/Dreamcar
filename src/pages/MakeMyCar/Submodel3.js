@@ -6,6 +6,7 @@ class Submodel3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      subModels3: [],
       quattroporte: {
         name: "QUATTROPORTE",
         version: "V6",
@@ -56,6 +57,19 @@ class Submodel3 extends Component {
       },
     };
   }
+
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/submodel3.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState(
+          {
+            subModels3: res.QuattroporteData,
+          },
+          console.log("res:", res)
+        );
+      });
+  };
 
   render() {
     const displayStyle = {
