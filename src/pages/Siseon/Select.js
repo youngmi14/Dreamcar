@@ -45,7 +45,7 @@ class Select extends Component {
         <div className="require">{star}</div>
         <select className="beautify" type="text" id="5">
           <option value=""></option>
-          {{ whatArr }.map((name, idx) => {
+          {whatArr.map((name, idx) => {
             return <option value={idx}>{name}</option>;
           })}
         </select>
