@@ -19,6 +19,7 @@ class ScrollSection extends Component {
     });
 
     const { activeBtnId } = this.props;
+
     const wontRenderedCp = (
       <>
         <div className="scrollSection">

@@ -10,6 +10,7 @@ class SubSelection extends Component {
 
     this.state = {
       active: false,
+
       seatImgUrl: [],
       dashboardImgUrl: [],
       carpetImgUrl: [],
@@ -71,6 +72,7 @@ class SubSelection extends Component {
 
   render() {
     const { activeBtnId } = this.props;
+
     const { seatImgUrl, dashboardImgUrl } = this.state;
 
     let relatedComp = null;
@@ -87,7 +89,6 @@ class SubSelection extends Component {
         console.log("comp2 와따");
       }
     }
-
     return (
       <>
         {!this.props.btnThumbDescInt && (

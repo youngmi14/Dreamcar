@@ -13,12 +13,15 @@ class CarWheelTab extends Component {
 
   componentDidMount() {
     // 컴디마는 한번만 실행
-    fetch("http://localhost:3000/data/Wheelcolordata.json")
+    fetch("http://localhost:3000/data/wheelThumbNail.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          imgUrl: res.WhellColorData,
-        });
+        this.setState(
+          {
+            imgUrl: res.wheelThumbnail,
+          },
+          () => console.log("wheel: ", res.wheelThumbnail)
+        );
       });
   }
 
@@ -30,14 +33,17 @@ class CarWheelTab extends Component {
 
   render() {
     const { imgUrl } = this.state;
+    const mappedComp = imgUrl.map((item) => {
+      return (
+        <>
+          <img src={item.thumbnail_url} alt="metal Color" />
+          <span class="iconName"></span>
+        </>
+      );
+    });
     return (
       <div class="scrollSectionWheel">
-        <div onClick={this.btnActiveInner}>
-          {imgUrl.map((item) => {
-            return <img className="active" src={item.url} alt="solid Color" />;
-          })}
-          <span class="iconName"></span>
-        </div>
+        <div onClick={this.btnActiveInner}>{mappedComp}</div>
       </div>
     );
   }

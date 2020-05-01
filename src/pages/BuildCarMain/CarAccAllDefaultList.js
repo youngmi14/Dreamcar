@@ -1,11 +1,97 @@
 import React, { Component } from "react";
 import CarAccBtnCount from "./CarAccBtnCount";
+import CarAccAllActiveList from "./CarAccAllActiveList";
+import "./CarAcc.scss";
+// import "./BuildCarMain.scss";
 
-class CarAccList extends Component {
+class CarAccAllDefaultList extends Component {
+  constructor() {
+    super();
+    this.state = {
+      active: false,
+      carAcc: [],
+    };
+  }
+
+  moreView = () => {
+    this.setState({
+      active: !this.state.active,
+    });
+  };
+
+  // componentDidMount = () => {
+  //   fetch("http://localhost:3000/data/caracc.json")
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState(
+  //         {
+  //           carAcc: res.accessory[1]["안전"],
+  //         },
+  //         () => console.log("안전", res.accessory[1]["안전"])
+  //       );
+  //     });
+  // };
+
   render() {
+    // const { carAcc } = this.state;
+    // const mappedComp = carAcc.map((item) => {
+    //   return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    // });
     return (
-      <div className="CarAccList">
-        <div className="protect">
+      <div className="CarAccAllDefaultList">
+        <CarAccBtnCount
+          name="충전 유지 장치"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="실내 자동차 커버"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a088/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="실외 자동차 커버"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a089/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="후면 우측 필름"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a215/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="후면 좌측 측면 필름"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a216/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="실내 바닥 보호 필름"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a692/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="브랜드 바닥 매트 RHD"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a697/info1400x875.jpg"
+        />
+        <CarAccBtnCount
+          name="브랜드 바닥 매트 RHD"
+          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a698/info1400x875.jpg"
+        />
+        <div className={this.state.active === true ? "" : "CarAccListDisable"}>
+          <CarAccAllActiveList />
+        </div>
+        <div class="accMore">
+          <span>
+            액세서리 더 보기
+            <span
+              className={this.state.active === true ? "moreBtnHide" : "moreBtn"}
+              onClick={this.moreView}
+            ></span>
+          </span>
+        </div>
+      </div>
+    );
+  }
+}
+export default CarAccAllDefaultList;
+
+/*
+
+<div className="protect">
           <CarAccBtnCount
             name="충전 유지 장치"
             imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
@@ -123,8 +209,5 @@ class CarAccList extends Component {
             imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/aa27/info1400x875.jpg"
           />
         </div>
-      </div>
-    );
-  }
-}
-export default CarAccList;
+
+*/

@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import "./CarAcc.scss";
 import "./BuildCarMain.scss";
 import CarAccBtnCount from "./CarAccBtnCount";
-import CarAccList from "./CarAccList";
+import CarAccAllDefaultList from "./CarAccAllDefaultList";
+// import CarAccAllActiveList from "./CarAccAllActiveList";
+import CarAccProtect from "./CarAccProtect";
+import CarAccSafety from "./CarAccSafety";
+import CarAccFunction from "./CarAccFunction";
+import CarAccSoultion from "./CarAccSoultion";
+import CarAccWheel from "./CarAccWheel";
 
 class CarAcc extends Component {
   constructor() {
     super();
     this.state = {
-      active: false,
       btnColor: 0,
       tabSection: 0,
       carAcc: [],
@@ -19,30 +24,30 @@ class CarAcc extends Component {
     fetch("http://localhost:3000/data/caracc.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          carAcc: res.accessory[0]["관리 및 보호"],
-        });
+        this.setState(
+          {
+            carAcc: res.accessory[0]["관리 및 보호"],
+          },
+          () => console.log("acc", res.accessory[0]["관리 및 보호"])
+        );
       });
   };
 
   btnTabcolorChange = (idx) => {
-    this.setState({
-      btnColor: idx,
-    });
-  };
-
-  moreView = () => {
-    this.setState({
-      active: !this.state.active,
-    });
+    this.setState(
+      {
+        btnColor: idx,
+      },
+      () => {
+        console.log("colorChange    :", this.state.btnColor);
+      }
+    );
   };
 
   tabChange = (idx) => {
-    console.log("함수진입", idx);
     this.setState({
       tabSection: idx,
     });
-    console.log("진입 후", idx);
   };
 
   render() {
@@ -56,8 +61,6 @@ class CarAcc extends Component {
     ];
 
     const { carAcc } = this.state;
-    //console.log("packagggeee 1 ", carAcc);
-    //carAcc.map((item) => console.log(item));
 
     const mappedComp = carAcc.map((item) => {
       return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
@@ -91,7 +94,18 @@ class CarAcc extends Component {
         </div>
         <div className="selectionsCont">
           <ul className="scrollSection">
-            <div
+            {this.state.btnColor === 0 && <CarAccAllDefaultList />}
+            {this.state.btnColor === 1 && <CarAccProtect />}
+            {this.state.btnColor === 2 && <CarAccSafety />}
+            {this.state.btnColor === 3 && <CarAccFunction />}
+            {this.state.btnColor === 4 && <CarAccSoultion />}
+            {this.state.btnColor === 5 && <CarAccWheel />}
+            {/* <div
+              className={this.state.active === true ? "" : "CarAccListDisable"}
+            >
+              <CarAccAllActiveList />
+            </div> */}
+            {/* <div
               className={
                 this.state.tabMenu === tabMenu ? "CarAccListActive" : ""
               }
@@ -133,16 +147,16 @@ class CarAcc extends Component {
                 name="브랜드 바닥 매트 RHD"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a698/info1400x875.jpg"
               />
-            </div>
-            <div
+            </div> */}
+            {/* <div
               className={
                 this.state.active === true
                   ? "CarAccListActive"
                   : "CarAccListDisable"
               }
-            >
-              {mappedComp}
-              {/* <CarAccBtnCount
+            > */}
+            {/* {mappedComp} */}
+            {/* <CarAccBtnCount
                 name="충전 유지 장치"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
               />
@@ -191,8 +205,8 @@ class CarAcc extends Component {
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a903/info1400x875.jpg"
               /> */}
 
-              {/* 선셰이드드드드 */}
-              <CarAccBtnCount
+            {/* 선셰이드드드드 */}
+            {/* <CarAccBtnCount
                 name="보조 시동 케이블"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_SA/a081/info1400x875.jpg"
               />
@@ -252,9 +266,9 @@ class CarAcc extends Component {
                 name="안전 볼트 키트 - BLCK"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/aa27/info1400x875.jpg"
               />
-            </div>
+            </div> */}
           </ul>
-          <div class="accMore ">
+          {/* <div class="accMore">
             <span>
               액세서리 더 보기
               <span
@@ -264,7 +278,7 @@ class CarAcc extends Component {
                 onClick={this.moreView}
               ></span>
             </span>
-          </div>
+          </div> */}
         </div>
         <div className="priceCheck">
           <p>

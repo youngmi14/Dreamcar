@@ -10,7 +10,6 @@ class CarSection extends Component {
 
     this.state = {
       btnColor: "#fff",
-      activeBtnId: 0,
       btnNameTab: "",
       tabId: 0,
       btnThumbDescExt: {
@@ -61,6 +60,12 @@ class CarSection extends Component {
 
   scrollToSection = (tabId) => {
     let currentTop = this.carCont.getBoundingClientRect().y;
+  };
+
+  btnActiveInner = (idx) => {
+    this.setState({
+      btnActiveInner: idx,
+    });
   };
 
   handleOpacity = (e, idx) => {
