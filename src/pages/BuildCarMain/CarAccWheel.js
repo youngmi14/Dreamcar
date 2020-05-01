@@ -2,31 +2,31 @@ import React, { Component } from "react";
 import CarAccBtnCount from "./CarAccBtnCount";
 
 export class CarAccWheel extends Component {
+  constructor() {
+    super();
+    this.state = {
+      carAcc: [],
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/caracc.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState(
+          {
+            carAcc: res.accessory[4]["타이어 및 휠"],
+          },
+          () => console.log("acc", res.accessory[4]["타이어 및 휠"])
+        );
+      });
+  };
   render() {
-    return (
-      <div className="wheel">
-        <CarAccBtnCount
-          name="밸브캡 키트"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/a006/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="안전 스터드 볼트 키트"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/a222/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="휠 중앙 캡-무광 BLCK"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/a975/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="휠 중앙 캡-유광 BLCK"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/a976/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="볼트 키트 - BLCK"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/aa27/info1400x875.jpg"
-        />
-      </div>
-    );
+    const { carAcc } = this.state;
+
+    const mappedComp = carAcc.map((item) => {
+      return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    });
+    return <div className="wheel">{mappedComp}</div>;
   }
 }
 

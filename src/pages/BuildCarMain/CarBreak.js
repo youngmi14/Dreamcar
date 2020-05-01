@@ -14,26 +14,28 @@ export class CarBreak extends Component {
     fetch("http://localhost:3000/data/caliperThumbNail.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          imgUrl: res.caliperThumbnail,
-        });
+        this.setState(
+          {
+            imgUrl: res.caliperThumbnail,
+          },
+          () => console.log("브레이크 ", res)
+        );
       });
   }
 
   render() {
     const { imgUrl } = this.state;
+    const mappedComp = imgUrl.map((item) => {
+      return (
+        <>
+          <img src={item.thumbnail_url} alt="solid Color" />
+          <span class="iconName"></span>
+        </>
+      );
+    });
     return (
       <div class="scrollSectionWheel">
-        <div onClick={this.btnActiveInner}>
-          {imgUrl.map((item) => {
-            return (
-              <>
-                <img src={item.thumbnail_url} alt="solid Color" />
-                <span class="iconName"></span>
-              </>
-            );
-          })}
-        </div>
+        <div onClick={this.btnActiveInner}>{mappedComp}</div>
       </div>
     );
   }

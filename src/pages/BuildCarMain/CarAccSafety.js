@@ -2,19 +2,31 @@ import React, { Component } from "react";
 import CarAccBtnCount from "./CarAccBtnCount";
 
 class CarAccSafety extends Component {
+  constructor() {
+    super();
+    this.state = {
+      carAcc: [],
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/caracc.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState(
+          {
+            carAcc: res.accessory[1]["안전"],
+          },
+          () => console.log("acc", res.accessory[1]["안전"])
+        );
+      });
+  };
   render() {
-    return (
-      <div className="safety">
-        <CarAccBtnCount
-          name="보조 시동 케이블"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_SA/a081/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="비상표시 삼각대"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_SA/a943/info1400x875.jpg"
-        />
-      </div>
-    );
+    const { carAcc } = this.state;
+
+    const mappedComp = carAcc.map((item) => {
+      return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    });
+    return <div className="safety">{mappedComp}</div>;
   }
 }
 export default CarAccSafety;

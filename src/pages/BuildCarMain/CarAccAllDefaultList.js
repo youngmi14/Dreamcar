@@ -9,6 +9,7 @@ class CarAccAllDefaultList extends Component {
     super();
     this.state = {
       active: false,
+      carAcc: [],
     };
   }
 
@@ -18,7 +19,24 @@ class CarAccAllDefaultList extends Component {
     });
   };
 
+  // componentDidMount = () => {
+  //   fetch("http://localhost:3000/data/caracc.json")
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState(
+  //         {
+  //           carAcc: res.accessory[1]["안전"],
+  //         },
+  //         () => console.log("안전", res.accessory[1]["안전"])
+  //       );
+  //     });
+  // };
+
   render() {
+    // const { carAcc } = this.state;
+    // const mappedComp = carAcc.map((item) => {
+    //   return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    // });
     return (
       <div className="CarAccAllDefaultList">
         <CarAccBtnCount

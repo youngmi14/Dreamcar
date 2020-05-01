@@ -2,59 +2,31 @@ import React, { Component } from "react";
 import CarAccBtnCount from "./CarAccBtnCount";
 
 class CarAccProtect extends Component {
+  constructor() {
+    super();
+    this.state = {
+      carAcc: [],
+    };
+  }
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/caracc.json")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("진입전", res.accessory[0]["관리 및 보호"]);
+        this.setState(
+          {
+            carAcc: res.accessory[0]["관리 및 보호"],
+          },
+          () => console.log("acc", res.accessory[0]["관리 및 보호"])
+        );
+      });
+  };
   render() {
-    return (
-      <div className="protect">
-        <CarAccBtnCount
-          name="충전 유지 장치"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="실내 자동차 커버"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a088/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="실외 자동차 커버"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a089/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="후면 우측 측면 필름"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a215/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="후면 좌측 측면 필름"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a216/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="실내 바닥 보호 필름"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a692/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="브랜드 바닥 매트 RHD"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a697/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="브랜드 바닥 매트 RHD"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a698/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="브랜드 바닥 매트 LHD"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a699/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="브랜드 바닥 매트 LHD"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a700/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="브랜드 바닥 매트 LHD"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a701/info1400x875.jpg"
-        />
-        <CarAccBtnCount
-          name="선셰이드"
-          imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a903/info1400x875.jpg"
-        />
-      </div>
-    );
+    const { carAcc } = this.state;
+    const mappedComp = carAcc.map((item) => {
+      return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    });
+    return <div className="protect">{mappedComp}</div>;
   }
 }
 export default CarAccProtect;

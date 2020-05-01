@@ -24,9 +24,12 @@ class CarAcc extends Component {
     fetch("http://localhost:3000/data/caracc.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          carAcc: res.accessory[0]["관리 및 보호"],
-        });
+        this.setState(
+          {
+            carAcc: res.accessory[0]["관리 및 보호"],
+          },
+          () => console.log("acc", res.accessory[0]["관리 및 보호"])
+        );
       });
   };
 
@@ -102,7 +105,7 @@ class CarAcc extends Component {
             >
               <CarAccAllActiveList />
             </div> */}
-            <div
+            {/* <div
               className={
                 this.state.tabMenu === tabMenu ? "CarAccListActive" : ""
               }
@@ -144,16 +147,16 @@ class CarAcc extends Component {
                 name="브랜드 바닥 매트 RHD"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a698/info1400x875.jpg"
               />
-            </div>
-            <div
+            </div> */}
+            {/* <div
               className={
                 this.state.active === true
                   ? "CarAccListActive"
                   : "CarAccListDisable"
               }
-            >
-              {mappedComp}
-              {/* <CarAccBtnCount
+            > */}
+            {/* {mappedComp} */}
+            {/* <CarAccBtnCount
                 name="충전 유지 장치"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
               />
@@ -202,8 +205,8 @@ class CarAcc extends Component {
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a903/info1400x875.jpg"
               /> */}
 
-              {/* 선셰이드드드드 */}
-              <CarAccBtnCount
+            {/* 선셰이드드드드 */}
+            {/* <CarAccBtnCount
                 name="보조 시동 케이블"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_SA/a081/info1400x875.jpg"
               />
@@ -263,7 +266,7 @@ class CarAcc extends Component {
                 name="안전 볼트 키트 - BLCK"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_TW/aa27/info1400x875.jpg"
               />
-            </div>
+            </div> */}
           </ul>
           {/* <div class="accMore">
             <span>

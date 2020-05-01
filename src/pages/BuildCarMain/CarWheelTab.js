@@ -16,9 +16,12 @@ class CarWheelTab extends Component {
     fetch("http://localhost:3000/data/wheelThumbNail.json")
       .then((res) => res.json())
       .then((res) => {
-        this.setState({
-          imgUrl: res.wheelThumbnail,
-        });
+        this.setState(
+          {
+            imgUrl: res.wheelThumbnail,
+          },
+          () => console.log("wheel: ", res.wheelThumbnail)
+        );
       });
   }
 
@@ -30,30 +33,17 @@ class CarWheelTab extends Component {
 
   render() {
     const { imgUrl } = this.state;
+    const mappedComp = imgUrl.map((item) => {
+      return (
+        <>
+          <img src={item.thumbnail_url} alt="metal Color" />
+          <span class="iconName"></span>
+        </>
+      );
+    });
     return (
       <div class="scrollSectionWheel">
-        {/* <div className="colorPalette" onClick={this.btnActiveInner}>
-          {imgUrl.map((item) => {
-            return (
-              <>
-                <img src={item.thumbnail_url} alt="solid Color" />
-                <span class="iconName">d</span>
-              </>
-            );
-          })} */}
-
-        <div onClick={this.btnActiveInner}>
-          {imgUrl.map((item) => {
-            return (
-              <img
-                className="active"
-                src={item.thumbnail_url}
-                alt="solid Color"
-              />
-            );
-          })}
-          <span class="iconName"></span>
-        </div>
+        <div onClick={this.btnActiveInner}>{mappedComp}</div>
       </div>
     );
   }
