@@ -13,13 +13,13 @@ class Package extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          packageDt: res.data[0],
+          packageDt: res.data.description,
         });
       });
   };
 
   createMarkup = () => {
-    return { __html: `${this.state.packageDt.description}` };
+    return { __html: `${this.state.packageDt}` };
   };
 
   render() {
@@ -42,28 +42,25 @@ class Package extends Component {
               <button className="addBtn">추가</button>
             </div>
             <div dangerouslySetInnerHTML={this.createMarkup()} />
-            {/* {packageDt.description} */}
+            {packageDt}
 
             {/* <div className="content">
-              <p
-                className="spanTitle"
-                style={{ marginBottom: "12px !important" }}
-              >
+              <p className="spanTitle">
                 <span>패키지 포함 사항:</span>
               </p>
-              <p style={{margin: "5px 0" fontSize: "14px" color:"#404040" letterSpacing:"0.02em" lineHeight:"22px"}}>
+              <p>
                 <ul>
                   <li>
-                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                 </ul>
               </p>

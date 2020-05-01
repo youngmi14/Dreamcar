@@ -10,7 +10,7 @@ class Sum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hrefLink: "#",
+      //hrefLink: "#",
       tabId: 6,
       navStylerStyle: "",
       //pluscheckbox: false,
@@ -36,6 +36,13 @@ class Sum extends Component {
   //버튼클릭하면 안보이던 모달 보임 스테잇에서 false로 해두고 클릭하면 !this.state.00으로 해두자
 
   componentDidMount() {
+    window.addEventListener(
+      "scroll",
+      (e) => {
+        this.navStyler(e);
+      },
+      true
+    );
     // fetch("http://10.58.1.38:8000/car/summary", {
     //   method: "GET",
     //   body: JSON.stringify({
@@ -52,6 +59,89 @@ class Sum extends Component {
     //   .then((res) => res.json())
     //   .then((res) => console.log("hello: ", res));
   }
+
+  navStyler = (e) => {
+    e.preventDefault();
+    const lastScrollY = window.scrollY;
+    if (lastScrollY >= 0 && lastScrollY < 840) {
+      this.setState({
+        tabId: 1,
+      });
+    } else if (lastScrollY >= 840 && lastScrollY < 1660) {
+      this.setState({
+        tabId: 2,
+      });
+    } else if (lastScrollY >= 1660 && lastScrollY < 2240) {
+      this.setState({
+        tabId: 3,
+      });
+    } else if (lastScrollY >= 2240 && lastScrollY < 2360) {
+      this.setState({
+        tabId: 4,
+      });
+    } else if (lastScrollY >= 2360 && lastScrollY < 2600) {
+      this.setState({
+        tabId: 5,
+      });
+    } else if (lastScrollY >= 2600) {
+      this.setState({
+        tabId: 6,
+      });
+    } else {
+      return;
+    }
+  };
+
+  navMoveHandler = (e, id) => {
+    this.setState({
+      tabId: id,
+    });
+
+    e.preventDefault();
+
+    switch (id) {
+      case 1:
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 2:
+        window.scroll({
+          top: 840,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 3:
+        window.scroll({
+          top: 1660,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 4:
+        window.scroll({
+          top: 2240,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+      case 5:
+        window.scroll({
+          top: 2240,
+          left: 0,
+          behavior: "smooth",
+        });
+        break;
+
+      default:
+        break;
+    }
+
+    this.props.history.push("/sum");
+  };
 
   render() {
     const tabNameList = [
@@ -74,14 +164,15 @@ class Sum extends Component {
         <section>
           <div className="BuildCarMain">
             <div className="BuildCarContent">
-              <nav className="topNav">
+              <nav className="topNav" style={{ position: "fixed" }}>
                 <ul className="tabList">
                   {tabNameList.map((item, idx) => {
                     return (
                       <li name={item}>
                         <a
-                          href={this.state.hrefLink}
                           className={this.state.tabId === idx ? "clicked" : ""}
+                          onScroll={(e) => this.navStyler(e)}
+                          onClick={(e) => this.navMoveHandler(e, idx)}
                         >
                           {item}
                         </a>

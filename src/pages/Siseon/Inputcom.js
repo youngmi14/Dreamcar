@@ -64,8 +64,9 @@ class Inputcom extends Component {
           className={isLeft ? "beautifyRed" : "beautify"}
           onFocus={this.focus}
           onBlur={this.focusOut}
-          onChange={this.inputValue}
+          onChange={this.props.onChange}
           type="text"
+          name={this.props.name}
         ></input>
         <div className={isFocus ? "textup" : "text"}>{valueV}</div>
       </div>
