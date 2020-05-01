@@ -33,8 +33,23 @@ class BuildCarMain extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.navStyler);
+    window.removeEventListener(
+      "scroll",
+      this.carCont.current.carCont.scrollToSection
+    );
   }
+
+  modalContShowing = () => {
+    this.setState({
+      isNotOpen: false,
+    });
+  };
+
+  modalClose = () => {
+    this.setState({
+      isNotOpen: true,
+    });
+  };
 
   formEventHandler = (e) => {
     console.log("nammmme   :", e.target.name);
@@ -58,18 +73,6 @@ class BuildCarMain extends Component {
     console.log(result);
     const url = `/sum${result}`;
     this.props.history.push(url);
-  };
-
-  modalContShowing = () => {
-    this.setState({
-      isNotOpen: false,
-    });
-  };
-
-  modalClose = () => {
-    this.setState({
-      isNotOpen: true,
-    });
   };
 
   navStyler = (e) => {
@@ -155,6 +158,8 @@ class BuildCarMain extends Component {
       default:
         break;
     }
+
+    this.props.history.push("/sum");
   };
 
   // mouseLeaveHandler = (e, msg) => {
@@ -242,6 +247,8 @@ class BuildCarMain extends Component {
                           onChange={this.formEventHandler}
                           name="nameVal"
                         />
+                      </div>
+                      <div>
                         <Inputcom
                           star="*"
                           valueV="이메일"

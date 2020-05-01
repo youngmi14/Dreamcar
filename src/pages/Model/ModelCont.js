@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+
 import Ghibli from "../../images/Ghibli.jpeg";
 import Levante from "../../images/Levante.jpeg";
 import Quattroporte from "../../images/Quattroporte.jpeg";
@@ -8,7 +9,6 @@ class ModelCont extends Component {
   goToBuildCarMain = () => {
     this.props.history.push("/makemycar");
   };
-
   render() {
     return (
       <>

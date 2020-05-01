@@ -13,14 +13,14 @@ class Package extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          packageDt: res.data.description,
+          packageDt: res.data[0],
         });
       });
   };
 
-  // createMarkup = () => {
-  //   return { __html: `${this.state.packageDt}` };
-  // };
+  createMarkup = () => {
+    return { __html: `${this.state.packageDt.description}` };
+  };
 
   render() {
     const { packageDt } = this.state;
@@ -41,29 +41,8 @@ class Package extends Component {
               </button>
               <button className="addBtn">추가</button>
             </div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${this.state.packageDt}
-                .content {
-                  .spanTitle {
-                    margin-bottom: 12px;
-                  }
-                  p {
-                    margin: 5px 0;
-                    font-size: 14px;
-                    color: #404040;
-                    letter-spacing: 0.02em;
-                    line-height: 22px;
-                    span {
-                      font-size: 14px;
-                    }
-                  }
-                }
-              `,
-              }}
-            ></div>
-            {/* <div dangerouslySetInnerHTML={this.createMarkup()} /> */}
-            {/* {packageDt} */}
+            <div dangerouslySetInnerHTML={this.createMarkup()} />
+            {/* {packageDt.description} */}
 
             {/* <div className="content">
               <p className="spanTitle">

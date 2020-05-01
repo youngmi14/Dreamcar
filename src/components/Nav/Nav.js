@@ -3,16 +3,16 @@ import { withRouter } from "react-router-dom";
 import "./Nav.scss";
 
 class Nav extends Component {
+  goToMain = () => {
+    this.props.history.push("/");
+  };
+
   goToMakeMyCar = () => {
     this.props.history.push("/makemycar");
   };
 
   gotoTestDrive = (e) => {
     this.props.history.push("/siseon");
-  };
-
-  goToMain = () => {
-    this.props.history.push("/");
   };
 
   render() {

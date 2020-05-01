@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
@@ -11,7 +10,7 @@ class Sum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //hrefLink: "#",
+      hrefLink: "#",
       tabId: 6,
       navStylerStyle: "",
       //pluscheckbox: false,
@@ -37,13 +36,6 @@ class Sum extends Component {
   //버튼클릭하면 안보이던 모달 보임 스테잇에서 false로 해두고 클릭하면 !this.state.00으로 해두자
 
   componentDidMount() {
-    window.addEventListener(
-      "scroll",
-      (e) => {
-        this.navStyler(e);
-      },
-      true
-    );
     // fetch("http://10.58.1.38:8000/car/summary", {
     //   method: "GET",
     //   body: JSON.stringify({
@@ -59,6 +51,13 @@ class Sum extends Component {
     // })
     //   .then((res) => res.json())
     //   .then((res) => console.log("hello: ", res));
+    window.addEventListener(
+      "scroll",
+      (e) => {
+        this.navStyler(e);
+      },
+      true
+    );
   }
 
   navStyler = (e) => {
@@ -171,6 +170,7 @@ class Sum extends Component {
                     return (
                       <li name={item}>
                         <a
+                          href={this.state.hrefLink}
                           className={this.state.tabId === idx ? "clicked" : ""}
                           onScroll={(e) => this.navStyler(e)}
                           onClick={(e) => this.navMoveHandler(e, idx)}
@@ -414,4 +414,4 @@ class Sum extends Component {
   }
 }
 
-export default withRouter(Sum);
+export default Sum;
