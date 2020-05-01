@@ -42,7 +42,7 @@ class Package extends Component {
               <button className="addBtn">추가</button>
             </div>
             <div dangerouslySetInnerHTML={this.createMarkup()} />
-            {packageDt}
+            {/* {packageDt} */}
 
             {/* <div className="content">
               <p className="spanTitle">

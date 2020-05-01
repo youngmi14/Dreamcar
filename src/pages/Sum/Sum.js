@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
@@ -97,6 +98,8 @@ class Sum extends Component {
       tabId: id,
     });
 
+    this.props.history.push("/buildcar");
+
     e.preventDefault();
 
     switch (id) {
@@ -139,8 +142,6 @@ class Sum extends Component {
       default:
         break;
     }
-
-    this.props.history.push("/sum");
   };
 
   render() {
@@ -413,4 +414,4 @@ class Sum extends Component {
   }
 }
 
-export default Sum;
+export default withRouter(Sum);

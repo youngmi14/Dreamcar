@@ -33,10 +33,7 @@ class BuildCarMain extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener(
-      "scroll",
-      this.carCont.current.carCont.scrollToSection
-    );
+    window.removeEventListener("scroll", this.navStyler);
   }
 
   formEventHandler = (e) => {
