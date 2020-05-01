@@ -11,8 +11,19 @@ class CarAcc extends Component {
       active: false,
       btnColor: 0,
       tabSection: 0,
+      carAcc: [],
     };
   }
+
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/caracc.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          carAcc: res.accessory[0]["관리 및 보호"],
+        });
+      });
+  };
 
   btnTabcolorChange = (idx) => {
     this.setState({
@@ -43,6 +54,14 @@ class CarAcc extends Component {
       "이동 및 적재 솔루션",
       "타이어 및 휠",
     ];
+
+    const { carAcc } = this.state;
+    //console.log("packagggeee 1 ", carAcc);
+    //carAcc.map((item) => console.log(item));
+
+    const mappedComp = carAcc.map((item) => {
+      return <CarAccBtnCount name={item.name} imgSrc={item.thumbnail_url} />;
+    });
 
     const tabMenu = ["protect", "safety", "function", "soultion", "wheel"];
     return (
@@ -77,6 +96,11 @@ class CarAcc extends Component {
                 this.state.tabMenu === tabMenu ? "CarAccListActive" : ""
               }
             >
+              <CarAccBtnCount
+                name="충전 유지 장치"
+                imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
+              />
+
               <CarAccBtnCount
                 name="충전 유지 장치"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
@@ -117,7 +141,8 @@ class CarAcc extends Component {
                   : "CarAccListDisable"
               }
             >
-              <CarAccBtnCount
+              {mappedComp}
+              {/* <CarAccBtnCount
                 name="충전 유지 장치"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a077/info1400x875.jpg"
               />
@@ -164,7 +189,9 @@ class CarAcc extends Component {
               <CarAccBtnCount
                 name="선 셰이드"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_CP/a903/info1400x875.jpg"
-              />
+              /> */}
+
+              {/* 선셰이드드드드 */}
               <CarAccBtnCount
                 name="보조 시동 케이블"
                 imgSrc="https://www.configurator.maserati.com/cc/adm/repo/8578300/ACC_SA/a081/info1400x875.jpg"

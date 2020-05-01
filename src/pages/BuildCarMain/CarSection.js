@@ -18,10 +18,11 @@ class CarSection extends Component {
         metalic: "메탈릭(METALLIC) 색상",
       },
       btnThumbDescInt: "가죽",
+      exteriorBtnColor: [],
       solidBtnColor: [],
       metalBtnColor: [],
       interiorBtnColor: [],
-      //imgUrlExterior: [],
+      btnActiveInner: 0,
       imgUrlExterior: [
         "https://ph.cloud.maserati.com/8578300/1280/c720/gfx6?config=background;shadow;CRPT/CRPT/94084217;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084297;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;MEC/Q5EM;glasses_front;MEC/Q400",
         "https://ph.cloud.maserati.com/8578300/1280/c720/gfx7?config=background;shadow;CRPT/CRPT/94084217;INT/INT/94084213;BOE/Q136/INT/94084213;DUMMYOPTS/DOARM/94084282;DUMMYOPTS/DOPUH/94084282;TRIM/Q4MN;RUF/ROO1/94084297;DSH/DSHG/94084269;STEERINGWHEEL/STL1/94084213;BOE/Q5ZK;BOE/Q4B2;BOE/Q212;BOE/Q407;BOE/QAWS;FUS/Q410;MEC/Q5EM;CAL/KMBC;RIMS/Q420;EXT/EXT/94084201;glasses_front;MEC/Q400;plates",
@@ -41,30 +42,14 @@ class CarSection extends Component {
 
   componentDidMount = () => {
     this.getData();
-    //window.addEventListener("click", this.onClickOutsideHandler);
   };
-
-  // componentDidMount = async () => {
-
-  //   const urls = await fetch(
-  //     "http://localhost:3000/data/exterior-image-urls.json"
-  //   ).then((res) => res.json());
-
-  //   this.setState({
-  //     imgUrlExterior: urls,
-  //   });
-
-  //   await this.getData();
-  //   this.getData();
-  // };
 
   getData = () => {
     fetch("http://localhost:3000/data/CarColorData.json")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          solidBtnColor: res.ExteriorSkinData.SolidColorData,
-          metalBtnColor: res.ExteriorSkinData.MetalColorData,
+          exteriorBtnColor: res.ExteriorSkinData,
           interiorBtnColor: res.InteriorSkinData,
         });
       });
@@ -76,42 +61,18 @@ class CarSection extends Component {
 
   scrollToSection = (tabId) => {
     let currentTop = this.carCont.getBoundingClientRect().y;
-    console.log("current currentTop: ", currentTop);
   };
 
-  // onClickHandler() {
-  //   this.setState((currentState) => ({
-  //     isOpen: !currentState.isOpen,
-  //   }));
-  // }
-
-  // onClickOutsideHandler = (e) => {
-  //   if (this.state.isOpen && !this.toggleContainer.current.contains(e.target)) {
-  //     this.setState({ isOpen: false });
-  //   }
-  // };
-
-  // <Slider
-  //   urls={this.urls[this.selectedColor]}
-  // >
-  // </Slider>
-
   handleOpacity = (e, idx) => {
-    //const { imgUrlChanged } = this.state;
     e.preventDefault();
     console.log("currentINdex   :", idx);
 
     this.setState({
       selectedColor: idx,
+      btnActiveInner: idx,
     });
 
     switch (idx) {
-      // case 0:
-      //   this.setState({
-      //     selectedColor: idx,
-      //   });
-      //   break;
-
       case 0:
         this.setState({
           imgUrlExterior: [
@@ -201,12 +162,7 @@ class CarSection extends Component {
   };
 
   render() {
-    const {
-      solidBtnColor,
-      metalBtnColor,
-      interiorBtnColor,
-      imgUrlExterior,
-    } = this.state;
+    const { exteriorBtnColor, interiorBtnColor, imgUrlExterior } = this.state;
 
     const btnExteriorName = ["외관", "휠", "브레이크 클리퍼"];
     const btnInteriorName = [
@@ -219,34 +175,15 @@ class CarSection extends Component {
     ];
 
     //컴포넌트 변수
-    const solidColor = solidBtnColor.map((carColor, idx) => {
+    const exteriorColor = exteriorBtnColor.map((carColor, idx) => {
       return (
-        <>
-          <div
-            style={{
-              top: "-999999px",
-              position: "fixed",
-              overflow: "hidden",
-              left: "-9999px",
-              height: "1px",
-              width: "1px",
-              opacity: 0.01,
-            }}
-          >
-            {imgUrlExterior}
-          </div>
-
-          <button type="button" onClick={(e) => this.handleOpacity(e, idx)}>
-            <img src={carColor.url} alt="Solid Color" />
-          </button>
-        </>
-      );
-    });
-
-    const metalColor = metalBtnColor.map((carColor, idx) => {
-      return (
-        <button type="button" onClick={() => this.handleOpacity(idx)}>
-          <img src={carColor.url} alt="Metal Color" />
+        <button
+          type="button"
+          onClick={(e) => this.handleOpacity(e, idx)}
+          className={this.state.btnActiveInner === idx ? "active" : ""}
+        >
+          <img src={carColor.url} alt="Solid Color" />
+          <span className="iconName"></span>
         </button>
       );
     });
@@ -271,44 +208,12 @@ class CarSection extends Component {
       >
         <a name="carExterior"></a>
 
-        {/* <div class="preloadimage">
-          {imgUrlExterior.map((urlsets) =>
-            urlsets.map((url) => <img url={url} />)
-          )}
-        </div> */}
-
-        {/* .preloadimage {
-          img {
-            position: fixed;
-            left: -9999px;
-            top: -9999px;
-            width: 2px;
-            height: 2px;
-            overflow: hidden;
-          }
-        } */}
-
-        {/* <div
-          style={{
-            top: "-999999px",
-            position: "fixed",
-            overflow: "hidden",
-            left: "-9999px",
-            height: "1px",
-            width: "1px",
-            opacity: 0.01,
-          }}
-        >
-          {imgUrlExterior}
-        </div> */}
-
         <CarDisplayWrapper
           btnTabName={btnExteriorName}
           imgUrl={imgUrlExterior}
           btnThumbDescSolid={btnThumbDescExt.solid}
           btnThumbDescMetal={btnThumbDescExt.metalic}
-          btnThumbColorSolid={solidColor}
-          btnThumbColorMetal={metalColor}
+          btnThumbColorExterior={exteriorColor}
         />
 
         <a name="carInterior"></a>
@@ -316,7 +221,7 @@ class CarSection extends Component {
           btnTabName={btnInteriorName}
           imgUrl={imgUrlInterior}
           btnThumbDescInt={btnThumbDescInt}
-          btnThumbColorInt={interiorColor}
+          //btnThumbColorInt={interiorColor}
         />
         <a name="package"></a>
         <Package />
