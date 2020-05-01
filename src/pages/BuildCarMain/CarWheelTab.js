@@ -32,7 +32,7 @@ class CarWheelTab extends Component {
     const { imgUrl } = this.state;
     return (
       <div class="scrollSectionWheel">
-        <div className="colorPalette" onClick={this.btnActiveInner}>
+        {/* <div className="colorPalette" onClick={this.btnActiveInner}>
           {imgUrl.map((item) => {
             return (
               <>
@@ -40,7 +40,19 @@ class CarWheelTab extends Component {
                 <span class="iconName">d</span>
               </>
             );
+          })} */}
+
+        <div onClick={this.btnActiveInner}>
+          {imgUrl.map((item) => {
+            return (
+              <img
+                className="active"
+                src={item.thumbnail_url}
+                alt="solid Color"
+              />
+            );
           })}
+          <span class="iconName"></span>
         </div>
       </div>
     );

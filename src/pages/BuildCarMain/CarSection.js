@@ -226,7 +226,7 @@ class CarSection extends Component {
           btnTabName={btnInteriorName}
           imgUrl={imgUrlInterior}
           btnThumbDescInt={btnThumbDescInt}
-          btnThumbColorInt={interiorColor}
+          //btnThumbColorInt={interiorColor}
         />
         <a name="package"></a>
         <Package />
