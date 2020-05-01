@@ -7,35 +7,40 @@ class CarWheelTab extends Component {
 
     this.state = {
       imgUrl: [],
+      btnActiveInner: 0,
     };
   }
 
   componentDidMount() {
     // 컴디마는 한번만 실행
-    fetch("http://localhost:3000/data/Wheelcolordata.json") //url에 데이터 요청.
-      .then((res) => res.json()) //then(들어온다면) ->  json으로 들어오는 데이터를 js obj로 변환.
+    fetch("http://localhost:3000/data/wheelThumbNail.json")
+      .then((res) => res.json())
       .then((res) => {
         this.setState({
-          imgUrl: res.WhellColorData,
+          imgUrl: res.wheelThumbnail,
         });
       });
   }
 
+  btnActiveInner = (idx) => {
+    this.setState({
+      btnActiveInner: idx,
+    });
+  };
+
   render() {
     const { imgUrl } = this.state;
     return (
-      <div class="scrollSection">
-        <div class="subSelection">
-          <div class="innerSection">
-            <div class="colorPalette">
-              <button class="active">
-                {imgUrl.map((item) => {
-                  return <img src={item.url} alt="solid Color" />;
-                })}
-                <span class="iconName"></span>
-              </button>
-            </div>
-          </div>
+      <div class="scrollSectionWheel">
+        <div className="colorPalette" onClick={this.btnActiveInner}>
+          {imgUrl.map((item) => {
+            return (
+              <>
+                <img src={item.thumbnail_url} alt="solid Color" />
+                <span class="iconName">d</span>
+              </>
+            );
+          })}
         </div>
       </div>
     );

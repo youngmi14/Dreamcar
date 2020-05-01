@@ -17,10 +17,8 @@ class ScrollSection extends Component {
     const metal = colorExterior.filter((item, idx, arr) => {
       return idx > 2;
     });
-    console.log(metal);
 
     const { activeBtnId } = this.props;
-    console.log("fdsfdsfdsfdfdsfdsf", activeBtnId);
 
     const wontRenderedCp = (
       <>
