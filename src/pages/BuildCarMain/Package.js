@@ -4,7 +4,27 @@ let lastScrollY = 0;
 let ticking = false;
 
 class Package extends Component {
+  state = {
+    packageDt: [],
+  };
+
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/package1.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          packageDt: res.data[0],
+        });
+      });
+  };
+
+  createMarkup = () => {
+    return { __html: `${this.state.packageDt.description}` };
+  };
+
   render() {
+    const { packageDt } = this.state;
+
     return (
       <div className="Package">
         <h2 className="title">패키지</h2>
@@ -17,12 +37,14 @@ class Package extends Component {
             <div className="header">
               <button className="titleBtn">
                 <div></div>
-                운전자 보조 패키지
+                {packageDt.name}
               </button>
               <button className="addBtn">추가</button>
             </div>
+            <div dangerouslySetInnerHTML={this.createMarkup()} />
+            {/* {packageDt.description} */}
 
-            <div className="content">
+            {/* <div className="content">
               <p className="spanTitle">
                 <span>패키지 포함 사항:</span>
               </p>
@@ -42,7 +64,7 @@ class Package extends Component {
                   </li>
                 </ul>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

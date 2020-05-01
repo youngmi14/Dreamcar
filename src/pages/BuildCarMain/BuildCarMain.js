@@ -151,7 +151,7 @@ class BuildCarMain extends Component {
       "요약",
     ];
 
-    console.log("this.props.location.pathname", this.props.location.pathname);
+    //console.log("this.props.location.pathname", this.props.location.pathname);
 
     return (
       <div className="BuildCarMain">
@@ -164,7 +164,7 @@ class BuildCarMain extends Component {
                 return (
                   <li name={item} onMouseOut={this.mouseLeaveHandler}>
                     <a
-                      href={this.state.hrefLink}
+                      //href={this.state.hrefLink}
                       className={this.state.tabId === idx ? "clicked" : ""}
                       onScroll={(e) => this.navStyler(e)}
                       onClick={(e) => this.navMoveHandler(e, idx)}
