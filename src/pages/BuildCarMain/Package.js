@@ -45,22 +45,25 @@ class Package extends Component {
             {/* {packageDt.description} */}
 
             {/* <div className="content">
-              <p className="spanTitle">
+              <p
+                className="spanTitle"
+                style={{ marginBottom: "12px !important" }}
+              >
                 <span>패키지 포함 사항:</span>
               </p>
-              <p>
+              <p style={{margin: "5px 0" fontSize: "14px" color:"#404040" letterSpacing:"0.02em" lineHeight:"22px"}}>
                 <ul>
                   <li>
-                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                   <li>
-                    <span>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
+                    <span style={{fontSize:"14px"}}>Stop & Go 기능이 있는 어댑티브 크루즈 컨트롤</span>
                   </li>
                 </ul>
               </p>
