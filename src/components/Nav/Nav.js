@@ -11,10 +11,14 @@ class Nav extends Component {
     this.props.history.push("/siseon");
   };
 
+  goToMain = () => {
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div className="NavCont">
-        <h1 class="logo">
+        <h1 class="logo" onClick={this.goToMain}>
           <img src={require("../../images/NavLogo.png")} alt="NavLogo" />
         </h1>
         <ul class="NavLeft">

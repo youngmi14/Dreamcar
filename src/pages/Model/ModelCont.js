@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Ghibli from "../../images/Ghibli.jpeg";
 import Levante from "../../images/Levante.jpeg";
 import Quattroporte from "../../images/Quattroporte.jpeg";
 
 class ModelCont extends Component {
+  goToBuildCarMain = () => {
+    this.props.history.push("/makemycar");
+  };
+
   render() {
     return (
       <>
@@ -24,7 +29,9 @@ class ModelCont extends Component {
               <a href="#">자세히 보기</a>
             </div>
             <div className="CtBlue">
-              <a href="#">내 차량 만들기</a>
+              <a href="#" onClick={this.goToBuildCarMain}>
+                내 차량 만들기
+              </a>
             </div>
           </div>
         </div>
@@ -74,4 +81,4 @@ class ModelCont extends Component {
   }
 }
 
-export default ModelCont;
+export default withRouter(ModelCont);

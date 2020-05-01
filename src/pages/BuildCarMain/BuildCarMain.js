@@ -15,6 +15,8 @@ class BuildCarMain extends Component {
       tabId: 0,
       navStylerStyle: "",
       isNotOpen: true,
+      nameVal: "",
+      emailVal: "",
     };
     this.carCont = React.createRef();
     this.href = React.createRef();
@@ -36,6 +38,30 @@ class BuildCarMain extends Component {
       this.carCont.current.carCont.scrollToSection
     );
   }
+
+  formEventHandler = (e) => {
+    console.log("nammmme   :", e.target.name);
+    this.setState({
+      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value,
+    });
+
+    const qs = (data) =>
+      Object.entries(data)
+        .map(([key, value]) => `${key}=${value}`)
+        .join("&");
+
+    const { nameVal, emailVal } = this.state;
+
+    const result = qs({
+      name: nameVal,
+      email: emailVal,
+    });
+
+    console.log(result);
+    const url = `/sum${result}`;
+    this.props.history.push(url);
+  };
 
   modalContShowing = () => {
     this.setState({
@@ -125,11 +151,13 @@ class BuildCarMain extends Component {
         });
         break;
 
+      case 6:
+        this.props.history.push("/sum");
+        break;
+
       default:
         break;
     }
-
-    this.props.history.push("/sum");
   };
 
   // mouseLeaveHandler = (e, msg) => {
@@ -214,13 +242,15 @@ class BuildCarMain extends Component {
                           star="*"
                           valueV="이름"
                           locationPath={this.props.location.pathname}
+                          onChange={this.formEventHandler}
+                          name="nameVal"
                         />
-                      </div>
-                      <div>
                         <Inputcom
                           star="*"
                           valueV="이메일"
                           locationPath={this.props.location.pathname}
+                          onChange={this.formEventHandler}
+                          name="emailVal"
                         />
                       </div>
 
