@@ -7,8 +7,7 @@ class Submodel1 extends Component {
     super(props);
     this.state = {
       subModels1: [],
-      subModels2: [],
-      subModels3: [],
+
       ghibli: {
         name: "Ghibli",
         version: "V6",
@@ -48,17 +47,18 @@ class Submodel1 extends Component {
     };
   }
 
-  // getData = () => {
-  //   fetch("http://localhost:3000/data.submodel1.json")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({
-  //         subModels1: res.GhibliData,
-  //         subModels2: res.LevanteData,
-  //         subModels3: res.QuattroporteData,
-  //       });
-  //     });
-  // };
+  componentDidMount = () => {
+    fetch("http://localhost:3000/data/submodel1.json")
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState(
+          {
+            subModels1: res.GhibliData,
+          },
+          console.log("res:", res)
+        );
+      });
+  };
 
   render() {
     //const { subModels1, subModels2, subModels3 } = this.state;
