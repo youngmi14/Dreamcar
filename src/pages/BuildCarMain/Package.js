@@ -18,9 +18,9 @@ class Package extends Component {
       });
   };
 
-  createMarkup = () => {
-    return { __html: `${this.state.packageDt}` };
-  };
+  // createMarkup = () => {
+  //   return { __html: `${this.state.packageDt}` };
+  // };
 
   render() {
     const { packageDt } = this.state;
@@ -41,7 +41,28 @@ class Package extends Component {
               </button>
               <button className="addBtn">추가</button>
             </div>
-            <div dangerouslySetInnerHTML={this.createMarkup()} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `${this.state.packageDt}
+                .content {
+                  .spanTitle {
+                    margin-bottom: 12px;
+                  }
+                  p {
+                    margin: 5px 0;
+                    font-size: 14px;
+                    color: #404040;
+                    letter-spacing: 0.02em;
+                    line-height: 22px;
+                    span {
+                      font-size: 14px;
+                    }
+                  }
+                }
+              `,
+              }}
+            ></div>
+            {/* <div dangerouslySetInnerHTML={this.createMarkup()} /> */}
             {/* {packageDt} */}
 
             {/* <div className="content">
