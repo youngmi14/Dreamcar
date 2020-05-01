@@ -40,7 +40,7 @@ class SubSelection extends Component {
       });
 
     //카펫
-    fetch("http://localhost:3000/data/dashboard1.json")
+    fetch("http://localhost:3000/data/carpet1.json")
       .then((res) => res.json())
       .then((res) => {
         console.log("dashhhhh    ", res.data);
@@ -50,7 +50,7 @@ class SubSelection extends Component {
       });
 
     //스티어링 힐
-    fetch("http://localhost:3000/data/carpet1.json")
+    fetch("http://localhost:3000/data/carpet2.json")
       .then((res) => res.json())
       .then((res) => {
         console.log("dashhhhh    ", res.data);
@@ -73,20 +73,32 @@ class SubSelection extends Component {
   render() {
     const { activeBtnId } = this.props;
 
-    const { seatImgUrl, dashboardImgUrl } = this.state;
+    const { seatImgUrl, dashboardImgUrl, carpetImgUrl } = this.state;
 
     let relatedComp = null;
+    let carpetUrl = null;
 
     if (this.props.btnThumbDescInt) {
       if (this.props.activeBtnId === 1) {
         let seat1DashUrl = dashboardImgUrl.filter((item, idx) => idx <= 1);
-        relatedComp = (
-          <button type="button">
-            <img src={seat1DashUrl.dashboard_thumbnail} alt="color" />
-            <span class="iconName"></span>
-          </button>
-        );
+        relatedComp = seat1DashUrl.map((item) => {
+          return (
+            <button type="button">
+              <img src={item.dashboard_thumbnail} alt="color" />
+              <span class="iconName"></span>
+            </button>
+          );
+        });
         console.log("comp2 와따");
+      } else if (this.props.activeBtnId === 2) {
+        carpetUrl = carpetImgUrl.map((item) => {
+          return (
+            <button type="button">
+              <img src={item.carpet_thumbnail} alt="color" />
+              <span class="iconName"></span>
+            </button>
+          );
+        });
       }
     }
     return (
@@ -116,13 +128,19 @@ class SubSelection extends Component {
                     );
                   })}
                   {relatedComp}
+                  {carpetUrl}
                 </div>
               </div>
             </div>
           </div>
         )}
-        {this.props.activeBtnId === 1 && <CarWheelTab />}
-        {this.props.activeBtnId === 2 && <CarBreak />}
+        {/* 조건문 고치기 */}
+        {this.props.btnThumbColorExterior
+          ? this.props.activeBtnId === 1 && <CarWheelTab />
+          : ""}
+        {this.props.btnThumbColorExterior
+          ? this.props.activeBtnId === 2 && <CarBreak />
+          : ""}
       </>
     );
   }

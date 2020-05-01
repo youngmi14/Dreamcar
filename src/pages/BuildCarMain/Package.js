@@ -13,13 +13,13 @@ class Package extends Component {
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          packageDt: res.data.description,
+          packageDt: res.data[0],
         });
       });
   };
 
   createMarkup = () => {
-    return { __html: `${this.state.packageDt}` };
+    return { __html: `${this.state.packageDt.description}` };
   };
 
   render() {
@@ -42,7 +42,7 @@ class Package extends Component {
               <button className="addBtn">추가</button>
             </div>
             <div dangerouslySetInnerHTML={this.createMarkup()} />
-            {packageDt}
+            {/* {packageDt.description} */}
 
             {/* <div className="content">
               <p className="spanTitle">
