@@ -21,7 +21,7 @@ class CarAcc extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/caracc.json")
+    fetch("http://13.59.219.151:8000/car/accessory")
       .then((res) => res.json())
       .then((res) => {
         this.setState(

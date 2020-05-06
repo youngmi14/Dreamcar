@@ -9,7 +9,7 @@ class Package extends Component {
   };
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/package1.json")
+    fetch("http://13.59.219.151:8000/car/package/1")
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -19,7 +19,26 @@ class Package extends Component {
   };
 
   createMarkup = () => {
-    return { __html: `${this.state.packageDt.description}` };
+    return {
+      __html: `${this.state.packageDt.description}
+    <style>
+    .content {
+      .spanTitle {
+        margin-bottom: 12px;
+      }
+      p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #404040;
+        letter-spacing: 0.02em;
+        line-height: 22px;
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+    </style>`,
+    };
   };
 
   render() {
@@ -41,10 +60,10 @@ class Package extends Component {
               </button>
               <button className="addBtn">추가</button>
             </div>
-            <div dangerouslySetInnerHTML={this.createMarkup()} />
+            {/* <div dangerouslySetInnerHTML={this.createMarkup()} /> */}
             {/* {packageDt.description} */}
 
-            {/* <div className="content">
+            <div className="content">
               <p className="spanTitle">
                 <span>패키지 포함 사항:</span>
               </p>
@@ -64,7 +83,7 @@ class Package extends Component {
                   </li>
                 </ul>
               </p>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

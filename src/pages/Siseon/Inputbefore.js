@@ -1,11 +1,33 @@
 import React, { Component } from "react";
 import "./Inputcom.scss";
 
-class Inputcom extends Component {
+class Inputbfore extends Component {
   constructor() {
     super();
-    this.state = { isFocus: false, inputVal: "", pathName: "", isLeft: false };
+    this.state = { isFocus: false, inputVal: "", isLeft: false, pathName: "" };
   }
+  focus = () => {
+    this.setState({
+      isFocus: true,
+    });
+  };
+  focusOut = (e) => {
+    if (this.state.inputVal.length === 0) {
+      this.setState({
+        isLeft: true,
+        isFocus: false,
+      });
+    } else {
+      this.setState({
+        isLeft: false,
+      });
+    }
+  };
+  inputValue = (e) => {
+    this.setState({
+      inputVal: e.target.value,
+    });
+  };
 
   componentDidMount = () => {
     const { locationPath } = this.props;
@@ -20,38 +42,9 @@ class Inputcom extends Component {
     });
   };
 
-  focus = () => {
-    this.setState({
-      isFocus: true,
-      //isFocus: !this.state.isFocus,
-    });
-  };
-
-  focusOut = (e) => {
-    if (this.state.inputVal.length === 0) {
-      this.setState({
-        isLeft: true,
-        isFocus: false,
-      });
-    } else {
-      this.setState({
-        isLeft: false,
-      });
-    }
-  };
-
-  inputValue = (e) => {
-    this.setState({
-      inputVal: e.target.value,
-    });
-  };
-
   render() {
-    //console.log("window.location.href", window.location.href);
-    //console.log("this.props", this.props);
     const { pathName, isFocus, isLeft } = this.state;
     const { star, valueV } = this.props;
-
     return (
       <div
         className="row"
@@ -64,8 +57,16 @@ class Inputcom extends Component {
           className={isLeft ? "beautifyRed" : "beautify"}
           onFocus={this.focus}
           onBlur={this.focusOut}
-          onChange={this.props.onChange}
+          onChange={(e) => {
+            this.inputValue(e);
+            if (this.props.locationPath === "/buildcar") {
+              this.props.onChange(e);
+            } else {
+              this.props.onSelect(e);
+            }
+          }}
           type="text"
+          name={this.props.name}
         ></input>
         <div className={isFocus ? "textup" : "text"}>{valueV}</div>
       </div>
@@ -73,4 +74,4 @@ class Inputcom extends Component {
   }
 }
 
-export default Inputcom;
+export default Inputbfore;
