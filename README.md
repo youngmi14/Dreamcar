@@ -34,4 +34,4 @@ Deployment : -
 
 ### 데모영상
 
-https://youtu.be/yaO4jlIrlY8
+[![readme.png](./src/Images/readme.png)](https://youtu.be/yaO4jlIrlY8)
