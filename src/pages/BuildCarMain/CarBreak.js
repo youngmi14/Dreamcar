@@ -5,9 +5,18 @@ export class CarBreak extends Component {
     super();
     this.state = {
       imgUrl: [],
-      btnActiveInner: 0,
+      breakBtnColor: [],
     };
   }
+
+  breakBtnColor = (idx) => {
+    this.setState(
+      {
+        breakBtnColor: idx,
+      },
+      () => console.log("idxx: ", idx)
+    );
+  };
 
   componentDidMount() {
     // 컴디마는 한번만 실행
@@ -25,17 +34,24 @@ export class CarBreak extends Component {
 
   render() {
     const { imgUrl } = this.state;
-    const mappedComp = imgUrl.map((item) => {
+
+    const mappedComp = imgUrl.map((item, idx) => {
       return (
-        <>
-          <img src={item.thumbnail_url} alt="solid Color" />
+        <div
+          onClick={() => this.breakBtnColor(idx)}
+          className={this.state.breakBtnColor === idx ? "active" : ""}
+        >
+          <img src={item.thumbnail_url} alt="metal Color" />
           <span class="iconName"></span>
-        </>
+        </div>
       );
     });
+
     return (
-      <div class="scrollSectionWheel">
-        <div onClick={this.btnActiveInner}>{mappedComp}</div>
+      <div className="scrollSectionWheel">
+        <div className="innerSection">
+          <div className="colorPalette">{mappedComp}</div>
+        </div>
       </div>
     );
   }

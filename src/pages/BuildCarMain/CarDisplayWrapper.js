@@ -6,6 +6,7 @@ import SubSelection from "./SubSelection";
 import Slider from "react-slick";
 import CarWheelTab from "./CarWheelTab";
 import injectStyle from "../../injectStyle";
+import ImgGetReady from "../ImgGetReady";
 
 class CarDisplayWrapper extends Component {
   constructor(props) {
@@ -37,6 +38,57 @@ class CarDisplayWrapper extends Component {
     this.setState({
       activeBtnId: idx,
     });
+  };
+
+  handleBtnStyler = (e, id, idx) => {
+    e.preventDefault();
+
+    const { btnSelection } = this.state;
+
+    switch (id) {
+      case 0:
+        this.setState({
+          btnSelection: {
+            btnSeat: idx,
+            btnDashb: btnSelection.btnDashb,
+            btnCarpet: btnSelection.btnCarpet,
+            btnSteering: btnSelection.btnSteering,
+          },
+        });
+        break;
+      case 1:
+        this.setState({
+          btnSelection: {
+            btnSeat: btnSelection.btnSeat,
+            btnDashb: idx,
+            btnCarpet: btnSelection.btnCarpet,
+            btnSteering: btnSelection.btnSteering,
+          },
+        });
+        break;
+      case 2:
+        this.setState({
+          btnSelection: {
+            btnSeat: btnSelection.btnSeat,
+            btnDashb: btnSelection.btnDashb,
+            btnCarpet: idx,
+            btnSteering: btnSelection.btnSteering,
+          },
+        });
+        break;
+      case 3:
+        this.setState({
+          btnSelection: {
+            btnSeat: btnSelection.btnSeat,
+            btnDashb: btnSelection.btnDashb,
+            btnCarpet: btnSelection.btnCarpet,
+            btnSteering: idx,
+          },
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   render() {
@@ -72,29 +124,22 @@ class CarDisplayWrapper extends Component {
     `;
     injectStyle(keyframesStyle);
 
-    const { imgUrl, imgUrlExterior } = this.props;
+    const { imgUrl } = this.props;
 
     return (
       <div className="carDisplayWrapper">
-        <div
-          style={{
-            top: "-999999px",
-            position: "fixed",
-            overflow: "hidden",
-            left: "-9999px",
-            height: "1px",
-            width: "1px",
-            opacity: 0.01,
-          }}
-        >
-          {imgUrlExterior}
-        </div>
+        <ImgGetReady />
         <Slider {...settings}>
           {/* imgUrl바꿔서 여기선 map만 해주는걸로 */}
           {imgUrl.map((url, idx, arr) => {
             return (
               <div>
-                <img key={url} src={url} style={this.state.style.container} />
+                <img
+                  key={idx}
+                  src={url}
+                  style={this.state.style.container}
+                  alt="car img"
+                />
               </div>
             );
           })}
@@ -126,6 +171,8 @@ class CarDisplayWrapper extends Component {
               btnThumbColorInt={this.props.btnThumbColorInt}
               btnThumbDescInt={this.props.btnThumbDescInt}
               interiorColorData={this.props.interiorColorData}
+              intOnclick={this.props.intOnclick}
+              btnSelection={this.props.btnSelection}
             />
           </div>
         </div>

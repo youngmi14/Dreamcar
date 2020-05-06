@@ -1,34 +1,28 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { Link, Route, Switch, Router } from "react-router-dom";
 import CarSection from "./CarSection";
 import CarSummary from "./CarSummary";
 import Nav from "../../components/Nav/Nav";
-import Inputbfore from "../Siseon/Inputbefore";
 import "./BuildCarMain.scss";
 import MaterialIcon, { colorPalette } from "material-icons-react";
 
-class BuildCarMain extends Component {
+class Thankyou extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hrefLink: "#",
       tabId: 0,
-      tabIdforClick: 0,
       navStylerStyle: "",
-      isNotOpen: true,
+      isNotOpen: false,
       nameVal: "",
       emailVal: "",
+      configCode: "",
+      num: 1,
       btnSelection: {
         btnSeat: 0,
         btnDashb: 0,
         btnCarpet: 0,
         btnSteering: 0,
-      },
-      colorId: {
-        seatId: 0,
-        dashBId: 0,
-        carpetId: 0,
-        steeringId: 0,
       },
       thumbId: 0,
     };
@@ -36,20 +30,71 @@ class BuildCarMain extends Component {
     this.href = React.createRef();
   }
 
-  componentDidMount() {
-    window.addEventListener(
-      "scroll",
-      (e) => {
-        this.navStyler(e);
-      },
-      true
+  getParam = (sname) => {
+    let params = this.props.location.search.substr(
+      this.props.location.search.indexOf("?") + 1
     );
-  }
 
-  identifyThumbCarImg = (thumbVal) => {
-    this.setState({
-      thumbId: (thumbVal += 1),
-    });
+    let sval = "";
+
+    params = params.split("&");
+
+    for (var i = 0; i < params.length; i++) {
+      let temp = params[i].split("=");
+
+      if ([temp[0]] == sname) {
+        sval = temp[1];
+      }
+    }
+
+    return sval;
+  };
+
+  componentDidMount = () => {
+    const seatNum = this.getParam("seatNum");
+    console.log(seatNum);
+    const dashNum = this.getParam("dashNum");
+    console.log(dashNum);
+    const carpetNum = this.getParam("carpetNum");
+    console.log(carpetNum);
+    const steeringNum = this.getParam("steeringNum");
+    console.log(steeringNum);
+    const nameInput = this.getParam("name");
+    const emailInput = this.getParam("email");
+
+    fetch("http://13.59.219.151:8000/car/save", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        mvl: 1,
+        exterior: 1,
+        wheel: 1,
+        caliper: 1,
+        seat: `${seatNum}`,
+        dashboard: `${dashNum}`,
+        carpet: `${carpetNum}`,
+        steering: `${steeringNum}`,
+        package: [1],
+        accessory: [{ id: 2, quantity: 4 }],
+        email: `${emailInput}`,
+        name: `${nameInput}`,
+        contact_channel: [
+          { mail: 0, call: 0, sns: 0, sms: 1, fax: 1, email: 0 },
+        ],
+        privacy_check: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        // if (response.token) {
+        //   localStorage.setItem("wtw-token", response.token);
+        // }
+        this.setState({
+          configCode: response["code"],
+        });
+      });
   };
 
   componentWillUnmount() {
@@ -79,10 +124,28 @@ class BuildCarMain extends Component {
     });
   };
 
-  handleBtnStyler = (e, id, idx, colorNum) => {
+  formSubmitHandler = () => {
+    const qs = (data) =>
+      Object.entries(data)
+        .map(([key, value]) => `${key}=${value}`)
+        .join("&");
+
+    const { nameVal, emailVal } = this.state;
+    console.log(this.state.nameVal);
+
+    const result = qs({
+      name: nameVal,
+      email: emailVal,
+    });
+
+    const url = `/buildcar/thankyou?${result}`;
+    this.props.history.push(url);
+  };
+
+  handleBtnStyler = (e, id, idx) => {
     e.preventDefault();
 
-    const { btnSelection, colorId } = this.state;
+    const { btnSelection } = this.state;
 
     switch (id) {
       case 0:
@@ -92,14 +155,6 @@ class BuildCarMain extends Component {
             btnDashb: btnSelection.btnDashb,
             btnCarpet: btnSelection.btnCarpet,
             btnSteering: btnSelection.btnSteering,
-          },
-        });
-        this.setState({
-          colorId: {
-            seatId: colorNum,
-            dashBId: colorId.dashBId,
-            carpetId: colorId.carpetId,
-            steeringId: colorId.steeringId,
           },
         });
         break;
@@ -112,14 +167,6 @@ class BuildCarMain extends Component {
             btnSteering: btnSelection.btnSteering,
           },
         });
-        this.setState({
-          colorId: {
-            seatId: colorId.seatId,
-            dashBId: colorNum,
-            carpetId: colorId.carpetId,
-            steeringId: colorId.steeringId,
-          },
-        });
         break;
       case 2:
         this.setState({
@@ -128,14 +175,6 @@ class BuildCarMain extends Component {
             btnDashb: btnSelection.btnDashb,
             btnCarpet: idx,
             btnSteering: btnSelection.btnSteering,
-          },
-        });
-        this.setState({
-          colorId: {
-            seatId: colorId.seatId,
-            dashBId: colorId.dashBId,
-            carpetId: colorNum,
-            steeringId: colorId.steeringId,
           },
         });
         break;
@@ -148,44 +187,15 @@ class BuildCarMain extends Component {
             btnSteering: idx,
           },
         });
-        this.setState({
-          colorId: {
-            seatId: colorId.seatId,
-            dashBId: colorId.dashBId,
-            carpetId: colorId.dashBId,
-            steeringId: colorNum,
-          },
-        });
         break;
       default:
         break;
     }
   };
 
-  formSubmitHandler = () => {
-    const qs = (data) =>
-      Object.entries(data)
-        .map(([key, value]) => `${key}=${value}`)
-        .join("&");
-
-    const { nameVal, emailVal, colorId } = this.state;
-
-    const result = qs({
-      name: nameVal,
-      email: emailVal,
-      seatNum: colorId.seatId,
-      dashNum: colorId.dashBId,
-      carpetNum: colorId.carpetId,
-      steeringNum: colorId.steeringId,
-    });
-
-    const url = `/thankyou?${result}`;
-    this.props.history.push(url);
-  };
-
   navStyler = (e) => {
     e.preventDefault();
-    const lastScrollY = window.scrollY; //scrollY가 아니라 offsetTop으로 바꿔야할듯..?
+    const lastScrollY = window.scrollY;
     if (lastScrollY >= 0 && lastScrollY < 840) {
       this.setState({
         tabId: 1,
@@ -216,12 +226,11 @@ class BuildCarMain extends Component {
   };
 
   navMoveHandler = (e, id) => {
-    e.preventDefault();
-    this.props.history.push("./buildcar");
+    this.setState({
+      tabId: id,
+    });
 
-    if (id === 0) {
-      this.props.history.push("./choosecar");
-    }
+    e.preventDefault();
 
     switch (id) {
       case 1:
@@ -269,14 +278,6 @@ class BuildCarMain extends Component {
     }
   };
 
-  // mouseLeaveHandler = (e, msg) => {
-  //   e.preventDefault();
-
-  //   this.setState({
-  //     tabId: msg,
-  //   });
-  // };
-
   render() {
     const tabNameList = [
       "Lines",
@@ -287,7 +288,6 @@ class BuildCarMain extends Component {
       "액세서리",
       "요약",
     ];
-    console.log("마지막 조합 확인  ", this.state.colorId);
     return (
       <div className="BuildCarMain">
         <Nav />
@@ -340,74 +340,22 @@ class BuildCarMain extends Component {
                       <li>기존 구성 열기</li>
                     </ul>
                   </div>
-                  <div className="detailsBody">
-                    <form>
-                      <div className="question">개인 상세 정보</div>
-                      <div>
-                        <Inputbfore
-                          star="*"
-                          valueV="이름"
-                          locationPath={this.props.location.pathname}
-                          onChange={this.formEventHandler}
-                          name="nameVal"
-                        />
-                      </div>
-                      <div>
-                        <Inputbfore
-                          star="*"
-                          valueV="이메일"
-                          locationPath={this.props.location.pathname}
-                          onChange={this.formEventHandler}
-                          name="emailVal"
-                        />
-                      </div>
+                  <div className="thankyou">
+                    <p>
+                      감사합니다!
+                      <br /> <br /> Ghibli이 성공적으로 저장되었습니다.
+                      <br /> 저장된 구성의 상세 정보가 포함된 자동 이메일을
+                      보내드립니다.
+                      <br /> 이 구성에 관련된 코드:
+                      <br />
+                    </p>
 
-                      <div className="full">
-                        <div className="asy">
-                          <div className="question">개인정보보호 양식</div>
-                          <div className="privacy">
-                            <p className="priCommon">
-                              본인은 마세라티의{" "}
-                              <span className="tos">개인정보 양식</span> 읽고
-                              이해하였으며,
-                            </p>
-                          </div>
-                          <div className="rowPri">
-                            <div className="requireNot"></div>
-                            <div className="priChk">
-                              <div className="require">*</div>
-                              <input type="checkbox" class="checkBoxs"></input>
-                              <label for="checkBox" className="checkbowRight">
-                                개인정보 취급방침의 제3항에서 정한 마케팅
-                                목적으로 본인의 개인정보를 처리하는 데
-                                동의합니다. 연락 채널{" "}
-                                <span className="channelT">
-                                  여기를 클릭하십시오
-                                </span>{" "}
-                                에 대한 승인을 부분적으로 선택하려는 경우,
-                              </label>
-                            </div>
+                    <div className="saveCode">{this.state.configCode}</div>
 
-                            <div className="priChk">
-                              <div className="require">*</div>
-                              <input type="checkbox" class="checkBoxs"></input>
-                              <label for="checkBox" className="checkbowRight">
-                                개인정보 취급방침의 제3항에서 정한 프로파일링
-                                목적으로 본인의 개인정보를 처리하는 데
-                                동의합니다.
-                              </label>
-                            </div>
-                            <input
-                              class="siBtn"
-                              type="submit"
-                              value="시승신청"
-                              onClick={this.formSubmitHandler}
-                            ></input>
-                            <div class="requiretext">* 필수입력사항</div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
+                    <div className="rowBtn">
+                      <div>시승 신청</div>
+                      <div>견적 신청</div>
+                    </div>
                   </div>
                   {/* </Link> */}
                 </div>
@@ -419,10 +367,8 @@ class BuildCarMain extends Component {
               tabId={this.state.tabId}
               intOnclick={this.handleBtnStyler}
               btnSelection={this.state.btnSelection}
-              identifyThumbCarImg={this.identifyThumbCarImg}
             />
             <CarSummary
-              identifier={this.state.thumbId}
               onClickHandler={(e) => {
                 this.modalContShowing(e);
               }}
@@ -434,4 +380,4 @@ class BuildCarMain extends Component {
   }
 }
 
-export default withRouter(BuildCarMain);
+export default Thankyou;

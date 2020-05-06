@@ -12,13 +12,14 @@ class Select extends Component {
 
   focus = () => {
     this.setState({
-      isFocus: true,
-      //isFocus: !this.state.isFocus,
+      //isFocus: true,
+      isFocus: !this.state.isFocus,
     });
   };
 
   focusOut = (e) => {
-    if (this.state.inputVal.length === 0) {
+    if (this.state.inputVal >= 0) {
+      //console.log("selecttargete    :", e.target.value);
       this.setState({
         isLeft: true,
         isFocus: false,
@@ -38,17 +39,27 @@ class Select extends Component {
 
   render() {
     const { pathName, isFocus, isLeft } = this.state;
-    const { star, valueV, whatArr } = this.props;
+    const { star, valueV, whatArr, keyy } = this.props;
 
     return (
       <div className="row">
         <div className="require">{star}</div>
-        <select className="beautify" type="text" id="5">
+
+        <select
+          className="beautify"
+          onChange={(e) => {
+            this.props.onSelect(e);
+          }}
+          //onBlur={this.focusOut} 옵션선택됐는지보고 div내릴지말지
+          onClick={this.focus}
+          type="text"
+        >
           <option value=""></option>
-          {{ whatArr }.map((name, idx) => {
-            return <option value={idx}>{name}</option>;
+          {whatArr.map((name, idx) => {
+            return <option value={`${idx}`}>{name[keyy]}</option>;
           })}
         </select>
+
         <div className={isFocus ? "textup" : "text"}>{valueV}</div>
       </div>
     );
