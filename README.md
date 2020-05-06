@@ -19,7 +19,6 @@
 ### 사용된 기술
 
 Frontend : **ReactJS, SASS**
-
 Backend : **Python, Django, MySQL, CORS headers**  
 Deployment : -
 
