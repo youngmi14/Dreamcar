@@ -18,7 +18,8 @@
 
 ### 사용된 기술
 
-Frontend : **ReactJS, SASS** 
+Frontend : **ReactJS, SASS**
+
 Backend : **Python, Django, MySQL, CORS headers**  
 Deployment : -
 
@@ -34,4 +35,4 @@ Deployment : -
 
 ### 데모영상
 
-[![readme.png](./src/Images/readme.png)](https://youtu.be/yaO4jlIrlY8)
+(https://youtu.be/yaO4jlIrlY8)
