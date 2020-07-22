@@ -12,9 +12,11 @@ class TheWorldOfMaserati extends Component {
     btnClicked: false,
   };
 
+  //dot클릭하면 생기는 이벤트 - 슬라이더관련
   changingDotsHandler = (e) => {
     e.target.disabled = false;
 
+    //오른쪽dot 클릭이벤트 - movedLeftWrapper 로
     if (e.target.className === "noclickDot") {
       this.setState({
         btnClicked: !this.state.btnClicked,
@@ -22,6 +24,7 @@ class TheWorldOfMaserati extends Component {
       });
     }
 
+    //왼쪽dot 클릭이벤트 - TwomWrapper 로
     if (e.target.className === "clickDot") {
       this.setState({
         btnClicked: !this.state.btnClicked,
@@ -74,14 +77,12 @@ class TheWorldOfMaserati extends Component {
             className="clickDot"
             role="tab"
             aria-selected="true"
-            aria-selected="true"
             style={{ background: this.state.btnClicked ? "none" : "#0c2340" }}
             onClick={this.changingDotsHandler}
           ></div>
           <div
             className="noclickDot"
             role="tab"
-            aria-selected="true"
             aria-selected="true"
             style={{ background: this.state.btnClicked ? "#0c2340" : "none" }}
             onClick={this.changingDotsHandler}
