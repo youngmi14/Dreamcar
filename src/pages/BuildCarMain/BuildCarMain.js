@@ -75,7 +75,6 @@ class BuildCarMain extends Component {
   formEventHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-      [e.target.name]: e.target.value,
     });
   };
 

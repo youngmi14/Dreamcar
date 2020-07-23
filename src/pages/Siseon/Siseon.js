@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
-import Inputbefore from "./Inputbefore";
+import Input from "./Inputbefore";
 import Select from "./Select";
 import Apply from "../Apply/Apply";
 import Footer from "../Footer/Footer";
@@ -35,7 +35,7 @@ class Siseon extends Component {
 
   componentDidMount = () => {
     //셀렉트 배열 가져오기
-    fetch("http://13.59.219.151:8000/shopping/testdrive")
+    fetch("http://18.219.215.103:8000/shopping/testdrive")
       .then((res) => res.json())
       .then((res) => {
         console.log("res.exhibition :", res.exhibition);
@@ -50,8 +50,11 @@ class Siseon extends Component {
       });
   };
 
+  //const에 빨간줄쳐짐 ㅠㅜ
+  //const {first_name, last_name, birthday, phone_number, city, address, email, gender, mvl, store, expect_date, contact_us, current_car} = this.state;
+
   postData = () => {
-    fetch("http://13.59.219.151:8000/shopping/testdrive", {
+    fetch("http://18.219.215.103:8000/shopping/testdrive", {
       method: "POST",
       body: JSON.stringify({
         first_name: this.state.first_name,
@@ -79,6 +82,7 @@ class Siseon extends Component {
     this.props.history.push("/");
   };
 
+  //밑의 select~ 전부 하나로 합친 로직
   wholeSelEvent = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -189,28 +193,32 @@ class Siseon extends Component {
               <div className="half">
                 <div className="question">개인 상세 정보</div>
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="이름"
-                  onSelect={this.eventLastname}
+                  name="last_name"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="성"
-                  onSelect={this.eventFirstname}
+                  name="first_name"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="생년월일 (YYYY-MM-DD)"
-                  onSelect={this.eventBirthday}
+                  name="birthday"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="휴대폰"
-                  onSelect={this.eventPhonenumber}
+                  name="phone_number"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <Select
@@ -218,19 +226,22 @@ class Siseon extends Component {
                   valueV="주소(시)"
                   whatArr={cityArr}
                   keyy="city_name"
-                  onSelect={this.selectCity}
+                  name="city"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="주소(구, 동)"
-                  onSelect={this.eventAddress}
+                  name="address"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="이메일"
-                  onSelect={this.eventEmail}
+                  name="email"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <Select
@@ -238,7 +249,8 @@ class Siseon extends Component {
                   valueV="성별"
                   whatArr={genderArr}
                   keyy="gender_type"
-                  onSelect={this.selectGender}
+                  name="gender"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <div className="question">시승신청</div>
@@ -248,7 +260,8 @@ class Siseon extends Component {
                   valueV="가까운 전시장"
                   whatArr={diArr}
                   keyy="exhibition_name"
-                  onSelect={this.selectStore}
+                  name="store"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <Select
@@ -256,27 +269,31 @@ class Siseon extends Component {
                   valueV="신차구입 예정시기"
                   whatArr={expectArr}
                   keyy="expect_day"
-                  onSelect={this.selectExpectdate}
+                  name="expect_date"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="마세라티 관심 모델"
-                  onSelect={this.eventMvl}
+                  name="mvl"
+                  onSelect={this.wholeSelEvent}
                 />
 
-                <Inputbefore
+                <Input
                   star=""
                   valueV="문의 및 기타 의견"
-                  onSelect={this.eventContactus}
+                  name="contact_us"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <div className="question">현재 보유 차종</div>
 
-                <Inputbefore
+                <Input
                   star="*"
                   valueV="브랜드-모델"
-                  onSelect={this.eventCurrentcar}
+                  name="current_car"
+                  onSelect={this.wholeSelEvent}
                 />
 
                 <div className="full">
