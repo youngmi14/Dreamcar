@@ -79,96 +79,102 @@ class Siseon extends Component {
     this.props.history.push("/");
   };
 
-  selectCity = (e) => {
-    console.log("city    :", e.target.value);
+  wholeSelEvent = (e) => {
     this.setState({
-      city: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
-  selectGender = (e) => {
-    console.log("gender    :", e.target.value);
-    this.setState({
-      gender: e.target.value,
-    });
-  };
+  // selectCity = (e) => {
+  //   console.log("city    :", e.target.value);
+  //   this.setState({
+  //     city: e.target.value,
+  //   });
+  // };
 
-  selectStore = (e) => {
-    console.log("store    :", e.target.value);
-    this.setState({
-      store: e.target.value,
-    });
-  };
+  // selectGender = (e) => {
+  //   console.log("gender    :", e.target.value);
+  //   this.setState({
+  //     gender: e.target.value,
+  //   });
+  // };
 
-  selectExpectdate = (e) => {
-    console.log("expect_date    :", e.target.value);
-    this.setState({
-      expect_date: e.target.value,
-    });
-  };
+  // selectStore = (e) => {
+  //   console.log("store    :", e.target.value);
+  //   this.setState({
+  //     store: e.target.value,
+  //   });
+  // };
 
-  eventLastname = (e) => {
-    console.log("이름    :", e.target.value);
-    this.setState({
-      last_name: e.target.value,
-    });
-  };
+  // selectExpectdate = (e) => {
+  //   console.log("expect_date    :", e.target.value);
+  //   this.setState({
+  //     expect_date: e.target.value,
+  //   });
+  // };
 
-  eventFirstname = (e) => {
-    console.log("성    :", e.target.value);
-    this.setState({
-      first_name: e.target.value,
-    });
-  };
+  // eventLastname = (e) => {
+  //   console.log("이름    :", e.target.value);
+  //   this.setState({
+  //     last_name: e.target.value,
+  //   });
+  // };
 
-  eventBirthday = (e) => {
-    console.log("생일    :", e.target.value);
-    this.setState({
-      birthday: e.target.value,
-    });
-  };
+  // eventFirstname = (e) => {
+  //   console.log("성    :", e.target.value);
+  //   this.setState({
+  //     first_name: e.target.value,
+  //   });
+  // };
 
-  eventPhonenumber = (e) => {
-    console.log("폰넘버   :", e.target.value);
-    this.setState({
-      phone_number: e.target.value,
-    });
-  };
+  // eventBirthday = (e) => {
+  //   console.log("생일    :", e.target.value);
+  //   this.setState({
+  //     birthday: e.target.value,
+  //   });
+  // };
 
-  eventAddress = (e) => {
-    console.log("주소    :", e.target.value);
-    this.setState({
-      address: e.target.value,
-    });
-  };
+  // eventPhonenumber = (e) => {
+  //   console.log("폰넘버   :", e.target.value);
+  //   this.setState({
+  //     phone_number: e.target.value,
+  //   });
+  // };
 
-  eventEmail = (e) => {
-    console.log("이메일    :", e.target.value);
-    this.setState({
-      email: e.target.value,
-    });
-  };
+  // eventAddress = (e) => {
+  //   console.log("주소    :", e.target.value);
+  //   this.setState({
+  //     address: e.target.value,
+  //   });
+  // };
 
-  eventContactus = (e) => {
-    console.log("문의사항    :", e.target.value);
-    this.setState({
-      contact_us: e.target.value,
-    });
-  };
+  // eventEmail = (e) => {
+  //   console.log("이메일    :", e.target.value);
+  //   this.setState({
+  //     email: e.target.value,
+  //   });
+  // };
 
-  eventCurrentcar = (e) => {
-    console.log("현재차    :", e.target.value);
-    this.setState({
-      current_car: e.target.value,
-    });
-  };
+  // eventContactus = (e) => {
+  //   console.log("문의사항    :", e.target.value);
+  //   this.setState({
+  //     contact_us: e.target.value,
+  //   });
+  // };
 
-  eventMvl = (e) => {
-    console.log("mvl관심    :", e.target.value);
-    this.setState({
-      mvl: e.target.value,
-    });
-  };
+  // eventCurrentcar = (e) => {
+  //   console.log("현재차    :", e.target.value);
+  //   this.setState({
+  //     current_car: e.target.value,
+  //   });
+  // };
+
+  // eventMvl = (e) => {
+  //   console.log("mvl관심    :", e.target.value);
+  //   this.setState({
+  //     mvl: e.target.value,
+  //   });
+  // };
 
   render() {
     const { cityArr, diArr, genderArr, expectArr } = this.state;
