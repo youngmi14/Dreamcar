@@ -1,6 +1,5 @@
 ### 프로젝트 소개 : 마세라티 공식 홈페이지 클론 
 
-- 1개월차 첫 프로젝트 wecode 7기 수강생들의 클론 프로젝트입니다.
 - 개발기간 : 2주 (2020.04.20-2020.05.01)
 - 인원 : 프론트엔드 3명 & 백엔드 2명  
 - Backend Repositoty 주소: https://github.com/wecode-bootcamp-korea/DreamCar-backend
